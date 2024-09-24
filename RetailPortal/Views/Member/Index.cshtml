@@ -1,0 +1,192 @@
+﻿@{
+    ViewData["Title"] = "Member Details";
+}
+<style>
+    .div1 {
+        width: 200px;
+        height: 30px;
+        border: 1px solid blue;
+    }
+
+    .div2 {
+        width: 200px;
+        height: 30px;
+        border: 1px solid blue;
+    }
+
+    .div3 {
+        width: 200px;
+        height: 30px;
+        border: 1px solid blue
+    }
+    .div4{
+        width: 200px;
+        height: 30px;
+        border: 1px solid blue
+    }
+    .div5{
+        width: 70px;
+        height: 30px;
+        border: 1px solid blue
+    }
+    .div6{
+        width: 70px;
+        height: 30px;
+        border: 1px solid blue
+    }
+    .div7{
+        background-color: #05518e;
+        color: white;
+        width: 200px;
+        height: 50px;
+    }
+
+    .welcome-message {
+        float: right;
+        margin-top: 10px;
+        color: #555;
+    }
+</style>
+<br />
+<div class="col-md-6 text-right">
+    <p class="welcome-message">Welcome, @ViewBag.MemberName</p>
+</div>
+<ul class="nav nav-tabs">
+        <li class="nav-item">
+        <a class="nav-link" href="/SponsorDetails">Sponsor Details</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/PolicyDetails">Policy Details</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" href="/MemberDetails">Member Details</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/ProductDetails">Product Details</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/Payment">Payment</a>
+    </li>
+</ul>
+<br />
+
+<form id="memberForm">
+    <!-- Add your form fields here -->
+    <div class="form-group">
+        <label for="memberchoose">Choose Member</label>
+        <select name="memberchoose" id="memberchoose">
+            <option value="select">Select</option>
+            <option value="myself">Myself</option>
+            <option value="myfamilymembers">My family members</option>
+            <option value="mycollegue">My collegue</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="memberrelation">Member's relationship to you?</label>
+        <select name="memberrelation" id="memberrelation">
+            <option value="none">None</option>
+            <option value="spouse">Spouse</option>
+            <option value="child">Child</option>
+            <option value="father">Father</option>
+            <option value="mother">Mother</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="memberName">Member Name</label>
+        <input type="text" class="form-control div1" id="memberName" name="memberName" required>
+    </div>
+
+    <div class="form-group">
+        <label for="memberDOB">Member Date of Birth</label>
+        <input type="date" class="form-control div2" id="memberDOB" name="memberDOB" required>
+    </div>
+    <!-- Add any other fields required for the member details -->
+    <div class="form-group">
+        <label for="memberphone">Phone Number</label>
+        <input type="text" class="form-control div4" id="memberphone" name="memberphone" required>
+    </div>
+    
+    <div class="form-group">
+        <label>Gender</label>
+        <div>
+            <input type="radio" id="male" name="membergender" value="male" required>
+            <label for="male">Male</label>
+        </div>
+        <div>
+            <input type="radio" id="female" name="membergender" value="female" required>
+            <label for="female">Female</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="maritalstatus">Marital Status</label>
+        <select name="maritalstatus" id="maritalstatus">
+            <option value="select">Select</option>
+            <option value="single">Single</option>
+            <option value="married">Married</option>
+            <option value="divorced">Divorced</option>
+            <option value="widowed">Widowed</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="memberstate">State</label>
+        <select name="memberstate" id="memberstate">
+            <option value="abudhabi">Abu Dhabi</option>
+            <option value="dubai">Dubai</option>
+            <option value="sharjah">Sharjah</option>
+            <option value="ajman">Ajman</option>
+            <option value="ummalquwain">Umm Al Quwain</option>
+            <option value="rasalkhaimah">Ras Al Khaimah</option>
+            <option value="fujairah">Fujairah</option>
+        </select>
+
+        <label for="memberdistrict">District</label>
+        <select name="memberdistrict" id="memberdistrict"
+            <option value="abuhail">Abu Hail</option>
+            <option value="alawirfirst">Al Awir First</option>
+            <option value="alawirsecond">Al Awir Second</option>
+            <option value="albaraha">Al Baraha</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="membersalary">Current Salary</label>
+        <div>
+            <input type="radio" id="no_salary" name="membersalary" value="no_salary" required>
+            <label for="no_salary">No Salary</label>
+        </div>
+        <div>
+            <input type="radio" id="below_4000" name="membersalary" value="below_4000" required>
+            <label for="below_4000">Below 4000 AED</label>
+        </div>
+        <div>
+            <input type="radio" id="between_4001_12000" name="membersalary" value="between_4001_12000" required>
+            <label for="between_4001_12000">Between 4001-12000 AED</label>
+        </div>
+        <div>
+            <input type="radio" id="above_12000" name="membersalary" value="above_12000" required>
+            <label for="above_12000">Above 12000 AED</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label value="memberheight">Height (cm)</label>      
+        <input type="number" class="form-control div5" id="memberheight" name="memberheight">
+    </div>
+
+    <div class="form-group">
+        <label value="memberweight">Weight (kg)</label>
+        <input type="number" class="form-control div6" id="memberweight" name="memberweight">
+    </div>
+    <!-- Back and Next buttons -->
+    <div class="mt-3">
+        <a href="@Url.Action("Index", "Policy")" class="btn back-button">Back</a>
+        <a href="@Url.Action("Index", "Product")" class="btn next-button">Next</a>  
+    </div>
+    <div class="form-group">
+        <button type="reset" class="form-control div7">Add another member</button>
+       
+    </div>
+</form>
