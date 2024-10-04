@@ -1,0 +1,161 @@
+﻿@{
+    ViewData["Title"] = "Sponsor and Policy Details";
+}
+
+<style>
+    .form-section {
+        display: flex; 
+        justify-content: space-between;
+        width: 100%; 
+        margin-bottom: 20px;
+    }
+
+    .sponsor-details, .agent-details, .policy-details {
+        width: 48%;
+        border: 1px solid blue;
+        padding: 15px;
+        background-color: #f9f9f9;
+    }
+
+    .agent-header {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .welcome-message {
+        text-align: right; 
+        margin-top: 10px;
+        color: #555;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-control {
+        width: calc(100% - 20px); 
+    }
+
+    .next-button {
+        margin-right: 10px;
+    }
+</style>
+
+<br />
+<div class="col-md-6">
+    <p class="welcome-message">Welcome, @ViewBag.SponsorName</p>
+</div>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="/SponsorDetails">Sponsor & Policy Details</a>
+    @* </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/PolicyDetails">Policy Details</a>
+    </li> *@
+    <li class="nav-item">
+        <a class="nav-link" href="/MemberDetails">Member Details</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/ProductDetails">Product Details</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/Payment">Payment</a>
+    </li>
+</ul>
+<br />
+
+<form id="sponsorForm" method="post" action="@Url.Action("InsertQuotations", "GMQuotation")">
+    <input type="hidden" name="BrokerId" value="@Model.BrokerId" />
+
+    <div class="form-section">
+        <!-- Sponsor Details -->
+        <div class="sponsor-details">
+            <h4>Sponsor Details</h4>
+            <div class="form-group">
+                <label for="sponsorName">Sponsor Name</label>
+                <input type="text" class="form-control" id="sponsorName" name="ParticipantName" required>
+            </div>
+            <div class="form-group">
+                <label for="sponsorEmail">Sponsor Email</label>
+                <input type="email" class="form-control" id="email" value="@ViewBag.SponsorEmail" readonly>
+                <input type="hidden" name="ParticipantEmail" value="@ViewBag.SponsorEmail" />
+            </div>
+            <div class="form-group">
+                <label for="sponsorPhone">Sponsor Phone Number</label>
+                <input type="tel" class="form-control" id="phone" value="@ViewBag.SponsorPhone" readonly>
+                <input type="hidden" name="ParticipantTelephone" value="@ViewBag.SponsorPhone" />
+            </div>
+            <div class="form-group">
+                <label for="sponsorAddress">Sponsor Address</label>
+                <input type="text" class="form-control" id="sponsorAddress" name="ParticipantAddress" required>
+            </div>
+            <div class="form-group">
+                <label for="sponsorCity">Sponsor City</label>
+                <input type="text" class="form-control" id="sponsorCity" name="ParticipantCity" required>
+            </div>
+            <div class="form-group">
+                <label for="sponsorType">Sponsor Type</label>
+                <input type="text" class="form-control" id="sponsorType" name="SponsorType" required>
+            </div>
+            <div class="form-group">
+                <label for="region">Region</label>
+                <input type="text" class="form-control" id="region" name="Region" required>
+            </div>
+            <div class="form-group">
+                <label for="subRegion">Sub Region</label>
+                <input type="text" class="form-control" id="subRegion" name="SubRegion" required>
+            </div>
+        </div>
+
+        <!-- Policy Details -->
+        <div class="policy-details">
+            <h4>Policy Details</h4>
+            <div class="form-group">
+                <label for="quotationNumber">Policy Number</label>
+                <input type="text" class="form-control" id="quotationNumber" name="QuotationNumber" required>
+            </div>
+            <div class="form-group">
+                <label for="policyStartDate">Policy Start Date</label>
+                <input type="date" class="form-control" id="policyStartDate" name="PlanStartDate" required>
+            </div>
+            <div class="form-group">
+                <label for="policyEndDate">Policy End Date</label>
+                <input type="date" class="form-control" id="policyEndDate" name="PlanEndDate" required>
+            </div>
+            <div class="form-group">
+                <label for="currency">Currency</label>
+                <input type="text" class="form-control" id="currency" name="PlanCurrency" required>
+            </div>
+            
+        </div>
+    </div>
+
+        <!-- Agent Details -->
+        <div class="agent-details">
+            <h4>Agent Details</h4>
+            <div class="form-group">
+                @* <label for="agentDetails">Agent Details</label> *@
+                <div id="agentDetails">
+                    @Html.Raw(ViewBag.AgentDetails)
+                </div>
+            </div>
+
+            
+            <input type="hidden" name="BrokerName" value="@ViewBag.AgentName" />
+            <input type="hidden" name="BrokerTelephone" value="@ViewBag.AgentTelephone" />
+            <input type="hidden" name="BrokerAddress" value="@ViewBag.AgentAddress" />
+            <input type="hidden" name="BrokerEmail" value="@ViewBag.AgentEmail" />
+            <input type="hidden" name="BrokerCity" value="@ViewBag.AgentCity" />
+            <input type="hidden" name="BrokerWebsite" value="@ViewBag.AgentWebsite" />
+            <input type="hidden" name="BrokerFax" value="@ViewBag.AgentFax" />
+        </div>
+    </div>
+
+    <!-- Next button -->
+    <div class="mt-3">
+        <button type="submit" class="btn next-button">Save</button>
+        <a href="@Url.Action("Index", "Member")" class="btn next-button">Next</a>
+    </div>
+</form>

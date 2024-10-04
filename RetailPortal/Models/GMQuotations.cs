@@ -8,13 +8,14 @@ namespace RetailPortal.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
+using System.Data.SqlTypes;
 using System.Linq;
+using System.Xml.Linq;
 using Microsoft.VisualBasic; // Install-Package Microsoft.VisualBasic
 using Microsoft.VisualBasic.CompilerServices; // Install-Package Microsoft.VisualBasic
 
 public class GMQuotations
 {
-
     private int _RowNumber;
     private long _GMQuotationId;
     private DateTime _Date;
@@ -116,14 +117,13 @@ public class GMQuotations
     private string _PolicyHolderTRN;
     private string _Authority;
     private double _BrokerFeeVAT;
-
     private string _SponsorType;
     private DateTime _ExpiryDate;
     private long _PersonId;
     private string _ErrorDescPolicy;
     private double _TotalGross;
     private double _TotalNet;
-    // For Dashboard
+    //For Dashboard
     private string _Status;
     private int _TotalCount;
     private double _TotalAmount;
@@ -139,7 +139,6 @@ public class GMQuotations
     private string _PolicySubType;
     private double _InstalmentSurcharge;
     private string _RenewalSubType;
-
     private double _TPAAmount;
     private double _AICAmount;
     private double _AgentAmount;
@@ -193,7 +192,12 @@ public class GMQuotations
     private double _SMOPremium_Gr;
     private double _TravelPremium_Nr;
     private double _TravelPremium_Gr;
-
+    //private double _CreatedBy;
+    //private double _CreatedOn;
+    //private double _UpdatedBy;
+    //private double _UpdatedOn;
+    //private double _QuoteStatus;
+    //private double _Comments;
     public int RowNumber
     {
         get
@@ -2257,9 +2261,16 @@ public class GMQuotations
             _TravelPremium_Gr = value;
         }
     }
+    
+
 
     public IConfiguration _Config { get; set; }
+    public GMQuotations() { }
     public GMQuotations(IConfiguration configuration)
+    {
+        _Config = configuration;
+    }
+    public void SetConfiguration(IConfiguration configuration)
     {
         _Config = configuration;
     }
@@ -2468,80 +2479,239 @@ public class GMQuotations
         return lstEntity;
     }
 
-    public string Get(string result)
+    public long SaveEntity(string Mode)
     {
-        result = string.Empty;
-        using (SqlConnection connection = new SqlConnection(_Config.GetConnectionString("ConnString")))
+        Console.WriteLine("ParticipantName", ParticipantName);
+        try
         {
-            string sql = $"select top 1 * from gmquotations";
-            using (SqlCommand cmd = new SqlCommand(sql))
+
+            using (SqlConnection connection = new SqlConnection(_Config.GetConnectionString("ConnString")))
             {
-                cmd.Connection = connection;
                 connection.Open();
-                using (SqlDataReader reader = cmd.ExecuteReader())
+
+                using (SqlCommand cmd = new SqlCommand("usp_AddEditDelete_GMQuotations", connection))
                 {
-                    while (reader.Read())
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+
+                    SqlParameter currentIdParam = new SqlParameter("@CurrentID", SqlDbType.BigInt)
                     {
-                        result = (reader["QuotationNumber"] == DBNull.Value) ? string.Empty : (string)(reader["QuotationNumber"]);
+                        Direction = ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(currentIdParam);
+
+                    // Add the input parameter with the condition
+                    if (_GMQuotationId != 0)
+                    {
+                        cmd.Parameters.Add(new SqlParameter("@GMQuotationId", SqlDbType.BigInt) { Value = _GMQuotationId });
                     }
-                }
-                return result;
-            }
-        }
-    }
+                    else
+                    {
+                        cmd.Parameters.Add(new SqlParameter("@GMQuotationId", SqlDbType.BigInt) { Value = DBNull.Value });
+                    }
 
-    public List<GMQuotations> Insert()
-    {
-        var lstEntity = new List<GMQuotations>();
-
-        using (SqlConnection connection = new SqlConnection(_Config.GetConnectionString("ConnString")))
-        {
-            try
-            {
-                connection.Open();
-
-                // Define the INSERT query
-                string insertSql = "INSERT INTO GMQuotations (QuotationNumber, PlanType) " +
-                                   "VALUES (@QuotationNumber, @PlanType)";
-
-                using (SqlCommand cmd = new SqlCommand(insertSql, connection))
-                {
-                    cmd.Parameters.AddWithValue("@QuotationNumber", "RMQ-123");
+                    // Add input parameters with null checks for non-nullable types
+                    
+                    cmd.Parameters.AddWithValue("@Date", (_Date < new DateTime(1753, 1, 1) || _Date > new DateTime(9999, 12, 31)) ? (object)DBNull.Value : _Date);
+                    //cmd.Parameters.AddWithValue("@GMQuotationId", _GMQuotationId != 0 ? (object)_GMQuotationId : DBNull.Value);
+                    cmd.Parameters.AddWithValue("@QuotationNumber", _QuotationNumber);
                     cmd.Parameters.AddWithValue("@PlanType", "Retail");
+                    cmd.Parameters.AddWithValue("@ParticipantName", _ParticipantName);
+                    cmd.Parameters.AddWithValue("@ParticipantTelephone", _ParticipantTelephone);
+                    cmd.Parameters.AddWithValue("@ParticipantAddress", _ParticipantAddress);
+                    cmd.Parameters.AddWithValue("@ParticipantEmail", _ParticipantEmail);
+                    cmd.Parameters.AddWithValue("@BrokerId", _BrokerId);
+                    cmd.Parameters.AddWithValue("@BrokerName", _BrokerName);
+                    cmd.Parameters.AddWithValue("@BrokerTelephone", _BrokerTelephone);
+                    cmd.Parameters.AddWithValue("@BrokerAddress", _BrokerAddress);
+                    cmd.Parameters.AddWithValue("@BrokerEmail", _BrokerEmail);
+                    cmd.Parameters.AddWithValue("@QuotationApprovedNum", _QuotationApprovedNum);
+                    cmd.Parameters.AddWithValue("@PlanStartDate", (_PlanStartDate < new DateTime(1753, 1, 1) || _PlanStartDate > new DateTime(9999, 12, 31)) ? (object)DBNull.Value : _PlanStartDate);
+                    cmd.Parameters.AddWithValue("@PlanEndDate", (_PlanEndDate < new DateTime(1753, 1, 1) || _PlanEndDate > new DateTime(9999, 12, 31)) ? (object)DBNull.Value : _PlanEndDate);
+                    cmd.Parameters.AddWithValue("@PaymentFrequency", _PaymentFrequency);
+                    cmd.Parameters.AddWithValue("@IssuedById", _IssuedById);
+                    cmd.Parameters.AddWithValue("@PlanCurrency", _PlanCurrency);
+                    cmd.Parameters.AddWithValue("@BrokerFeeTotal", _BrokerFeeTotal);
+                    cmd.Parameters.AddWithValue("@CurrentWfStatus", _CurrentWfStatus);
+                    cmd.Parameters.AddWithValue("@MemberCount", _MemberCount);
+                    cmd.Parameters.AddWithValue("@UDF1", _UDF1);
+                    cmd.Parameters.AddWithValue("@UDF2", _UDF2);
+                    cmd.Parameters.AddWithValue("@UDF3", _UDF3);
+                    cmd.Parameters.AddWithValue("@UDF4", (_UDF4 < new DateTime(1753, 1, 1) || _UDF4 > new DateTime(9999, 12, 31)) ? (object)DBNull.Value : _UDF4);
+                    cmd.Parameters.AddWithValue("@UDF5", (_UDF5 < new DateTime(1753, 1, 1) || _UDF5 > new DateTime(9999, 12, 31)) ? (object)DBNull.Value : _UDF5);
 
-                    cmd.ExecuteNonQuery();
-                }
+                    cmd.Parameters.AddWithValue("@IsQuoteRequested", _IsQuoteRequested);
+                    cmd.Parameters.AddWithValue("@IsQuoteSent", _IsQuoteSent);
+                    cmd.Parameters.AddWithValue("@IsUWApproved", _IsUWApproved);
+                    cmd.Parameters.AddWithValue("@IsClientApproved", _IsClientApproved);
+                    cmd.Parameters.AddWithValue("@IsSuspendedClient", _IsSuspendedClient);
+                    cmd.Parameters.AddWithValue("@IsCardPrinted", _IsCardPrinted);
+                    cmd.Parameters.AddWithValue("@IsCardCollected", _IsCardCollected);
+                    cmd.Parameters.AddWithValue("@IsCancelled", _IsCancelled);
+                    cmd.Parameters.AddWithValue("@IsPolicyDocPrinted", _IsPolicyDocPrinted);
+                    cmd.Parameters.AddWithValue("@IsPolicyDocAcknowledged", _IsPolicyDocAcknowledged);
+                    cmd.Parameters.AddWithValue("@IsRenew", _IsRenew);
+                    cmd.Parameters.AddWithValue("@PaymentDates", _PaymentDates);
+                    cmd.Parameters.AddWithValue("@PaymentAmounts", _PaymentAmounts);
+                    cmd.Parameters.AddWithValue("@PremiumFreq", _PremiumFreq);
+                    cmd.Parameters.AddWithValue("@NumberOfPayments", _NumberOfPayments);
 
-                // Retrieve the inserted record
-                string selectSql = "SELECT QuotationNumber, PlanType " +
-                                   "FROM GMQuotations " +
-                                   "WHERE QuotationNumber = @QuotationNumber";
+                    cmd.Parameters.AddWithValue("@IsDHACompliant", _IsDHACompliant);
+                    cmd.Parameters.AddWithValue("@IsHAADCompliant", _IsHAADCompliant);
+                    cmd.Parameters.AddWithValue("@IsOtherCompliant", _IsOtherCompliant);
+                    cmd.Parameters.AddWithValue("@IsVirgin", _IsVirgin);
+                    cmd.Parameters.AddWithValue("@IsEpreinced", _IsEpreinced);
+                    cmd.Parameters.AddWithValue("@ReInsurerComments", _ReInsurerComments);
 
-                using (SqlCommand selectCmd = new SqlCommand(selectSql, connection))
-                {
-                    selectCmd.Parameters.AddWithValue("@QuotationNumber", "RMQ-123");
+                    cmd.Parameters.AddWithValue("@QuoteNum", _QuoteNum);
+                    cmd.Parameters.AddWithValue("@ApprovedNum", _ApprovedNum);
+                    cmd.Parameters.AddWithValue("@POBox", _POBox);
+                    cmd.Parameters.AddWithValue("@ParticipantCity", _ParticipantCity);
+                    cmd.Parameters.AddWithValue("@Brokercity", _Brokercity);
+                    cmd.Parameters.AddWithValue("@BrokerWebsite", _BrokerWebsite);
+                    cmd.Parameters.AddWithValue("@BrokerFax", _BrokerFax);
+                    cmd.Parameters.AddWithValue("@UWRemarks", _UWRemarks);
+                    cmd.Parameters.AddWithValue("@VATNumber", _VATNumber);
+                    cmd.Parameters.AddWithValue("@TotalGrossVAT", _TotalGrossVAT);
+                    cmd.Parameters.AddWithValue("@TotalFinalGross", _TotalFinalGross);
+                    cmd.Parameters.AddWithValue("@EstablishmentNumber", _EstablishmentNumber);
+                    cmd.Parameters.AddWithValue("@BasmahInitiativeFee", _BasmahInitiativeFee);
+                    cmd.Parameters.AddWithValue("@BasmahInitiativeVAT", _BasmahInitiativeVAT);
+                    cmd.Parameters.AddWithValue("@QuotationType", _QuotationType);
+                    cmd.Parameters.AddWithValue("@Location", _Location);
+                    cmd.Parameters.AddWithValue("@TPAId", _TPAId);
+                    cmd.Parameters.AddWithValue("@TotalNetVAT", _TotalNetVAT);
+                    cmd.Parameters.AddWithValue("@Reduction", _Reduction);
+                    cmd.Parameters.AddWithValue("@TotalFinalNet", _TotalFinalNet);
+                    cmd.Parameters.AddWithValue("@IsAssignAllTPA", _IsAssignAllTPA);
+                    cmd.Parameters.AddWithValue("@IsAssignAllLocation", _IsAssignAllLocation);
+                    cmd.Parameters.AddWithValue("@IsConverted", _IsConverted);
 
-                    using (SqlDataReader reader = selectCmd.ExecuteReader())
+                    cmd.Parameters.AddWithValue("@Guideline", _Guideline);
+                    cmd.Parameters.AddWithValue("@DxbQty", _DxbQty);
+                    cmd.Parameters.AddWithValue("@QuotationApproveDate",(_QuotationApproveDate < new DateTime(1753, 1, 1) || _QuotationApproveDate > new DateTime(9999, 12, 31)) ? (object)DBNull.Value: _QuotationApproveDate);
+
+
+                    cmd.Parameters.AddWithValue("@BranchId", _BranchId);
+                    cmd.Parameters.AddWithValue("@DistributionType", _DistributionType);
+
+                    cmd.Parameters.AddWithValue("@CompanyRegNum", _CompanyRegNum);
+                    cmd.Parameters.AddWithValue("@PolicyHolderPIN", _PolicyHolderPIN);
+                    cmd.Parameters.AddWithValue("@Region", _Region);
+                    cmd.Parameters.AddWithValue("@SubRegion", _SubRegion);
+
+                    cmd.Parameters.AddWithValue("@PreviousInsurerId", _PreviousInsurerId);
+                    cmd.Parameters.AddWithValue("@PreviousInsurerExpiryDate", (_PreviousInsurerExpiryDate < new DateTime(1753, 1, 1) || _PreviousInsurerExpiryDate > new DateTime(9999, 12, 31)) ? (object)DBNull.Value : _PreviousInsurerExpiryDate);
+                    cmd.Parameters.AddWithValue("@TPAName", _TPAName);
+                    cmd.Parameters.AddWithValue("@BranchName", BranchName);
+                    cmd.Parameters.AddWithValue("@SponsorType", _SponsorType);
+                    cmd.Parameters.AddWithValue("@ExpiryDate", (_ExpiryDate < new DateTime(1753, 1, 1) || _ExpiryDate > new DateTime(9999, 12, 31)) ? (object)DBNull.Value : _ExpiryDate);
+                    cmd.Parameters.AddWithValue("@Country", _Country);
+                    cmd.Parameters.AddWithValue("@DistributorCode", _DistributorCode);
+                    cmd.Parameters.AddWithValue("@PolicyHolderTRN", _PolicyHolderTRN);
+                    cmd.Parameters.AddWithValue("@TotalGross", _TotalGross);
+                    cmd.Parameters.AddWithValue("@TotalNet", _TotalNet);
+                    cmd.Parameters.AddWithValue("@Authority", _Authority);
+                    cmd.Parameters.AddWithValue("@BrokerFeeVAT", _BrokerFeeVAT);
+                    cmd.Parameters.AddWithValue("@PersonId", _PersonId);
+                    cmd.Parameters.AddWithValue("@ErrorDescPolicy", _ErrorDescPolicy);
+                    cmd.Parameters.AddWithValue("@InsCId", _InsCId);
+                    cmd.Parameters.AddWithValue("@PaymentComments", _PaymentComments);
+                    cmd.Parameters.AddWithValue("@HasReductionbyPerc", _HasReductionByPerc);
+                    cmd.Parameters.AddWithValue("@ReductionPerc", _ReductionPerc);
+                    cmd.Parameters.AddWithValue("@GeoCoverage", _GeoCoverage);
+                    cmd.Parameters.AddWithValue("@PolicyType", _PolicyType);
+                    cmd.Parameters.AddWithValue("@PolicySubType", _PolicySubType);
+                    cmd.Parameters.AddWithValue("@InstalmentSurcharge", _InstalmentSurcharge);
+                    cmd.Parameters.AddWithValue("@RenewalSubType", _RenewalSubType);
+
+                    cmd.Parameters.AddWithValue("@TPAAmount", _TPAAmount);
+                    cmd.Parameters.AddWithValue("@AICAmount", _AICAmount);
+                    cmd.Parameters.AddWithValue("@AgentAmount", _AgentAmount);
+                    cmd.Parameters.AddWithValue("@Allowed1", _Allowed1);
+                    cmd.Parameters.AddWithValue("@Allowed2", _Allowed2);
+                    cmd.Parameters.AddWithValue("@IndustryName", _IndustryName);
+                    cmd.Parameters.AddWithValue("@ReImbursement", _ReImbursement);
+                    cmd.Parameters.AddWithValue("@BasePremium_Gr", _BasePremium_Gr);
+                    cmd.Parameters.AddWithValue("@IPPremium_Gr", _IPPremium_Gr);
+                    cmd.Parameters.AddWithValue("@OPPremium_Gr", _OPPremium_Gr);
+                    cmd.Parameters.AddWithValue("@Maternity_Gr", _Maternity_Gr);
+                    cmd.Parameters.AddWithValue("@Optical_Gr", _Optical_Gr);
+                    cmd.Parameters.AddWithValue("@Dental_Gr", _Dental_Gr);
+                    cmd.Parameters.AddWithValue("@OptionalPremium_Gr", _OptionalPremium_Gr);
+                    cmd.Parameters.AddWithValue("@BasePremium_Nr", _BasePremium_Nr);
+                    cmd.Parameters.AddWithValue("@IPPremium_Nr", _IPPremium_Nr);
+                    cmd.Parameters.AddWithValue("@OPPremium_Nr", _OPPremium_Nr);
+                    cmd.Parameters.AddWithValue("@Maternity_Nr", _Maternity_Nr);
+                    cmd.Parameters.AddWithValue("@Optical_Nr", _Optical_Nr);
+                    cmd.Parameters.AddWithValue("@Dental_Nr", _Dental_Nr);
+                    cmd.Parameters.AddWithValue("@OptionalPremium_Nr", _OptionalPremium_Nr);
+
+                    cmd.Parameters.AddWithValue("@ParentId", _ParentId);
+                    cmd.Parameters.AddWithValue("@QuotationNumber_Rev", _QuotationNumber_Rev);
+                    cmd.Parameters.AddWithValue("@RevCount", _RevCount);
+                    cmd.Parameters.AddWithValue("@OutsideProviders", _OutsideProviders);
+
+                    cmd.Parameters.AddWithValue("@HasReductionMCbyPerc", _HasReductionMCbyPerc);
+                    cmd.Parameters.AddWithValue("@ReductionMC", _ReductionMC);
+                    cmd.Parameters.AddWithValue("@ReductionMCPerc", _ReductionMCPerc);
+
+                    cmd.Parameters.AddWithValue("@HasAdditionalClaimsbyPerc", _HasAdditionalClaimsbyPerc);
+                    cmd.Parameters.AddWithValue("@AdditionalClaimsPerc", _AdditionalClaimsPerc);
+                    cmd.Parameters.AddWithValue("@AdditionalClaims", _AdditionalClaims);
+                    cmd.Parameters.AddWithValue("@AdditionalClaimsType", _AdditionalClaimsType);
+
+                    cmd.Parameters.AddWithValue("@HasAdditionalNonClaimsbyPerc", _HasAdditionalNonClaimsbyPerc);
+                    cmd.Parameters.AddWithValue("@AdditionalNonClaimsPerc", _AdditionalNonClaimsPerc);
+                    cmd.Parameters.AddWithValue("@AdditionalNonClaims", _AdditionalNonClaims);
+
+                    cmd.Parameters.AddWithValue("@HasGroupSizeDiscountbyPerc", _HasGroupSizeDiscountbyPerc);
+                    cmd.Parameters.AddWithValue("@GroupSizeDiscountAmount", _GroupSizeDiscountAmount);
+                    cmd.Parameters.AddWithValue("@GroupSizeDiscountPerc", _GroupSizeDiscountPerc);
+
+                    cmd.Parameters.AddWithValue("@TPAPercent", _TPAPercent);
+                    cmd.Parameters.AddWithValue("@ICPercent", _ICPercent);
+                    cmd.Parameters.AddWithValue("@AgentPercent", _AgentPercent);
+                    cmd.Parameters.AddWithValue("@ClientId", _ClientId);
+                    cmd.Parameters.AddWithValue("@ParentId_Renew", _ParentId_Renew);
+                    cmd.Parameters.AddWithValue("@AdditionalPremium_Nr", _AdditionalPremium_Nr);
+                    cmd.Parameters.AddWithValue("@AdditionalPremium_Gr", _AdditionalPremium_Gr);
+                    cmd.Parameters.AddWithValue("@ICPFees", _ICPFees);
+                    cmd.Parameters.AddWithValue("@LifePremium_Nr", _LifePremium_Nr);
+                    cmd.Parameters.AddWithValue("@LifePremium_Gr", _LifePremium_Gr);
+                    cmd.Parameters.AddWithValue("@SMOPremium_Nr", _SMOPremium_Nr);
+                    cmd.Parameters.AddWithValue("@SMOPremium_Gr", _SMOPremium_Gr);
+                    cmd.Parameters.AddWithValue("@TravelPremium_Nr", _TravelPremium_Nr);
+                    cmd.Parameters.AddWithValue("@TravelPremium_Gr", _TravelPremium_Gr);
+
+                    cmd.Parameters.AddWithValue("@Mode", Mode);
+                    cmd.Parameters.AddWithValue("@UserID", _UserId);
+                    // Execute the command and retrieve the output parameter
+                    if (Mode.ToLower() == "new")
                     {
-                        while (reader.Read())
-                        {
-                            GMQuotations oEntity = new GMQuotations(_Config);
-                            oEntity.QuotationNumber = reader["QuotationNumber"] == DBNull.Value ? string.Empty : reader["QuotationNumber"].ToString();
-                            oEntity.PlanType = reader["PlanType"] == DBNull.Value ? string.Empty : reader["PlanType"].ToString();
-                            lstEntity.Add(oEntity);
-                        }
+                        cmd.ExecuteNonQuery();
+                        _GMQuotationId = Convert.ToInt64(cmd.Parameters["@CurrentID"].Value);
+                    }
+                    else if (Mode.ToLower() == "edit")
+                    {
+                        cmd.ExecuteNonQuery();
+                        
                     }
                 }
             }
-            catch (Exception ex)
-            {
-                // Handle exceptions appropriately
-                throw new Exception("An error occurred while inserting data into GMQuotations.", ex);
-            }
         }
+        catch (Exception ex)
+        {
 
-        return lstEntity;
+            throw new Exception("Error adding/editing quotations to GMQuotations list.", ex);
+        }
+        return _GMQuotationId;
     }
+
+
+
+
+
 }
 
 

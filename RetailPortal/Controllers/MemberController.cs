@@ -1,19 +1,29 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using RetailPortal.Models;
 
 namespace RetailPortal.Controllers
 {
     public class MemberController : Controller
     {
-        public IActionResult Index()
+        private readonly Members _service;
+
+        public MemberController(Members service)
         {
-            ViewBag.ActiveTab = "Member";
-            ViewBag.SponsorName = "User";
-            return View();
+            _service = service;
         }
-        public IActionResult SubmitMember()
+        [HttpGet]
+   
+        public IActionResult MembersList(string whereCondition, string pagingCondition, string orderByExpression)
         {
-            
-            return RedirectToAction("Index", "Product");
+            List<Members> membersList = _service.GetMembersList(whereCondition, pagingCondition, orderByExpression);
+            return View(membersList);
+        }
+
+        public IActionResult InsertMembers()
+        {
+            _service.SaveEntity("new");
+            return RedirectToAction("MembersList");
         }
     }
 }

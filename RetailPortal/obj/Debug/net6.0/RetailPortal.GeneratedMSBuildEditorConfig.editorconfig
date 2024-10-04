@@ -22,12 +22,8 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/work1/source/repos/Retail/RetailPortal/Views/GMQuotation/InsertQuotations.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR01RdW90YXRpb25cSW5zZXJ0UXVvdGF0aW9ucy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/work1/source/repos/Retail/RetailPortal/Views/GMQuotation/QuotationsList.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR01RdW90YXRpb25cUXVvdGF0aW9uc0xpc3QuY3NodG1s
+[C:/Users/work1/source/repos/Retail/RetailPortal/Views/GMQuotation/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR01RdW90YXRpb25cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/work1/source/repos/Retail/RetailPortal/Views/Home/Index.cshtml]
@@ -42,16 +38,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/work1/source/repos/Retail/RetailPortal/Views/Member/InsertMembers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXEluc2VydE1lbWJlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/work1/source/repos/Retail/RetailPortal/Views/Member/MembersList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXE1lbWJlcnNMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/work1/source/repos/Retail/RetailPortal/Views/Payment/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/work1/source/repos/Retail/RetailPortal/Views/Payment/Success.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudFxTdWNjZXNzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/work1/source/repos/Retail/RetailPortal/Views/Policy/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9saWN5XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/work1/source/repos/Retail/RetailPortal/Views/Product/Index.cshtml]
@@ -72,10 +72,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/work1/source/repos/Retail/RetailPortal/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/work1/source/repos/Retail/RetailPortal/Views/Sponsor/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3BvbnNvclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/work1/source/repos/Retail/RetailPortal/Views/_ViewImports.cshtml]

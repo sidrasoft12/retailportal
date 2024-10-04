@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Numerics;
 
 namespace RetailPortal.Controllers
 {
@@ -20,7 +21,9 @@ namespace RetailPortal.Controllers
                 var userName = email.Split('@')[0];
                 // Set the user's first name in the session
                 HttpContext.Session.SetString("UserName", userName);
-                return RedirectToAction("Index", "Sponsor");
+                TempData["SponsorEmail"] = email;
+                TempData["SponsorPhone"] = phone;
+                return RedirectToAction("Index", "GMQuotation");
             }
 
             // If login fails, reload the login page

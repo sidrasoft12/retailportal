@@ -1,6 +1,6 @@
-﻿@model List<GMQuotations>
+﻿@model List<Members>
 @{
-    ViewData["Title"] = "GM Quotations";
+    ViewData["Title"] = "Members";
 }
 
 <!DOCTYPE html>
@@ -34,28 +34,27 @@
         <thead>
             <tr>
                 <th>Row Number</th>
-                <th>Quotation ID</th>
-                <th>Quotation Number</th>
-                <th>Plan Type</th>
-            </tr>
+                <th>Quotation Member ID</th>
+                <th>Quotation Id</th>
+                <th>Member Type</th>
         </thead>
         <tbody>
             @if (Model != null && Model.Any())
             {
-                foreach (var item in Model.Take(5)) // Display the first few records, including the newly inserted
+                foreach (var item in Model.Take(5))
                 {
                     <tr>
                         <td>@item.RowNumber</td>
-                        <td>@item.GMQuotationId</td>
-                        <td>@item.QuotationNumber</td>
-                        <td>@item.PlanType</td>
+                        <td>@item.GmquotationMemberId</td>
+                        <td>@item.GmquotationId</td>
+                        <td>@item.MemberType</td>
                     </tr>
                 }
             }
             else
             {
                 <tr>
-                    <td colspan="5">No quotations found.</td>
+                    <td colspan="5">No Members found.</td>
                 </tr>
             }
         </tbody>

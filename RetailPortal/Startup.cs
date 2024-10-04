@@ -22,6 +22,7 @@ namespace RetailPortal
             services.AddControllersWithViews();
             services.AddSession();
             services.AddTransient<GMQuotations>();// Add session services
+            services.AddTransient<Members>();// Add session services
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
