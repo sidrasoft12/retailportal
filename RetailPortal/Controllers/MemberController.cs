@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using RetailPortal.Models;
+using System.Reflection;
 
 namespace RetailPortal.Controllers
 {
@@ -40,12 +41,12 @@ namespace RetailPortal.Controllers
             ViewBag.SponsorEmail = TempData["SponsorEmail"] ?? string.Empty;
             ViewBag.SponsorPhone = TempData["SponsorPhone"] ?? string.Empty;
             
-            var quotationModel = new GMQuotations
+            var membersModel = new Members
             {
                 BrokerId = agentId
             };
 
-            return View(quotationModel);
+            return View(membersModel);
         }
         private Agent GetAgentDetails(int agentId)
         {
@@ -70,9 +71,10 @@ namespace RetailPortal.Controllers
             return View(membersList);
         }
 
-        public IActionResult InsertMembers()
+        public IActionResult InsertMembers(Members model)
         {
-            _service.SaveEntity("new");
+            model.SetConfiguration(_configuration);
+            long result = model.SaveEntity("new");
             return RedirectToAction("MembersList");
         }
         public class Agent

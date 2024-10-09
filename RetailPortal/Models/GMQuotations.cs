@@ -192,6 +192,16 @@ public class GMQuotations
     private double _SMOPremium_Gr;
     private double _TravelPremium_Nr;
     private double _TravelPremium_Gr;
+
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Telephone { get; set; }
+    public string Email { get; set; }
+    public string Address { get; set; }
+    public string City { get; set; }
+    public string Website { get; set; }
+    public string Fax { get; set; }
+
     //private double _CreatedBy;
     //private double _CreatedOn;
     //private double _UpdatedBy;

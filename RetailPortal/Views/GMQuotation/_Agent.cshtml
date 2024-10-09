@@ -1,0 +1,15 @@
+﻿@model RetailPortal.Models.GMQuotations
+
+<div class="card">
+    <div class="card-header">Agent Details</div>
+    <div class="card-body">
+        <div id="agentDetails">
+            @Html.Raw(ViewBag.AgentDetails)
+        </div>
+        <input type="hidden" name="BrokerName" value="@ViewBag.AgentName" />
+        <input type="hidden" name="BrokerTelephone" value="@ViewBag.AgentTelephone" />
+        <input type="hidden" name="BrokerAddress" value="@ViewBag.AgentAddress" />
+        <input type="hidden" name="BrokerEmail" value="@ViewBag.AgentEmail" />
+        <!-- Add more fields as needed for agent details -->
+    </div>
+</div>

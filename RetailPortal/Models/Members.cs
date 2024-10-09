@@ -109,8 +109,13 @@ public class Members
     private decimal _TPA_Perc;
     private decimal _IC_Perc;
     private decimal _TotGross;
+    private int _BrokerId;
 
-    
+    public int BrokerId
+    {
+        get { return _BrokerId; }
+        set { _BrokerId = value; }
+    }
     public int RowNumber
     {
         get { return _RowNumber; }
@@ -657,7 +662,12 @@ public class Members
     }
 
     public IConfiguration _Config { get; set; }
+    public Members(){ }
     public Members(IConfiguration configuration)
+    {
+        _Config = configuration;
+    }
+    public void SetConfiguration(IConfiguration configuration)
     {
         _Config = configuration;
     }

@@ -1,0 +1,66 @@
+﻿@model RetailPortal.Models.Members
+    <div class="card">
+        <h4 class="card-header">Member Details</h4>
+        <div class="card-body">
+            <!-- Table layout -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="choose-member">Choose Member</th>
+                                    <th class="relationship">Relationship</th>
+                                    <th class="member-name">Member Name</th>
+                                    <th class="date-of-birth">Date of Birth</th>
+                                    <th class="phone-number">Phone Number</th>
+                                    <th class="gender">Gender</th>
+                                    <th class="marital-status">Marital Status</th>
+                                    <th class="salary">Salary</th>
+                                    <th class="height">Height (cm)</th>
+                                    <th class="weight">Weight (kg)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="choose-member">
+                                        <select class="form-control" name="memberchoose" id="memberchoose" required>
+                                            <option value="select">Select</option>
+                                            <option value="myself">Myself</option>
+                                            <option value="myfamilymembers">My family members</option>
+                                            <option value="mycollegue">My colleague</option>
+                                        </select>
+                                    </td>
+                                <td class="relationship"><input type="text" class="form-control" name="Relation" required></td>
+                                    <td class="member-name"><input type="text" class="form-control" id="memberName" name="FirstName" required></td>
+                                <td class="date-of-birth"><input type="date" class="form-control" id="dob" name="DOB" required></td>
+                                <td class="phone-number"><input type="text" class="form-control" id="phoneNumber" name="MobileNumber" required></td>
+                                    <td class="gender">
+                                    <label><input type="radio" name="Gender" value="male" required> Male</label>
+                                    <label><input type="radio" name="Gender" value="female" required> Female</label>
+                                    </td>
+                                    <td class="marital-status">
+                                    <select class="form-control" name="MaritalStatus" id="maritalStatus" required>
+                                            <option value="single">Single</option>
+                                            <option value="married">Married</option>
+                                            <option value="divorced">Divorced</option>
+                                        </select>
+                                    </td>
+                                    <td class="salary">
+                                    <label><input type="radio" name="Salary" value="nosalary" required> No Salary</label><br>
+                                    <label><input type="radio" name="Salary" value="below4000" required> Below 4000 AED</label><br>
+                                    <label><input type="radio" name="Salary" value="4001to12000" required> 4001-12000 AED</label><br>
+                                    <label><input type="radio" name="Salary" value="above12000" required> Above 12000 AED</label>
+                                    </td>
+                                <td class="height"><input type="text" class="form-control" name="Height" required></td>
+                                <td class="weight"><input type="text" class="form-control" name="Weight" required></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

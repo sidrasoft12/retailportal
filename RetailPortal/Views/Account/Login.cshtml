@@ -2,33 +2,53 @@
     ViewBag.Title = "Login";
 }
 <style>
-    .div1{
-        width: 200px;
-        height: 40px;
-        border: 1px solid blue;
+    .welcome-message {
+        text-align: right;
+        margin-top: 10px;
+        color: #555;
     }
-    .div2{
-        width: 200px;
-        height: 40px;
-        border: 1px solid blue;
+
+    .card-header {
+        background-color: #007bff;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .card-body {
+        background-color: #f9f9f9;
+    }
+
+    .form-control {
+        margin-bottom: 15px;
+    }
+
+    .next-button {
+        margin-right: 10px;
     }
 </style>
 
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h2>Login</h2>
-            <form asp-action="Login" method="post">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control div1" id="email" name="Email" required>
+            <div class="card">
+                <h4 class="card-header">Login</h4>
+                <div class="card-body">
+                    <form asp-action="Login" method="post">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" class="form-control" id="phone" name="Phone" required>
+                        </div>
+                        <div class="text-right">
+                            <button type="submit" class="btn next-button">Proceed</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" class="form-control div2" id="phone" name="Phone" required>
-                </div>
-                <button type="submit" class="btn next-button">Proceed</button>
-            </form>
+            </div>
         </div>
     </div>
 </div>
