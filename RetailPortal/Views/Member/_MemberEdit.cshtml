@@ -1,66 +1,199 @@
 ﻿@model RetailPortal.Models.Members
-    <div class="card">
-        <h4 class="card-header">Member Details</h4>
-        <div class="card-body">
-            <!-- Table layout -->
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th class="choose-member">Choose Member</th>
-                                    <th class="relationship">Relationship</th>
-                                    <th class="member-name">Member Name</th>
-                                    <th class="date-of-birth">Date of Birth</th>
-                                    <th class="phone-number">Phone Number</th>
-                                    <th class="gender">Gender</th>
-                                    <th class="marital-status">Marital Status</th>
-                                    <th class="salary">Salary</th>
-                                    <th class="height">Height (cm)</th>
-                                    <th class="weight">Weight (kg)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="choose-member">
-                                        <select class="form-control" name="memberchoose" id="memberchoose" required>
-                                            <option value="select">Select</option>
-                                            <option value="myself">Myself</option>
-                                            <option value="myfamilymembers">My family members</option>
-                                            <option value="mycollegue">My colleague</option>
-                                        </select>
-                                    </td>
-                                <td class="relationship"><input type="text" class="form-control" name="Relation" required></td>
-                                    <td class="member-name"><input type="text" class="form-control" id="memberName" name="FirstName" required></td>
-                                <td class="date-of-birth"><input type="date" class="form-control" id="dob" name="DOB" required></td>
-                                <td class="phone-number"><input type="text" class="form-control" id="phoneNumber" name="MobileNumber" required></td>
-                                    <td class="gender">
-                                    <label><input type="radio" name="Gender" value="male" required> Male</label>
-                                    <label><input type="radio" name="Gender" value="female" required> Female</label>
-                                    </td>
-                                    <td class="marital-status">
-                                    <select class="form-control" name="MaritalStatus" id="maritalStatus" required>
-                                            <option value="single">Single</option>
-                                            <option value="married">Married</option>
-                                            <option value="divorced">Divorced</option>
-                                        </select>
-                                    </td>
-                                    <td class="salary">
-                                    <label><input type="radio" name="Salary" value="nosalary" required> No Salary</label><br>
-                                    <label><input type="radio" name="Salary" value="below4000" required> Below 4000 AED</label><br>
-                                    <label><input type="radio" name="Salary" value="4001to12000" required> 4001-12000 AED</label><br>
-                                    <label><input type="radio" name="Salary" value="above12000" required> Above 12000 AED</label>
-                                    </td>
-                                <td class="height"><input type="text" class="form-control" name="Height" required></td>
-                                <td class="weight"><input type="text" class="form-control" name="Weight" required></td>
-                                </tr>
-                            </tbody>
-                        </table>
+
+<div class="card">
+    <h4 class="card-header">Edit Member Details</h4>
+    <div class="card-body">
+        <form asp-action="EditMember" method="post">
+            <input type="hidden" name="Id" value="@Model.GmquotationMemberId" />
+            <div class="form-group">
+                <label for="memberchoose">Choose Member</label>
+                <select id="memberchoose" name="memberchoose" required>
+                    <option value="" disabled selected>Select an option</option>
+                    @if (Model?.MemberType == "Myself")
+                    {
+                        <option value="myself" selected>Myself</option>
+                    }
+                    else
+                    {
+                        <option value="myself">Myself</option>
+                    }
+                    @if (Model?.MemberType == "My Family Members")
+                    {
+                        <option value="myfamilymembers" selected>My Family Members</option>
+                    }
+                    else
+                    {
+                        <option value="myfamilymembers">My Family Members</option>
+                    }
+
+                    @if (Model?.MemberType == "My Colleague")
+                    {
+                        <option value="mycolleague" selected>My Colleague</option>
+                    }
+                    else
+                    {
+                        <option value="mycolleague">My Colleague</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="relation">Relationship</label>
+                <select id="relation" name="Relation" required>
+                    <option value="" disabled selected>Select a Relationship</option>
+                    @if (Model?.Relation == "Principal")
+                    {
+                        <option value="principal" selected>Principal</option>
+                    }
+                    else
+                    {
+                        <option value="principal">Principal</option>
+                    }
+                    @if (Model?.Relation == "Spouse")
+                    {
+                        <option value="spouse" selected>Spouse</option>
+                    }
+                    else
+                    {
+                        <option value="spouse">Spouse</option>
+                    }
+
+                    @if (Model?.Relation == "Child")
+                    {
+                        <option value="child" selected>Child</option>
+                    }
+                    else
+                    {
+                        <option value="child">Child</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="firstName">Member Name</label>
+                <input type="text" class="form-control" id="firstName" name="FirstName" value="@Model?.FirstName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" class="form-control" id="dob" name="DOB" value="@Model?.DOB" required>
 
 
-                    </div>
+            </div>
+
+            <div class="form-group">
+                <label for="mobileNumber">Phone Number</label>
+                <input type="text" class="form-control" id="mobileNumber" name="MobileNumber" value="@Model?.MobileNumber" required>
+            </div>
+
+
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="relation" name="Gender" required>
+                    <option value="" disabled selected>Select your gender</option>
+                    @if (Model?.Gender == "Male")
+                    {
+                        <option value="male" selected>Male</option>
+                    }
+                    else
+                    {
+                        <option value="male">Male</option>
+                    }
+                    @if (Model?.Gender == "Female")
+                    {
+                        <option value="female" selected>Female</option>
+                    }
+                    else
+                    {
+                        <option value="female">Female</option>
+                    }
+                    
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="maritalstatus">Marital Status</label>
+                <select id="maritalstatus" name="MaritalStatus" required>
+                    <option value="" disabled selected>Select your Marital Status</option>
+                    @if (Model?.MaritalStatus == "Single")
+                    {
+                        <option value="single" selected>Single</option>
+                    }
+                    else
+                    {
+                        <option value="single">Single</option>
+                    } 
+                    @if (Model?.MaritalStatus == "Married")
+                    {
+                        <option value="married" selected>Married</option>
+                    }
+                    else
+                    {
+                        <option value="married">Married</option>
+                    }
+                    @if (Model?.MaritalStatus == "Divorced")
+                    {
+                        <option value="divorced" selected>Divorced</option>
+                    }
+                    else
+                    {
+                        <option value="divorced">Divorced</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="salary">Salary</label>
+                <select id="salary" name="SalaryBand" required>
+                    <option value="" disabled selected>Select your salary range</option>
+                    @if (Model?.Salary == "No Salary")
+                    {
+                        <option value="nosalary" selected>No Salary</option>
+                    }
+                    else
+                    {
+                        <option value="nosalary">No Salary</option>
+                    }
+                    @if (Model?.Salary == "Below 4000 AED")
+                    {
+                        <option value="below4000" selected>Below 4000 AED</option>
+                    }
+                    else
+                    {
+                        <option value="below4000">Below 4000 AED</option>
+                    }
+                    @if (Model?.Salary == "4001-12000 AED")
+                    {
+                        <option value="4001to12000" selected>4001-12000 AED</option>
+                    }
+                    else
+                    {
+                        <option value="4001to12000">4001-12000 AED</option>
+                    }
+                    @if (Model?.Salary == "Above 12000 AED")
+                    {
+                        <option value="above12000" selected>Above 12000 AED</option>
+                    }
+                    else
+                    {
+                        <option value="above12000">Above 12000 AED</option>
+                    }
+                </select>
+            </div>
+        
+            <div class="form-group">
+                <label for="height">Height (cm)</label>
+                <input type="text" class="form-control" id="height" name="Height" value="@Model?.Height" required>
+            </div>
+
+            <div class="form-group">
+                <label for="weight">Weight (kg)</label>
+                <input type="text" class="form-control" id="weight" name="Weight" value="@Model?.Weight" required>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-12 text-right">
+                    <button type="submit" class="btn btn-primary next-button">Save Changes</button>
                 </div>
             </div>
-        </div>
+        </form>
+    </div>
 </div>

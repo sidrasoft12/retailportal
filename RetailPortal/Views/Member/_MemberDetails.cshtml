@@ -1,43 +1,88 @@
-﻿@model RetailPortal.Models.Members
+﻿@model List<RetailPortal.Models.Members>
 
-<div class="card mt-4">
-    <div class="card-header">Member Details</div>
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h4 class="mb-0">Member Details</h4>
+        <a href="@Url.Action("_MemberAdd", "Member")" class="btn btn-primary">Add New</a>
+    </div>
+
     <div class="card-body">
-        <div class="form-group">
-            <label>Relation:</label>
-            <p>@Model.Relation</p>
-        </div>
-        <div class="form-group">
-            <label>First Name:</label>
-            <p>@Model.FirstName</p>
-        </div>
-        <div class="form-group">
-            <label>DOB:</label>
-            <p>@Model.DOB</p>
-        </div>
-        <div class="form-group">
-            <label>Mobile Number:</label>
-            <p>@Model.MobileNumber</p>
-        </div>
-        <div class="form-group">
-            <label>Gender:</label>
-            <p>@Model.Gender</p>
-        </div> 
-        <div class="form-group">
-            <label>Marital Status:</label>
-            <p>@Model.MaritalStatus</p>
-        </div>
-        <div class="form-group">
-            <label>Salary</label>
-            <p>@Model.Salary</p>
-        </div>
-        <div class="form-group">
-            <label>Height:</label>
-            <p>@Model.Height</p>
-        </div>
-        <div class="form-group">
-            <label>Weight:</label>
-            <p>@Model.Weight</p>
-        </div>
+        <table class="table table-striped" id="memberTable">
+            <thead>
+                <tr>
+                    <th>Member Type</th>
+                    <th>Relationship</th>
+                    <th>Member Name</th>
+                    <th>Date Of Birth</th>
+                    <th>Phone Number</th>
+                    <th>Gender</th>
+                    <th>Marital Status</th>
+                    <th>Salary</th>
+                    <th>Height (cm)</th>
+                    <th>Weight (kg)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr data-id="@Model[i].GmquotationMemberId">
+                        <td>@Model[i].MemberType</td>
+                        <td>@Model[i].Relation</td>
+                        <td>@Model[i].FirstName</td>
+                        <td>@(DateTime.TryParse(Model[i].DOB, out var dob) ? dob.ToString("MM/dd/yyyy") : Model[i].DOB)</td>
+
+                        <td>@Model[i].MobileNumber</td>
+                        <td>@Model[i].Gender</td>
+                        <td>@Model[i].MaritalStatus</td>
+                        <td>@Model[i].Salary</td>
+                        <td>@Model[i].Height.ToString("F2")</td>
+                        <td>@Model[i].Weight.ToString("F2")</td>
+                        <td>
+                            <a href="@Url.Action("_MemberEdit", "Member", new { id = Model[i].GmquotationMemberId })" class="btn btn-primary">Edit</a>
+                            <button type="button" class="btn btn-danger btn-remove" data-id="@Model[i].GmquotationMemberId">Remove</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>+
+        </table>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Add click event listener for all "Remove" buttons
+        document.querySelectorAll('.btn-remove').forEach(function (button) {
+            button.addEventListener('click', function () {
+                const row = this.closest('tr');
+                const memberId = this.getAttribute('data-id');
+
+                // Confirm removal
+                if (confirm('Are you sure you want to remove this member?')) {
+                    // Make an AJAX call to the server to remove the member
+                    fetch(`/Member/RemoveMember?id=${memberId}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '@Html.AntiForgeryToken()' // Include this if you have anti-forgery enabled
+                        }
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                // Remove the row from the table
+                                row.remove();
+                                alert('Member removed successfully!');
+                            } else {
+                                alert('Error removing member: ' + data.message);
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert('Error removing member.');
+                        });
+                }
+            });
+        });
+    });
+</script>

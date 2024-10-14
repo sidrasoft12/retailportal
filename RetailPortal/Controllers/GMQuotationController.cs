@@ -69,7 +69,7 @@ namespace RetailPortal.Controllers
 
         [HttpGet]
 
-        public IActionResult QuotationsList(string whereCondition, string pagingCondition, string orderByExpression)
+        public IActionResult _SponsorAandPolicyDetails(string whereCondition, string pagingCondition, string orderByExpression)
         {
 
             List<GMQuotations> quotationsList = _service.GetGMQuotationsList(whereCondition, pagingCondition, orderByExpression);
@@ -86,7 +86,7 @@ namespace RetailPortal.Controllers
             long result = model.SaveEntity("new");
 
             // Redirect to the QuotationsList after successful save
-            return RedirectToAction("QuotationsList");
+            return RedirectToAction("_SponsorAandPolicyDetails");
         }
 
         public class Agent

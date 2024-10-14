@@ -1,0 +1,59 @@
+﻿@model List<RetailPortal.Models.GMQuotations>
+<div class="card mt-4">
+    <div class="card-header">Sponsor Details</div>
+    <div class="card-body">
+        @foreach (var quotation in Model)
+        {
+            <div class="form-group">
+                <label>Sponsor Name:</label>
+                <p>@quotation.ParticipantName</p>
+            </div>
+            <div class="form-group">
+                <label>Sponsor Email:</label>
+                <p>@quotation.ParticipantEmail</p>
+            </div>
+            <div class="form-group">
+                <label>Sponsor Phone:</label>
+                <p>@quotation.ParticipantTelephone</p>
+            </div>
+            <div class="form-group">
+                <label>Sponsor Address:</label>
+                <p>@quotation.ParticipantAddress</p>
+            </div>
+            <div class="form-group">
+                <label>Sponsor City:</label>
+                <p>@quotation.ParticipantCity</p>
+            </div>
+            <div class="form-group">
+                <label>Sponsor Type:</label>
+                <p>@quotation.SponsorType</p>
+            </div>
+            <div class="form-group">
+                <label>Region:</label>
+                <p>@quotation.Region</p>
+            </div>
+            <div class="form-group">
+                <label>Sub Region:</label>
+                <p>@quotation.SubRegion</p>
+            </div>
+            <hr />
+        }
+    </div>
+</div>
+<div class="card mt-4">
+    <div class="card-header">Policy Details</div>
+    <div class="card-body">
+        @foreach (var quotation in Model)
+        {
+            <div class="form-group">
+                <label>Policy Start Date</label>
+                <p>@quotation.PlanStartDate</p>
+            </div>
+            <div class="form-group">
+                <label>Policy End Date</label>
+                <p>@quotation.PlanEndDate</p>
+            </div>
+            <hr />
+        }
+    </div>
+</div>

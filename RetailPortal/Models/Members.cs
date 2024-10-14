@@ -9,8 +9,10 @@ using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Data.SqlTypes;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Xml.Linq;
+using Microsoft.Extensions.Configuration;
 using Microsoft.VisualBasic; // Install-Package Microsoft.VisualBasic
 using Microsoft.VisualBasic.CompilerServices; // Install-Package Microsoft.VisualBasic
 using static System.Net.Mime.MediaTypeNames;
@@ -661,6 +663,7 @@ public class Members
         set { _TotGross = value; }
     }
 
+
     public IConfiguration _Config { get; set; }
     public Members(){ }
     public Members(IConfiguration configuration)
@@ -800,6 +803,7 @@ public class Members
             throw new Exception("Error retrieving GMQuotations list.", ex);
         }
 
+        
         return lstEntity;
     }
 
@@ -835,8 +839,8 @@ public class Members
                     }
 
                     cmd.Parameters.AddWithValue("@GmquotationId", _GMQuotationId);
-                    cmd.Parameters.AddWithValue("@StaffNo", _StaffNo);
-                    cmd.Parameters.AddWithValue("@PhotoName", _PhotoName);
+                    cmd.Parameters.AddWithValue("@StaffNo", 12);
+                    cmd.Parameters.AddWithValue("@PhotoName", 0);
                     cmd.Parameters.AddWithValue("@FirstName", _FirstName);
                     cmd.Parameters.AddWithValue("@SecondName", _SecondName);
                     cmd.Parameters.AddWithValue("@LastName", _LastName);
@@ -945,6 +949,18 @@ public class Members
             throw new Exception("Error adding/editing members to Members list.", ex);
         }
         return _GMQuotationMemberId;
+    }
+
+    public bool DeleteMember(int id)
+    {
+        using (SqlConnection connection = new SqlConnection(_Config.GetConnectionString("ConnString")))
+        {
+            var command = new SqlCommand("DELETE FROM gmquotationmembers WHERE GmquotationMemberId = @Id", connection);
+            command.Parameters.AddWithValue("@Id", id);
+            connection.Open();
+            int rowsAffected = command.ExecuteNonQuery();
+            return rowsAffected > 0; // Return true if at least one row was deleted
+        }
     }
 }
 

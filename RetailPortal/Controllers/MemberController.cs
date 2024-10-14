@@ -40,7 +40,7 @@ namespace RetailPortal.Controllers
             // Set sponsor details from TempData or initialize as needed
             ViewBag.SponsorEmail = TempData["SponsorEmail"] ?? string.Empty;
             ViewBag.SponsorPhone = TempData["SponsorPhone"] ?? string.Empty;
-            
+
             var membersModel = new Members
             {
                 BrokerId = agentId
@@ -64,8 +64,31 @@ namespace RetailPortal.Controllers
         }
 
         [HttpGet]
-   
-        public IActionResult MembersList(string whereCondition, string pagingCondition, string orderByExpression)
+        
+        public IActionResult _MemberAdd()
+        {
+            
+            return View(new Members());
+        }
+
+        public IActionResult _MemberEdit(int id)
+        {
+           
+            string whereCondition = $"GMQuotationMemberId = {id}"; // Adjust this condition based on your database field
+            List<Members> membersList = _service.GetMembersList(whereCondition, string.Empty, string.Empty);
+
+            Members member = membersList.FirstOrDefault();
+            if (member == null)
+            {
+                return NotFound();
+            }
+            return View("_MemberEdit", member);
+        }
+
+
+        [HttpGet]
+
+        public IActionResult _MemberDetails(string whereCondition, string pagingCondition, string orderByExpression)
         {
             List<Members> membersList = _service.GetMembersList(whereCondition, pagingCondition, orderByExpression);
             return View(membersList);
@@ -75,7 +98,31 @@ namespace RetailPortal.Controllers
         {
             model.SetConfiguration(_configuration);
             long result = model.SaveEntity("new");
-            return RedirectToAction("MembersList");
+            return RedirectToAction("_MemberDetails");
+        }
+
+        public IActionResult RemoveMember(int id)
+        {
+            try
+            {
+                
+                bool isDeleted = _service.DeleteMember(id); // Make sure this method returns true if successful
+
+                // Return JSON response indicating success
+                if (isDeleted)
+                {
+                    return Json(new { success = true });
+                }
+                else
+                {
+                    return Json(new { success = false, message = "Member not found or could not be deleted." });
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exception and return error response
+                return Json(new { success = false, message = ex.Message });
+            }
         }
         public class Agent
         {

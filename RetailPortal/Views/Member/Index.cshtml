@@ -1,4 +1,4 @@
-﻿@{
+﻿﻿@{
     ViewData["Title"] = "Member Details";
     var membersModel = (Members)Model;
 }
@@ -110,28 +110,28 @@
 
         <!-- Member Details Section -->
         <div class="row mt-4">
-            <div class="col-md-6">
-                @(Html.Partial("_MemberEdit", membersModel))
-            </div>
-            <div class="col-md-6">
+            @* <div class="col-md-12">
                 @(Html.Partial("_MemberDetails", membersModel))
+            </div> *@
+            <div class="col-md-6">
+                @(Html.Partial("_MemberAdd", membersModel))
             </div>
         </div>
 
         <!-- Agent Details Section - Below Member Details -->
         <div class="row mt-4">
             <div class="col-md-12">
-                @(Html.Partial("_Agent", membersModel))
+                @(Html.Partial("_AgentDetails", membersModel))
             </div>
         </div>
 
         <!-- Submit and Next Buttons -->
-        <div class="row mt-4">
+        @* <div class="row mt-4">
             <div class="col-md-12 text-right">
                 <button type="submit" class="btn btn-primary next-button">Save</button>
                 <a href="@Url.Action("Index", "Product")" class="btn btn-secondary">Next</a>
             </div>
-        </div>
+        </div> *@
     </form>
 </div>
 
