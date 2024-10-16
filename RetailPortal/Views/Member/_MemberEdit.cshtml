@@ -1,9 +1,36 @@
 ﻿@model RetailPortal.Models.Members
+<style>
+    select {
+        width: 100%; /* Make dropdowns full width */
+        padding: 8px; /* Add padding for a better appearance */
+        border: 1px solid #ced4da; /* Border styling */
+        border-radius: 4px; /* Rounded corners */
+        background-color: #fff; /* White background */
+        font-size: 16px; /* Increase font size for readability */
+        color: #495057; /* Dark gray text color */
+        box-shadow: none; /* Remove any default browser shadow */
+        -webkit-appearance: none; /* Remove default appearance */
+        -moz-appearance: none; /* Remove default appearance */
+        appearance: none; /* Remove default appearance */
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="gray" d="M7 10l5 5 5-5z"/></svg>'); /* Arrow icon */
+        background-repeat: no-repeat; /* Do not repeat the arrow */
+        background-position: right 10px center; /* Position the arrow */
+        background-size: 16px; /* Adjust size of the arrow */
+        cursor: pointer; /* Pointer cursor */
+    }
+
+        select:focus {
+            border-color: #80bdff; /* Highlight border on focus */
+            outline: 0; /* Remove default outline */
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Add focus shadow */
+        }
+</style>
 
 <div class="card">
     <h4 class="card-header">Edit Member Details</h4>
     <div class="card-body">
-        <form asp-action="EditMember" method="post">
+        @* <form asp-action="EditMember" method="post"> *@
+            <form id="memberForm" method="post" action="@Url.Action("InsertMembers", "Member")">
             <input type="hidden" name="Id" value="@Model.GmquotationMemberId" />
             <div class="form-group">
                 <label for="memberchoose">Choose Member</label>

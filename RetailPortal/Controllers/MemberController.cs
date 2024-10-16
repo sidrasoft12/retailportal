@@ -96,6 +96,9 @@ namespace RetailPortal.Controllers
 
         public IActionResult InsertMembers(Members model)
         {
+
+
+
             model.SetConfiguration(_configuration);
             long result = model.SaveEntity("new");
             return RedirectToAction("_MemberDetails");
