@@ -1,116 +1,85 @@
 ﻿@model List<RetailPortal.Models.PlanCategoryBenefits>
 
 <style>
-    select {
-        width: 100%;
-        padding: 8px;
-        border: 1px solid #ced4da;
-        border-radius: 4px;
+    .product-card {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 15px;
+        margin-bottom: 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         background-color: #fff;
-        font-size: 16px;
-        color: #495057;
-        box-shadow: none;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="gray" d="M7 10l5 5 5-5z"/></svg>');
-        background-repeat: no-repeat;
-        background-position: right 10px center;
-        background-size: 16px;
-        cursor: pointer;
     }
 
-        select:focus {
-            border-color: #80bdff;
-            outline: 0;
-            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        .product-card h5 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
 
-    .card-body {
-        width: 100%;
-        overflow-x: auto; /* Ensure the content can scroll horizontally if it overflows */
+    .product-details {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
 
-    #memberTable {
-        width: 100%;
-        table-layout: auto; /* Distribute the columns based on content */
-        border-collapse: collapse;
+    .product-item {
+        flex: 1 1 45%;
+        margin-bottom: 10px;
     }
 
-    th, td {
-        white-space: nowrap;
-        padding: 8px 10px;
-        text-align: center; /* Center align the text */
-        vertical-align: middle;
-        border: 1px solid #ddd; /* Add borders for clearer separation */
-        overflow: hidden; /* Prevent content overflow */
-        text-overflow: ellipsis; /* Add ellipsis for overflowed content */
+        .product-item span {
+            display: block;
+            font-weight: bold;
+        }
+
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
     }
 
-    th {
-        background-color: #f8f9fa;
-        font-weight: bold;
-    }
-
-    td {
-        font-size: 14px;
-    }
-
-    .btn {
-        padding: 4px 10px;
-        font-size: 14px;
-    }
-
-    .btn-primary {
-        margin-right: 5px;
+    .product-card .card-title {
+        font-size: 16px;
+        color: #495057;
+        margin-bottom: 10px;
     }
 </style>
+
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
         <h4 class="mb-0">Product Details</h4>
     </div>
-    <div class="card-body">
-        <table class="table table-striped" id="memberTable">
-            <thead>
-                <tr>
-                    <th>Plan Id</th>
-                    <th>Category</th>
-                    <th>Plan Benefit Id</th>
-                    <th>Deductible</th>
-                    <th>CoPay</th>
-                    <th>Premium Amount</th>
-                    <th>Benefit Name</th>
-                    <th>Description</th>
-                    <th>Max Amount (cm)</th>
-                    <th>Max Term</th>
-                </tr>
-            </thead>
-            <tbody>
-                @if (Model != null)
-                {
-                    for (int i = 0; i < Model.Count && i < 5; i++)
-                    {
-                        <tr data-id="@Model[i].GMQuotationId">
-                            <td>@Model[i]?.PlanCategoryId</td>
-                            <td>@Model[i]?.Category</td>
-                            <td>@Model[i]?.PlanBenefitId</td>
-                            <td>@Model[i]?.DisplayDEDText</td>
-                            <td>@Model[i]?.DisplayCopayText</td>
-                            <td>@Model[i]?.PremiumAmt</td>
-                            <td>@Model[i]?.BenefitName</td>
-                            <td>@Model[i]?.Description</td>
-                            <td>@Model[i]?.MaxAmount</td>
-                            <td>@Model[i]?.MaxTerm</td>
-                        </tr>
-                    }
-                }
-                else
-                {
-                    <tr>
-                        <td colspan="10">No product details found.</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+    <div class="card-body card-container">
+        @if (Model != null)
+        {
+            for (int i = 0; i < Model.Count && i < 5; i++)
+            {
+                <div class="product-card" data-id="@Model[i].GMQuotationId">
+                    <h5 class="card-title">@Model[i]?.BenefitName</h5>
+                    <div class="product-details">
+                        <div class="product-item">
+                            <span>Plan Id:</span> @Model[i]?.PlanId
+                        </div>
+                        <div class="product-item">
+                            <span>Category:</span> @Model[i]?.Category
+                        </div>
+                        <div class="product-item">
+                            <span>Plan Benefit Id:</span> @Model[i]?.PlanBenefitId
+                        </div>
+                        <div class="product-item">
+                            <span>Deductible:</span> @Model[i]?.DisplayDEDText
+                        </div>
+                        <div class="product-item">
+                            <span>CoPay:</span> @Model[i]?.DisplayCopayText
+                        </div>
+                        
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div>No product details found.</div>
+        }
     </div>
 </div>
