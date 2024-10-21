@@ -26,7 +26,7 @@ public class PlanCategoryBenefits
     private Int32 _PremiumTypeId;
     private int _WaitingPeriod;
     private string _WaitingPeriodUnit;
-    //private decimal _CoPayPerc;
+    private double _CoPayPerc;
     //private decimal _CoPayAmount;
     private bool _IsCovered;
     private string _Comments;
@@ -110,11 +110,11 @@ public class PlanCategoryBenefits
         set { _WaitingPeriodUnit = value; }
     }
 
-    //public decimal CoPayPerc
-    //{
-    //    get { return _CoPayPerc; }
-    //    set { _CoPayPerc = value; }
-    //}
+    public double CoPayPerc
+    {
+        get { return _CoPayPerc; }
+        set { _CoPayPerc = value; }
+    }
     //public decimal CoPayAmount
     //{
     //    get { return _CoPayAmount; }
@@ -390,7 +390,7 @@ public class PlanCategoryBenefits
                             oEntity.PremiumTypeId = reader["PremiumTypeId"] == DBNull.Value ? 0 : Convert.ToInt32(reader["PremiumTypeId"]);
                             oEntity.WaitingPeriod = reader["WaitingPeriod"] == DBNull.Value ? 0 : Convert.ToInt16(reader["WaitingPeriod"]);
                             oEntity.WaitingPeriodUnit = reader["WaitingPeriodUnit"] == DBNull.Value ? string.Empty : (string)reader["WaitingPeriodUnit"];
-                            //oEntity.CoPayPerc = reader["CoPayPerc"] == DBNull.Value ? 0 : (decimal)reader["CoPayPerc"];
+                            oEntity.CoPayPerc = reader["CoPayPerc"] == DBNull.Value ? 0 : (double)reader["CoPayPerc"];
                             //oEntity.CoPayAmount = reader["CoPayAmount"] == DBNull.Value ? 0 : (decimal)reader["CoPayAmount"];
                             oEntity.IsCovered = reader["IsCovered"] == DBNull.Value ? false : (bool)reader["IsCovered"];
                             oEntity.Comments = reader["Comments"] == DBNull.Value ? string.Empty : (string)reader["Comments"];
