@@ -1,0 +1,14 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/RetailPortal/obj/Release/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs
+/RetailPortal/bin/Debug/
+/RetailPortal/bin/Release/
+/RetailPortal/obj/
+/RetailPortal/obj/Debug/net6.0/RetailPortal.AssemblyInfo.cs
+/RetailPortal/obj/Debug/net6.0/RetailPortal.AssemblyInfoInputs.cache
+/RetailPortal/obj/Debug/net6.0/RetailPortal.assets.cache
+/RetailPortal/obj/Debug/net6.0/RetailPortal.csproj.AssemblyReference.cache
+/RetailPortal/obj/Debug/net6.0/RetailPortal.GeneratedMSBuildEditorConfig.editorconfig
+/.vs
