@@ -22,68 +22,68 @@ public class Members
     private int _RowNumber;
     private long _GMQuotationMemberId;
     private long _GMQuotationId;
-    private string _StaffNo;
-    private string _PhotoName;
-    private string _FirstName;
-    private string _SecondName;
-    private string _LastName;
-    private string _DOB;
-    private string _Gender;
-    private string _Relation;
-    private string _Country;
-    private string _MaritalStatus;
-    private string _Category;
-    private string _SubGroupDivision;
-    private string _EffectiveDate;
-    private string _Emirate;
-    private string _EIDNumber;
-    private string _SalaryBand;
-    private string _Salary;
-    private string _MobileNumber;
-    private string _EmailId;
-    private string _City;
-    private string _ResidentialLocation;
-    private string _WorkLocation;
-    private string _PassportNum;
-    private string _UIDNo;
-    private string _UIDCount;
-    private string _ResidentFileNumber;
-    private string _PhotoLocation;
+    private string? _StaffNo;
+    private string? _PhotoName;
+    private string? _FirstName;
+    private string? _SecondName;
+    private string? _LastName;
+    private string? _DOB;
+    private string? _Gender;
+    private string? _Relation;
+    private string? _Country;
+    private string? _MaritalStatus;
+    private string? _Category;
+    private string? _SubGroupDivision;
+    private string? _EffectiveDate;
+    private string? _Emirate;
+    private string? _EIDNumber;
+    private string? _SalaryBand;
+    private string? _Salary;
+    private string? _MobileNumber;
+    private string? _EmailId;
+    private string? _City;
+    private string? _ResidentialLocation;
+    private string? _WorkLocation;
+    private string? _PassportNum;
+    private string? _UIDNo;
+    private string? _UIDCount;
+    private string? _ResidentFileNumber;
+    private string? _PhotoLocation;
     private DateTime _DOB1;
     private int _UserId;
-    public string _DHPOMemberId { get; set; }
-    public string _BirthCertificateID { get; set; }
-    private string _IsCommissionBasedSalary;
-    private string _MemberType;
-    private string _EntityType;
-    private string _EntityId;
-    private string _EstablishmentEmail;
+    public string? _DHPOMemberId { get; set; }
+    public string? _BirthCertificateID { get; set; }
+    private string? _IsCommissionBasedSalary;
+    private string? _MemberType;
+    private string? _EntityType;
+    private string? _EntityId;
+    private string? _EstablishmentEmail;
     private bool _IsValidated;
-    private string _RelationTo;
-    private string _EntityContactNumber;
-    private string _PolicySequence;
-    private string _DHPOErrorMessage;
+    private string? _RelationTo;
+    private string? _EntityContactNumber;
+    private string? _PolicySequence;
+    private string? _DHPOErrorMessage;
 
-    private string _CardNo;
-    private string _FirstNameAR;
-    private string _SecondNameAR;
-    private string _LastNameAR;
-    private string _WorkRegion;
-    private string _WorkMobile;
-    private string _WorkEmail;
-    private string _ResidentCountry;
-    private string _ResidentRegion;
-    private string _ResidentMobile;
-    private string _ResidentEmail;
-    private string _SalaryBandCategory;
+    private string? _CardNo;
+    private string? _FirstNameAR;
+    private string? _SecondNameAR;
+    private string? _LastNameAR;
+    private string? _WorkRegion;
+    private string? _WorkMobile;
+    private string? _WorkEmail;
+    private string? _ResidentCountry;
+    private string? _ResidentRegion;
+    private string? _ResidentMobile;
+    private string? _ResidentEmail;
+    private string? _SalaryBandCategory;
     private bool _PrevCoverageStatus;
     private DateTime _PrevCoverageExp;
-    private string _Occupation;
-    private string _WorkCountry;
-    private string _CompanyName;
+    private string? _Occupation;
+    private string? _WorkCountry;
+    private string? _CompanyName;
     private decimal _IPPremium;
     private decimal _OPPremium;
-    private string _PrevCoverage_Str;
+    private string? _PrevCoverage_Str;
     private decimal _MaternityPremium;
     private decimal _DentalPremium;
     private decimal _OpticalPremium;
@@ -136,163 +136,163 @@ public class Members
         set { _GMQuotationId = value; }
     }
 
-    public string StaffNo
+    public string? StaffNo
     {
         get { return _StaffNo; }
         set { _StaffNo = value; }
     }
 
-    public string PhotoName
+    public string? PhotoName
     {
         get { return _PhotoName; }
         set { _PhotoName = value; }
     }
 
-    public string FirstName
+    public string? FirstName
     {
         get { return _FirstName; }
         set { _FirstName = value; }
     }
 
-    public string SecondName
+    public string? SecondName
     {
         get { return _SecondName; }
         set { _SecondName = value; }
     }
 
-    public string LastName
+    public string? LastName
     {
         get { return _LastName; }
         set { _LastName = value; }
     }
 
-    public string DOB
+    public string? DOB
     {
         get { return _DOB; }
         set { _DOB = value; }
     }
 
-    public string Gender
+    public string? Gender
     {
         get { return _Gender; }
         set { _Gender = value; }
     }
 
-    public string Relation
+    public string? Relation
     {
         get { return _Relation; }
         set { _Relation = value; }
     }
 
-    public string Country
+    public string? Country
     {
         get { return _Country; }
         set { _Country = value; }
     }
 
-    public string MaritalStatus
+    public string? MaritalStatus
     {
         get { return _MaritalStatus; }
         set { _MaritalStatus = value; }
     }
 
-    public string Category
+    public string? Category
     {
         get { return _Category; }
         set { _Category = value; }
     }
 
-    public string SubGroupDivision
+    public string? SubGroupDivision
     {
         get { return _SubGroupDivision; }
         set { _SubGroupDivision = value; }
     }
 
-    public string EffectiveDate
+    public string? EffectiveDate
     {
         get { return _EffectiveDate; }
         set { _EffectiveDate = value; }
     }
 
-    public string Emirate
+    public string? Emirate
     {
         get { return _Emirate; }
         set { _Emirate = value; }
     }
 
-    public string EIDNumber
+    public string? EIDNumber
     {
         get { return _EIDNumber; }
         set { _EIDNumber = value; }
     }
 
-    public string SalaryBand
+    public string? SalaryBand
     {
         get { return _SalaryBand; }
         set { _SalaryBand = value; }
     }
 
-    public string Salary
+    public string? Salary
     {
         get { return _Salary; }
         set { _Salary = value; }
     }
 
-    public string MobileNumber
+    public string? MobileNumber
     {
         get { return _MobileNumber; }
         set { _MobileNumber = value; }
     }
 
-    public string EmailId
+    public string? EmailId
     {
         get { return _EmailId; }
         set { _EmailId = value; }
     }
 
-    public string City
+    public string? City
     {
         get { return _City; }
         set { _City = value; }
     }
 
-    public string ResidentialLocation
+    public string? ResidentialLocation
     {
         get { return _ResidentialLocation; }
         set { _ResidentialLocation = value; }
     }
 
-    public string WorkLocation
+    public string? WorkLocation
     {
         get { return _WorkLocation; }
         set { _WorkLocation = value; }
     }
 
-    public string PassportNum
+    public string? PassportNum
     {
         get { return _PassportNum; }
         set { _PassportNum = value; }
     }
 
-    public string UIDNo
+    public string? UIDNo
     {
         get { return _UIDNo; }
         set { _UIDNo = value; }
     }
 
-    public string UIDCount
+    public string? UIDCount
     {
         get { return _UIDCount; }
         set { _UIDCount = value; }
     }
 
-    public string ResidentFileNumber
+    public string? ResidentFileNumber
     {
         get { return _ResidentFileNumber; }
         set { _ResidentFileNumber = value; }
     }
 
-    public string PhotoLocation
+    public string? PhotoLocation
     {
         get { return _PhotoLocation; }
         set { _PhotoLocation = value; }
@@ -310,43 +310,43 @@ public class Members
         set { _UserId = value; }
     }
 
-    public string DHPOMemberId
+    public string? DHPOMemberId
     {
         get { return _DHPOMemberId; }
         set { _DHPOMemberId = value; }
     }
 
-    public string BirthCertificateID
+    public string? BirthCertificateID
     {
         get { return _BirthCertificateID; }
         set { _BirthCertificateID = value; }
     }
 
-    public string IsCommissionBasedSalary
+    public string? IsCommissionBasedSalary
     {
         get { return _IsCommissionBasedSalary; }
         set { _IsCommissionBasedSalary = value; }
     }
 
-    public string MemberType
+    public string? MemberType
     {
         get { return _MemberType; }
         set { _MemberType = value; }
     }
 
-    public string EntityType
+    public string? EntityType
     {
         get { return _EntityType; }
         set { _EntityType = value; }
     }
 
-    public string EntityId
+    public string? EntityId
     {
         get { return _EntityId; }
         set { _EntityId = value; }
     }
 
-    public string EstablishmentEmail
+    public string? EstablishmentEmail
     {
         get { return _EstablishmentEmail; }
         set { _EstablishmentEmail = value; }
@@ -358,103 +358,103 @@ public class Members
         set { _IsValidated = value; }
     }
 
-    public string RelationTo
+    public string? RelationTo
     {
         get { return _RelationTo; }
         set { _RelationTo = value; }
     }
 
-    public string EntityContactNumber
+    public string? EntityContactNumber
     {
         get { return _EntityContactNumber; }
         set { _EntityContactNumber = value; }
     }
 
-    public string PolicySequence
+    public string? PolicySequence
     {
         get { return _PolicySequence; }
         set { _PolicySequence = value; }
     }
 
-    public string DHPOErrorMessage
+    public string? DHPOErrorMessage
     {
         get { return _DHPOErrorMessage; }
         set { _DHPOErrorMessage = value; }
     }
 
-    public string CardNo
+    public string? CardNo
     {
         get { return _CardNo; }
         set { _CardNo = value; }
     }
 
-    public string FirstNameAR
+    public string? FirstNameAR
     {
         get { return _FirstNameAR; }
         set { _FirstNameAR = value; }
     }
 
-    public string SecondNameAR
+    public string? SecondNameAR
     {
         get { return _SecondNameAR; }
         set { _SecondNameAR = value; }
     }
 
-    public string LastNameAR
+    public string? LastNameAR
     {
         get { return _LastNameAR; }
         set { _LastNameAR = value; }
     }
 
-    public string WorkRegion
+    public string? WorkRegion
     {
         get { return _WorkRegion; }
         set { _WorkRegion = value; }
     }
 
-    public string WorkCountry
+    public string? WorkCountry
     {
         get { return _WorkCountry; }
         set { _WorkCountry = value; }
     }
 
-    public string WorkMobile
+    public string? WorkMobile
     {
         get { return _WorkMobile; }
         set { _WorkMobile = value; }
     }
 
-    public string WorkEmail
+    public string? WorkEmail
     {
         get { return _WorkEmail; }
         set { _WorkEmail = value; }
     }
 
-    public string ResidentCountry
+    public string? ResidentCountry
     {
         get { return _ResidentCountry; }
         set { _ResidentCountry = value; }
     }
 
-    public string ResidentRegion
+    public string? ResidentRegion
     {
         get { return _ResidentRegion; }
         set { _ResidentRegion = value; }
     }
 
-    public string ResidentMobile
+    public string? ResidentMobile
     {
         get { return _ResidentMobile; }
         set { _ResidentMobile = value; }
     }
 
-    public string ResidentEmail
+    public string? ResidentEmail
     {
         get { return _ResidentEmail; }
         set { _ResidentEmail = value; }
     }
 
-    public string SalaryBandCategory
+    public string? SalaryBandCategory
     {
         get { return _SalaryBandCategory; }
         set { _SalaryBandCategory = value; }
@@ -466,7 +466,7 @@ public class Members
         set { _PrevCoverageStatus = value; }
     }
 
-    public string PrevCoverage_Str
+    public string? PrevCoverage_Str
     {
         get { return _PrevCoverage_Str; }
         set { _PrevCoverage_Str = value; }
@@ -478,13 +478,13 @@ public class Members
         set { _PrevCoverageExp = value; }
     }
 
-    public string Occupation
+    public string? Occupation
     {
         get { return _Occupation; }
         set { _Occupation = value; }
     }
 
-    public string CompanyName
+    public string? CompanyName
     {
         get { return _CompanyName; }
         set { _CompanyName = value; }
@@ -664,11 +664,11 @@ public class Members
     }
 
 
-    public IConfiguration _Config { get; set; }
+    public IConfiguration? _Config { get; set; }
     public Members(){ }
-    public Members(IConfiguration configuration)
+    public Members(IConfiguration? configuration)
     {
-        _Config = configuration;
+        _Config = configuration ?? throw new ArgumentNullException(nameof(configuration), "Configuration cannot be null.");
     }
     public void SetConfiguration(IConfiguration configuration)
     {

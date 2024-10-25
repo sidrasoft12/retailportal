@@ -6,36 +6,51 @@ namespace RetailPortal.Controllers
     public class ProductController : Controller
     {
         private readonly IConfiguration _configuration;
-        private readonly PlanCategoryBenefits _service;
+        private readonly Mstr_PlanCategoryBenefits _service;
+        private long _GMQuotationId;
 
 
         public ProductController(IConfiguration configuration)
         {
             _configuration = configuration;
-            _service = new PlanCategoryBenefits(configuration);
+            _service = new Mstr_PlanCategoryBenefits(configuration);
         }
         public IActionResult Index()
         {
             int agentId = 76;
             var agentDetails = GetAgentDetails(agentId);
 
-            ViewBag.AgentName = agentDetails.Name;
-            ViewBag.AgentTelephone = agentDetails.Telephone;
-            ViewBag.AgentEmail = agentDetails.Email;
-            ViewBag.AgentAddress = agentDetails.Address;
-            ViewBag.AgentCity = agentDetails.City;
-            ViewBag.AgentWebsite = agentDetails.Website;
-            ViewBag.AgentFax = agentDetails.Fax;
+            if (agentDetails != null)
+            {
+                ViewBag.AgentName = agentDetails.Name;
+                ViewBag.AgentTelephone = agentDetails.Telephone;
+                ViewBag.AgentEmail = agentDetails.Email;
+                ViewBag.AgentAddress = agentDetails.Address;
+                ViewBag.AgentCity = agentDetails.City;
+                ViewBag.AgentWebsite = agentDetails.Website;
+                ViewBag.AgentFax = agentDetails.Fax;
+            }
+            else
+            {
+              
+                ViewBag.AgentName = "Unknown";
+                ViewBag.AgentTelephone = "N/A";
+                ViewBag.AgentEmail = "N/A";
+                ViewBag.AgentAddress = "N/A";
+                ViewBag.AgentCity = "N/A";
+                ViewBag.AgentWebsite = "N/A";
+                ViewBag.AgentFax = "N/A";
+            }
 
             ViewBag.AgentDetails = $"<strong>Name</strong> - {ViewBag.AgentName}<br>" +
-         $"<strong>Telephone</strong> - {ViewBag.AgentTelephone}<br>" +
-         $"<strong>Address</strong> - {ViewBag.AgentAddress}<br>" +
-         $"<strong>Email</strong> - {ViewBag.AgentEmail}<br>" +
-         $"<strong>City</strong> - {ViewBag.AgentCity}<br>" +
-         $"<strong>Website</strong> - {ViewBag.AgentWebsite}<br>" +
-         $"<strong>Fax</strong> - {ViewBag.AgentFax}";
+                                   $"<strong>Telephone</strong> - {ViewBag.AgentTelephone}<br>" +
+                                   $"<strong>Address</strong> - {ViewBag.AgentAddress}<br>" +
+                                   $"<strong>Email</strong> - {ViewBag.AgentEmail}<br>" +
+                                   $"<strong>City</strong> - {ViewBag.AgentCity}<br>" +
+                                   $"<strong>Website</strong> - {ViewBag.AgentWebsite}<br>" +
+                                   $"<strong>Fax</strong> - {ViewBag.AgentFax}";
 
-            // Set sponsor details from TempData or initialize as needed
+            
             ViewBag.SponsorEmail = TempData["SponsorEmail"] ?? string.Empty;
             ViewBag.SponsorPhone = TempData["SponsorPhone"] ?? string.Empty;
 
@@ -46,7 +61,8 @@ namespace RetailPortal.Controllers
 
             return View(membersModel);
         }
-        private Agent GetAgentDetails(int agentId)
+
+        private Agent? GetAgentDetails(int agentId)
         {
             var agents = new List<Agent>
             {
@@ -63,22 +79,24 @@ namespace RetailPortal.Controllers
         public class Agent
         {
             public int Id { get; set; }
-            public string Name { get; set; }
-            public string Telephone { get; set; }
-            public string Email { get; set; }
-            public string Address { get; set; }
-            public string City { get; set; }
-            public string Website { get; set; }
-            public string Fax { get; set; }
+            public string? Name { get; set; }
+            public string? Telephone { get; set; }
+            public string? Email { get; set; }
+            public string? Address { get; set; }
+            public string? City { get; set; }
+            public string? Website { get; set; }
+            public string? Fax { get; set; }
 
         }
         [HttpGet]
 
         public IActionResult _ProductDetails(string whereCondition, string pagingCondition, string orderByExpression)
+        
+        
         {
             try
             {
-                List<PlanCategoryBenefits> productList = _service.GetPlanCategoryBenefitsList(whereCondition, pagingCondition, orderByExpression).Take(5).ToList(); 
+                List<Mstr_PlanCategoryBenefits> productList = _service.GetMstr_PlanCategoryBenefitsList(whereCondition, pagingCondition, orderByExpression).Take(5).ToList(); 
                 return View(productList);
             }
             catch (Exception ex)
@@ -86,6 +104,18 @@ namespace RetailPortal.Controllers
                 Console.WriteLine(ex.Message);
                 return RedirectToAction("Index", "Product");
             }
+        }
+        public IActionResult InsertProducts(Mstr_PlanCategoryBenefits model)
+        {
+
+            model.SetConfiguration(_configuration);
+            if (TempData["GMQuotationID"] != null)
+            {
+                _GMQuotationId = long.Parse(TempData["GMQuotationID"].ToString());
+            }
+            model.GMQuotationId= _GMQuotationId;
+            long result = model.SaveEntity("new");
+            return RedirectToAction("_ProductDetails");
         }
 
     }

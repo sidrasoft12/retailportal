@@ -19,24 +19,24 @@ public class GMQuotations
     private int _RowNumber;
     private long _GMQuotationId;
     private DateTime _Date;
-    private string _QuotationNumber;
-    private string _PlanType;
-    private string _ParticipantName;
-    private string _ParticipantTelephone;
-    private string _ParticipantAddress;
+    private string? _QuotationNumber;
+    private string? _PlanType;
+    private string? _ParticipantName;
+    private string? _ParticipantTelephone;
+    private string? _ParticipantAddress;
     private int _BrokerId;
-    private string _QuotationApprovedNum;
+    private string? _QuotationApprovedNum;
     private DateTime _PlanStartDate;
     private DateTime _PlanEndDate;
-    private string _PaymentFrequency;
+    private string? _PaymentFrequency;
     private int _IssuedById;
-    private string _PlanCurrency;
+    private string? _PlanCurrency;
     private double _BrokerFeeTotal;
-    private string _CurrentWfStatus;
+    private string? _CurrentWfStatus;
     private short _MemberCount;
-    private string _UDF1;
-    private string _UDF2;
-    private string _UDF3;
+    private string? _UDF1;
+    private string? _UDF2;
+    private string? _UDF3;
     private DateTime _UDF4;
     private DateTime _UDF5;
     private bool _IsQuoteRequested;
@@ -48,107 +48,107 @@ public class GMQuotations
     private bool _IsCardCollected;
     private bool _IsCancelled;
     private bool _IsRenew;
-    private string _ParticipantEmail;
-    private string _BrokerName;
-    private string _BrokerTelephone;
-    private string _BrokerAddress;
-    private string _BrokerEmail;
+    private string? _ParticipantEmail;
+    private string? _BrokerName;
+    private string? _BrokerTelephone;
+    private string? _BrokerAddress;
+    private string? _BrokerEmail;
     private bool _IsPolicyDocPrinted;
     private bool _IsPolicyDocAcknowledged;
     private DateTime _CardCollectedDate;
     private DateTime _DocCollectedDate;
-    private string _PaymentDates;
-    private string _PaymentAmounts;
-    private string _PremiumFreq;
+    private string? _PaymentDates;
+    private string? _PaymentAmounts;
+    private string? _PremiumFreq;
     private short _NumberOfPayments;
     private int _UserId;
-    private string _PlanCategoryName;
-    private string _TPAName;
+    private string? _PlanCategoryName;
+    private string? _TPAName;
     private bool _IsDHACompliant;
     private bool _IsHAADCompliant;
     private bool _IsOtherCompliant;
     private bool _IsVirgin;
     private bool _IsEpreinced;
-    private string _ReInsurerComments;
+    private string? _ReInsurerComments;
     private int _BranchId;
-    private string _DistributionType;
-    private string _QuoteNum;
-    private string _ApprovedNum;
-    private string _POBox;
-    private string _ParticipantCity;
-    private string _Brokercity;
-    private string _BrokerWebsite;
-    private string _BrokerFax;
-    private string _UWRemarks;
-    private string _VATNumber;
+    private string? _DistributionType;
+    private string? _QuoteNum;
+    private string? _ApprovedNum;
+    private string? _POBox;
+    private string? _ParticipantCity;
+    private string? _Brokercity;
+    private string? _BrokerWebsite;
+    private string? _BrokerFax;
+    private string? _UWRemarks;
+    private string? _VATNumber;
     private double _TotalGrossVAT;
     private double _TotalFinalGross;
     private DateTime _SubmittedDate;
-    private string _EstablishmentNumber;
-    private string _TPAId;
+    private string? _EstablishmentNumber;
+    private string? _TPAId;
     private double _BasmahInitiativeFee;
     private double _BasmahInitiativeVAT;
-    private string _QuotationType;
-    private string _Location;
+    private string? _QuotationType;
+    private string? _Location;
     private double _TotalNetVAT;
     private double _Reduction;
     private double _TotalFinalNet;
     private bool _IsAssignAllTPA;
     private bool _IsAssignAllLocation;
-    private string _UWUserId;
+    private string? _UWUserId;
     private long _UWId;
-    private string _UWUserName;
-    private string _UWEmailId;
+    private string? _UWUserName;
+    private string? _UWEmailId;
     private bool _IsActive;
     private bool _IsDeleted;
     private bool _IsConverted;
-    private string _Guideline;
+    private string? _Guideline;
     private int _DxbQty;
     private DateTime _QuotationApproveDate;
-    private string _CompanyRegNum;
+    private string? _CompanyRegNum;
     private long _PolicyHolderPIN;
-    private string _Region;
-    private string _SubRegion;
-    private string _PreviousInsurerId;
+    private string? _Region;
+    private string? _SubRegion;
+    private string? _PreviousInsurerId;
     private DateTime _PreviousInsurerExpiryDate;
-    private string _BranchName;
-    private string _Country;
-    private string _DistributorCode;
-    private string _PolicyHolderTRN;
-    private string _Authority;
+    private string? _BranchName;
+    private string? _Country;
+    private string? _DistributorCode;
+    private string? _PolicyHolderTRN;
+    private string? _Authority;
     private double _BrokerFeeVAT;
-    private string _SponsorType;
+    private string? _SponsorType;
     private DateTime _ExpiryDate;
     private long _PersonId;
-    private string _ErrorDescPolicy;
+    private string? _ErrorDescPolicy;
     private double _TotalGross;
     private double _TotalNet;
     //For Dashboard
-    private string _Status;
+    private string? _Status;
     private int _TotalCount;
     private double _TotalAmount;
-    private string _AICComments;
+    private string? _AICComments;
     private long _InsCId;
-    private string _TPAComments;
-    private string _AuthorityComments;
-    private string _PaymentComments;
+    private string? _TPAComments;
+    private string? _AuthorityComments;
+    private string? _PaymentComments;
     private bool _HasReductionByPerc;
     private double _ReductionPerc;
-    private string _GeoCoverage;
-    private string _PolicyType;
-    private string _PolicySubType;
+    private string? _GeoCoverage;
+    private string? _PolicyType;
+    private string? _PolicySubType;
     private double _InstalmentSurcharge;
-    private string _RenewalSubType;
+    private string? _RenewalSubType;
     private double _TPAAmount;
     private double _AICAmount;
     private double _AgentAmount;
-    private string _Allowed1;
-    private string _Allowed2;
-    private string _IndustryName;
-    private string _ReImbursement;
-    private string _TPAPercent;
-    private string _ICPercent;
-    private string _AgentPercent;
+    private string? _Allowed1;
+    private string? _Allowed2;
+    private string? _IndustryName;
+    private string? _ReImbursement;
+    private string? _TPAPercent;
+    private string? _ICPercent;
+    private string? _AgentPercent;
     private double _BasePremium_Gr;
     private double _IPPremium_Gr;
     private double _OPPremium_Gr;
@@ -164,15 +164,15 @@ public class GMQuotations
     private double _Dental_Nr;
     private double _OptionalPremium_Nr;
     private long _ParentId;
-    private string _QuotationNumber_Rev;
-    private string _OutsideProviders;
+    private string? _QuotationNumber_Rev;
+    private string? _OutsideProviders;
     private short _RevCount;
     private double _ReductionMC;
     private double _ReductionMCPerc;
     private bool _HasReductionMCbyPerc;
     private double _AdditionalClaims;
     private double _AdditionalClaimsPerc;
-    private string _AdditionalClaimsType;
+    private string? _AdditionalClaimsType;
     private bool _HasAdditionalClaimsbyPerc;
     private double _AdditionalNonClaims;
     private double _AdditionalNonClaimsPerc;
@@ -182,7 +182,7 @@ public class GMQuotations
     private double _GroupSizeDiscountPerc;
     private long _ClientId;
     private long _ParentId_Renew;
-    private string _QuotationRenewal_Number;
+    private string? _QuotationRenewal_Number;
     private double _AdditionalPremium_Nr;
     private double _AdditionalPremium_Gr;
     private double _ICPFees;
@@ -194,13 +194,13 @@ public class GMQuotations
     private double _TravelPremium_Gr;
 
     public int Id { get; set; }
-    public string Name { get; set; }
-    public string Telephone { get; set; }
-    public string Email { get; set; }
-    public string Address { get; set; }
-    public string City { get; set; }
-    public string Website { get; set; }
-    public string Fax { get; set; }
+    public string? Name { get; set; }
+    public string? Telephone { get; set; }
+    public string? Email { get; set; }
+    public string? Address { get; set; }
+    public string? City { get; set; }
+    public string? Website { get; set; }
+    public string? Fax { get; set; }
 
     //private double _CreatedBy;
     //private double _CreatedOn;
@@ -244,7 +244,7 @@ public class GMQuotations
         }
     }
 
-    public string QuotationNumber
+    public string? QuotationNumber
     {
         get
         {
@@ -256,7 +256,7 @@ public class GMQuotations
         }
     }
 
-    public string PlanType
+    public string? PlanType
     {
         get
         {
@@ -268,7 +268,7 @@ public class GMQuotations
         }
     }
 
-    public string ParticipantName
+    public string? ParticipantName
     {
         get
         {
@@ -280,7 +280,7 @@ public class GMQuotations
         }
     }
 
-    public string ParticipantTelephone
+    public string? ParticipantTelephone
     {
         get
         {
@@ -292,7 +292,7 @@ public class GMQuotations
         }
     }
 
-    public string ParticipantAddress
+    public string? ParticipantAddress
     {
         get
         {
@@ -316,7 +316,7 @@ public class GMQuotations
         }
     }
 
-    public string QuotationApprovedNum
+    public string? QuotationApprovedNum
     {
         get
         {
@@ -352,7 +352,7 @@ public class GMQuotations
         }
     }
 
-    public string PaymentFrequency
+    public string? PaymentFrequency
     {
         get
         {
@@ -375,7 +375,7 @@ public class GMQuotations
             _BranchId = value;
         }
     }
-    public string DistributionType
+    public string? DistributionType
     {
         get
         {
@@ -398,7 +398,7 @@ public class GMQuotations
         }
     }
 
-    public string PlanCurrency
+    public string? PlanCurrency
     {
         get
         {
@@ -422,7 +422,7 @@ public class GMQuotations
         }
     }
 
-    public string CurrentWfStatus
+    public string? CurrentWfStatus
     {
         get
         {
@@ -446,7 +446,7 @@ public class GMQuotations
         }
     }
 
-    public string UDF1
+    public string? UDF1
     {
         get
         {
@@ -458,7 +458,7 @@ public class GMQuotations
         }
     }
 
-    public string UDF2
+    public string? UDF2
     {
         get
         {
@@ -470,7 +470,7 @@ public class GMQuotations
         }
     }
 
-    public string UDF3
+    public string? UDF3
     {
         get
         {
@@ -614,7 +614,7 @@ public class GMQuotations
         }
     }
 
-    public string ParticipantEmail
+    public string? ParticipantEmail
     {
         get
         {
@@ -626,7 +626,7 @@ public class GMQuotations
         }
     }
 
-    public string BrokerName
+    public string? BrokerName
     {
         get
         {
@@ -638,7 +638,7 @@ public class GMQuotations
         }
     }
 
-    public string BrokerTelephone
+    public string? BrokerTelephone
     {
         get
         {
@@ -650,7 +650,7 @@ public class GMQuotations
         }
     }
 
-    public string BrokerAddress
+    public string? BrokerAddress
     {
         get
         {
@@ -662,7 +662,7 @@ public class GMQuotations
         }
     }
 
-    public string BrokerEmail
+    public string? BrokerEmail
     {
         get
         {
@@ -722,7 +722,7 @@ public class GMQuotations
         }
     }
 
-    public string PaymentDates
+    public string? PaymentDates
     {
         get
         {
@@ -734,7 +734,7 @@ public class GMQuotations
         }
     }
 
-    public string PaymentAmounts
+    public string? PaymentAmounts
     {
         get
         {
@@ -746,7 +746,7 @@ public class GMQuotations
         }
     }
 
-    public string PremiumFreq
+    public string? PremiumFreq
     {
         get
         {
@@ -782,7 +782,7 @@ public class GMQuotations
         }
     }
 
-    public string PlanCategoryName
+    public string? PlanCategoryName
     {
         get
         {
@@ -793,7 +793,7 @@ public class GMQuotations
             _PlanCategoryName = value;
         }
     }
-    public string TPAName
+    public string? TPAName
     {
         get
         {
@@ -861,7 +861,7 @@ public class GMQuotations
             _IsEpreinced = value;
         }
     }
-    public string ReInsurerComments
+    public string? ReInsurerComments
     {
         get
         {
@@ -873,7 +873,7 @@ public class GMQuotations
         }
     }
 
-    public string QuoteNum
+    public string? QuoteNum
     {
         get
         {
@@ -884,7 +884,7 @@ public class GMQuotations
             _QuoteNum = value;
         }
     }
-    public string ApprovedNum
+    public string? ApprovedNum
     {
         get
         {
@@ -895,7 +895,7 @@ public class GMQuotations
             _ApprovedNum = value;
         }
     }
-    public string POBox
+    public string? POBox
     {
         get
         {
@@ -907,7 +907,7 @@ public class GMQuotations
         }
     }
 
-    public string ParticipantCity
+    public string? ParticipantCity
     {
         get
         {
@@ -919,7 +919,7 @@ public class GMQuotations
         }
     }
 
-    public string Brokercity
+    public string? Brokercity
     {
         get
         {
@@ -931,7 +931,7 @@ public class GMQuotations
         }
     }
 
-    public string BrokerWebsite
+    public string? BrokerWebsite
     {
         get
         {
@@ -943,7 +943,7 @@ public class GMQuotations
         }
     }
 
-    public string BrokerFax
+    public string? BrokerFax
     {
         get
         {
@@ -955,7 +955,7 @@ public class GMQuotations
         }
     }
 
-    public string UWRemarks
+    public string? UWRemarks
     {
         get
         {
@@ -967,7 +967,7 @@ public class GMQuotations
         }
     }
 
-    public string VATNumber
+    public string? VATNumber
     {
         get
         {
@@ -1015,7 +1015,7 @@ public class GMQuotations
         }
     }
 
-    public string EstablishmentNumber
+    public string? EstablishmentNumber
     {
         get
         {
@@ -1051,7 +1051,7 @@ public class GMQuotations
         }
     }
 
-    public string TPAId
+    public string? TPAId
     {
         get
         {
@@ -1062,7 +1062,7 @@ public class GMQuotations
             _TPAId = value;
         }
     }
-    public string QuotationType
+    public string? QuotationType
     {
         get
         {
@@ -1073,7 +1073,7 @@ public class GMQuotations
             _QuotationType = value;
         }
     }
-    public string Location
+    public string? Location
     {
         get
         {
@@ -1142,7 +1142,7 @@ public class GMQuotations
         }
     }
 
-    public string UWUserId
+    public string? UWUserId
     {
         get
         {
@@ -1165,7 +1165,7 @@ public class GMQuotations
             _UWId = value;
         }
     }
-    public string UWUserName
+    public string? UWUserName
     {
         get
         {
@@ -1177,7 +1177,7 @@ public class GMQuotations
         }
     }
 
-    public string UWEmailId
+    public string? UWEmailId
     {
         get
         {
@@ -1225,7 +1225,7 @@ public class GMQuotations
         }
     }
 
-    public string Guideline
+    public string? Guideline
     {
         get
         {
@@ -1260,7 +1260,7 @@ public class GMQuotations
             _QuotationApproveDate = value;
         }
     }
-    public string Status
+    public string? Status
     {
         get
         {
@@ -1293,7 +1293,7 @@ public class GMQuotations
             _TotalAmount = value;
         }
     }
-    public string CompanyRegNum
+    public string? CompanyRegNum
     {
         get
         {
@@ -1315,7 +1315,7 @@ public class GMQuotations
             _PolicyHolderPIN = value;
         }
     }
-    public string Region
+    public string? Region
     {
         get
         {
@@ -1327,7 +1327,7 @@ public class GMQuotations
         }
     }
 
-    public string SubRegion
+    public string? SubRegion
     {
         get
         {
@@ -1339,7 +1339,7 @@ public class GMQuotations
         }
     }
 
-    public string PreviousInsurerId
+    public string? PreviousInsurerId
     {
         get
         {
@@ -1363,7 +1363,7 @@ public class GMQuotations
         }
     }
 
-    public string DistributorCode
+    public string? DistributorCode
     {
         get
         {
@@ -1375,7 +1375,7 @@ public class GMQuotations
         }
     }
 
-    public string PolicyHolderTRN
+    public string? PolicyHolderTRN
     {
         get
         {
@@ -1411,7 +1411,7 @@ public class GMQuotations
         }
     }
 
-    public string Authority
+    public string? Authority
     {
         get
         {
@@ -1435,7 +1435,7 @@ public class GMQuotations
         }
     }
 
-    public string SponsorType
+    public string? SponsorType
     {
         get
         {
@@ -1470,7 +1470,7 @@ public class GMQuotations
         }
     }
 
-    public string ErrorDescPolicy
+    public string? ErrorDescPolicy
     {
         get
         {
@@ -1482,7 +1482,7 @@ public class GMQuotations
         }
     }
 
-    public string BranchName
+    public string? BranchName
     {
         get
         {
@@ -1493,7 +1493,7 @@ public class GMQuotations
             _BranchName = value;
         }
     }
-    public string Country
+    public string? Country
     {
         get
         {
@@ -1517,7 +1517,7 @@ public class GMQuotations
         }
     }
 
-    public string PaymentComments
+    public string? PaymentComments
     {
         get
         {
@@ -1553,7 +1553,7 @@ public class GMQuotations
         }
     }
 
-    public string GeoCoverage
+    public string? GeoCoverage
     {
         get
         {
@@ -1565,7 +1565,7 @@ public class GMQuotations
         }
     }
 
-    public string AICComments
+    public string? AICComments
     {
         get
         {
@@ -1577,7 +1577,7 @@ public class GMQuotations
         }
     }
 
-    public string TPAComments
+    public string? TPAComments
     {
         get
         {
@@ -1589,7 +1589,7 @@ public class GMQuotations
         }
     }
 
-    public string AuthorityComments
+    public string? AuthorityComments
     {
         get
         {
@@ -1601,7 +1601,7 @@ public class GMQuotations
         }
     }
 
-    public string BusinessClass
+    public string? BusinessClass
     {
         get
         {
@@ -1609,7 +1609,7 @@ public class GMQuotations
         }
     }
 
-    public string PolicySubType
+    public string? PolicySubType
     {
         get
         {
@@ -1621,7 +1621,7 @@ public class GMQuotations
         }
     }
 
-    public string PolicyType
+    public string? PolicyType
     {
         get
         {
@@ -1645,7 +1645,7 @@ public class GMQuotations
         }
     }
 
-    public string RenewalSubType
+    public string? RenewalSubType
     {
         get
         {
@@ -1693,7 +1693,7 @@ public class GMQuotations
         }
     }
 
-    public string Allowed1
+    public string? Allowed1
     {
         get
         {
@@ -1705,7 +1705,7 @@ public class GMQuotations
         }
     }
 
-    public string Allowed2
+    public string? Allowed2
     {
         get
         {
@@ -1717,7 +1717,7 @@ public class GMQuotations
         }
     }
 
-    public string IndustryName
+    public string? IndustryName
     {
         get
         {
@@ -1729,7 +1729,7 @@ public class GMQuotations
         }
     }
 
-    public string Reimbursement
+    public string? Reimbursement
     {
         get
         {
@@ -1953,7 +1953,7 @@ public class GMQuotations
             _ParentId = value;
         }
     }
-    public string QuotationNumber_Rev
+    public string? QuotationNumber_Rev
     {
         get
         {
@@ -1976,7 +1976,7 @@ public class GMQuotations
         }
     }
 
-    public string OutsideProviders
+    public string? OutsideProviders
     {
         get
         {
@@ -2057,7 +2057,7 @@ public class GMQuotations
             _AdditionalClaims = value;
         }
     }
-    public string AdditionalClaimsType
+    public string? AdditionalClaimsType
     {
         get
         {
@@ -2159,7 +2159,7 @@ public class GMQuotations
             _ParentId_Renew = value;
         }
     }
-    public string QuotationRenewal_Number
+    public string? QuotationRenewal_Number
     {
         get
         {
@@ -2274,11 +2274,11 @@ public class GMQuotations
     
 
 
-    public IConfiguration _Config { get; set; }
+    public IConfiguration? _Config { get; set; }
     public GMQuotations() { }
-    public GMQuotations(IConfiguration configuration)
+    public GMQuotations(IConfiguration? configuration)
     {
-        _Config = configuration;
+        _Config = configuration ?? throw new ArgumentNullException(nameof(configuration), "Configuration cannot be null.");
     }
     public void SetConfiguration(IConfiguration configuration)
     {

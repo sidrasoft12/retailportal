@@ -85,6 +85,8 @@ namespace RetailPortal.Controllers
             model.SetConfiguration(_configuration);
             long result = model.SaveEntity("new");
 
+            TempData["GMQuotationID"] = result.ToString();
+
             // Redirect to the QuotationsList after successful save
             return RedirectToAction("_SponsorAndPolicyDetails");
         }
