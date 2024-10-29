@@ -29,40 +29,60 @@
     }
 </style>
 
-<div class="container">
+<div class="card mt-5">
     <!-- Welcome Message -->
-    <div class="row">
+    @* <div class="row">
         <div class="col-md-12">
             <p class="welcome-message">Welcome, @ViewBag.SponsorName</p>
         </div>
-    </div>
+    </div> *@
     
-    <div class="hstack gap-3" mt-5 mb-5" style="height:30px;">
-        <span class="align-items-center mt-1 mb-1"><i class="bi bi-check-square-fill "></i></span>
-        <div class="progress " role="progressbar" aria-label="Segment one" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%; height:5px;">
-            <div class="progress-bar"></div>
-        </div>
-
-        <span class="align-items-center mt-1 mb-1"><i class="bi bi-check-square "></i></span>
-        <div class="progress" role="progressbar" aria-label="Segment two" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%; height:5px;">
-            <div class="progress-bar bg-success"></div>
-        </div>
-
-        <span class="align-items-center mt-1 mb-1"><i class="bi bi-check-square "></i></span>
-        <div class="progress" role="progressbar" aria-label="Segment three" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%; height:5px;">
-            <div class="progress-bar bg-info"></div>
-        </div>
-
-        <span class="align-items-center mt-1 mb-1"><i class="bi bi-check-square "></i></span>
-        <div class="progress" role="progressbar" aria-label="Segment four" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%; height:5px;">
-            <div class="progress-bar bg-success"></div>
-        </div>
+    
+    <div class="progress " role="progressbar" aria-label="Animated striped example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 30px">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 25%"></div>
     </div>
-    <div class="progress mt-5 mb-5" role="progressbar" aria-label="Animated striped example" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100" style="height: 30px">
-        <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 5%"></div>
-    </div>
+    @* <div class="row">
+        <div class="col-3 pe-0">
+            <div class="input-group">
+                <span class="input-group-text border border-primary bg-primary ">1</span>
+                <input type="button" class="btn btn-outline-primary form-control " value="Add Sponsor" />
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="input-group">
+                <span class="form-label input-group-text ">2</span>
+                <input type="button" class="btn btn-outline-secondary form-control " value="Add Members" disabled />
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="input-group">
+                <span class="form-label col-form-label input-group-text ">3</span>
+                <span class="form-control form-control-lg border">Members</span>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="input-group">
+                <span class="form-label input-group-text ">4</span>
+                <input type="button" class="btn btn-outline-secondary form-control " value="Add Members" disabled />
+            </div>
+        </div>
+    </div> *@
+    <ul class="nav nav-tabs nav-justified">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-1-square"></i><span class="ms-1">Add Sponsor</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" aria-disabled="true">Add Members</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" aria-disabled="true">Choose Benefit</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" aria-disabled="true">Payment</a>
+        </li>
+    </ul>
     <!-- Navigation Tabs -->
-    <ul class="nav nav-tabs">
+    @* <ul class="nav nav-tabs">
         <li class="nav-item">
             <a class="nav-link active" href="/SponsorDetails">Sponsor & Policy Details</a>
         </li>
@@ -75,7 +95,7 @@
         <li class="nav-item">
             <a class="nav-link" href="/Payment">Payment</a>
         </li>
-    </ul>
+    </ul> *@
 
     <!-- Form -->
     <form id="sponsorForm" method="post" action="@Url.Action("InsertQuotations", "GMQuotation")">
@@ -84,24 +104,24 @@
         <div class="row mt-4">
             <!-- Sponsor Edit -->
             <div class="col-md-6">
-                @(Html.Partial("_SponsorEdit", gmQuotationsModel))
+                @(await Html.PartialAsync("_SponsorEdit", gmQuotationsModel))
             </div>
 
             <!-- Policy Edit -->
-            <div class="col-md-6">
+            @* <div class="col-md-6">
                 @(Html.Partial("_PolicyEdit", gmQuotationsModel))
-            </div>
+            </div> *@
 
             <!-- Agent -->
-            <div class="col-md-6">
-                @(Html.Partial("_AgentDetails", gmQuotationsModel))
-            </div>
+            @* <div class="col-md-6">
+                @(await Html.PartialAsync("_AgentDetails", gmQuotationsModel))
+            </div> *@
         </div>
         <!-- Submit and Next Buttons -->
         <div class="row mt-4">
             <div class="col-md-12 text-right">
                 <button type="submit" class="btn btn-primary next-button">Save</button>
-                <a href="@Url.Action("Index", "Member")" class="btn btn-secondary">Next</a>
+                <a href="@Url.Action("Index", "Member")" class="btn btn-secondary"><span>Add Member</span><i class="bi bi-chevron-double-right"></i></a>
             </div>
         </div>
     </form>
