@@ -1,108 +1,72 @@
 ﻿@model List<RetailPortal.Models.Mstr_PlanCategoryBenefits>
 
-<style>
-    .product-card {
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        padding: 15px;
-        margin-bottom: 15px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        background-color: #fff;
-    }
-
-        .product-card h5 {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-    .product-details {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-
-    .product-item {
-        flex: 1 1 45%;
-        margin-bottom: 10px;
-    }
-
-        .product-item span {
-            display: block;
-            font-weight: bold;
-        }
-
-    .card-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 15px;
-    }
-
-    .product-card .card-title {
-        font-size: 16px;
-        color: #495057;
-        margin-bottom: 10px;
-    }
-</style>
-
-<div class="card">
-    <div class="card-header d-flex justify-content-between align-items-center">
-        <h4 class="mb-0">Product Details</h4>
-    </div>
-    <div class="card-body card-container">
-        @if (Model != null && Model.Count > 0)
+<div class="row m-3">
+    @if (Model != null && Model.Count > 0)
+    {
+        @for (int i = 0; i < Model.Count && i < 5; i++)
         {
-            @for (int i = 0; i < Model.Count && i < 5; i++)
-            {
-                <div class="product-card" data-id="@Model[i].PlanCategoryId">
-                    <h5 class="card-title">@Model[i]?.Plan_Name</h5>
-                    <div class="product-details">
-                        <div class="product-item">
-                            <span>Annual Medical Limit:</span> @Model[i]?.AggAnnualLimit
-                        </div>
-                        <div class="product-item">
-                            <span>Plan Category Name:</span> @Model[i]?.PlanCategoryName
-                        </div>
-                        <div class="product-item">
-                            <span>Benefit Name:</span> @Model[i]?.BenefitName
-                        </div>
-                        <div class="product-item">
-                            <span>Plan Type:</span> @Model[i]?.PlanType
-                        </div>
-                        <div class="product-item">
-                            <span>Room Type:</span> @Model[i]?.RoomType
-                        </div>
-                        <div class="product-item">
-                            <span>CoPay:</span> @Model[i]?.DisplayCopayText
-                        </div>
-                        <div class="product-item">
-                            <span>Premium Amount:</span> @Model[i]?.PremiumAmt
-                        </div>
-                        <div class="product-item">
-                            <span>Premium Percentage:</span> @Model[i]?.PremiumPerc
-                        </div>
-                        <form id="productForm" method="post" action="@Url.Action("InsertProducts", "Product")">
-                            <input type="hidden" name="PlanCategoryId" value="@Model[i].PlanCategoryId" />
-                            <input type="hidden" name="Plan_Name" value="@Model[i].Plan_Name" />
-                            <input type="hidden" name="AggAnnualLimit" value="@Model[i].AggAnnualLimit" />
-                            <input type="hidden" name="BenefitName" value="@Model[i].BenefitName" />
-                            <input type="hidden" name="PlanType" value="@Model[i].PlanType" />
-                            <input type="hidden" name="RoomType" value="@Model[i].RoomType" />
-                            <input type="hidden" name="DisplayCopayText" value="@Model[i].DisplayCopayText" />
-                            <input type="hidden" name="PremiumAmt" value="@Model[i].PremiumAmt" />
-                            <input type="hidden" name="PremiumPerc" value="@Model[i].PremiumPerc" />
-                            <div class="text-right">
-                                <button type="submit" class="btn btn-primary next-button">Select</button>
+            <div class="card col-sm-6 col-md-4">
+                <div class="card-header d-flex justify-content-between align-items-center bg-secondary">
+                    <h4 class="mb-0">@Model[i]?.Plan_Name</h4>
+                </div>
+                <div class="card-body card-container">
+                    <div class="product-card" data-id="@Model[i].PlanCategoryId">
+                        <h5 class="card-title"></h5>
+                        <div class="product-details">
+                            <div class="product-item">
+                                <span>Annual Medical Limit:</span> @Model[i]?.AggAnnualLimit
                             </div>
-                        </form>
+                            <div class="product-item">
+                                <span>Plan Category Name:</span> @Model[i]?.PlanCategoryName
+                            </div>
+                            <div class="product-item">
+                                <span>Benefit Name:</span> @Model[i]?.BenefitName
+                            </div>
+                            <div class="product-item">
+                                <span>Plan Type:</span> @Model[i]?.PlanType
+                            </div>
+                            <div class="product-item">
+                                <span>Room Type:</span> @Model[i]?.RoomType
+                            </div>
+                            <div class="product-item">
+                                <span>CoPay:</span> @Model[i]?.DisplayCopayText
+                            </div>
+                            <div class="product-item">
+                                <span>Premium Amount:</span> @Model[i]?.PremiumAmt
+                            </div>
+                            <div class="product-item">
+                                <span>Premium Percentage:</span> @Model[i]?.PremiumPerc
+                            </div>
+                            <div class="product-item">
+                                <a href="#" class="card-link ">Show more details</a>
+                            </div>
 
+                        </div>
                     </div>
                 </div>
-            }
+                <div class="card-footer justify-content-center align-items-center">
+                    <form id="productForm" method="post" action="@Url.Action("InsertProducts", "Product")">
+                        <input type="hidden" name="PlanCategoryId" value="@Model[i].PlanCategoryId" />
+                        <input type="hidden" name="Plan_Name" value="@Model[i].Plan_Name" />
+                        <input type="hidden" name="AggAnnualLimit" value="@Model[i].AggAnnualLimit" />
+                        <input type="hidden" name="BenefitName" value="@Model[i].BenefitName" />
+                        <input type="hidden" name="PlanType" value="@Model[i].PlanType" />
+                        <input type="hidden" name="RoomType" value="@Model[i].RoomType" />
+                        <input type="hidden" name="DisplayCopayText" value="@Model[i].DisplayCopayText" />
+                        <input type="hidden" name="PremiumAmt" value="@Model[i].PremiumAmt" />
+                        <input type="hidden" name="PremiumPerc" value="@Model[i].PremiumPerc" />
+
+                        <div class="d-grid gap-0 ">                            
+                            <button type="submit" class="btn btn-outline-primary">Select</button>                                
+                        </div> 
+                        
+                    </form>
+                </div>
+            </div>
         }
-        else
-        {
-            <div>No product details found.</div>
-        }
-    </div>
+    }
+    else
+    {
+        <div>No product details found.</div>
+    }
 </div>

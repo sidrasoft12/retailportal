@@ -2,7 +2,7 @@
     ViewData["Title"] = "Sponsor and Policy Details";
     var gmQuotationsModel = (GMQuotations)Model;
 }
-<style>
+@* <style>
     .welcome-message {
         text-align: right;
         margin-top: 10px;
@@ -27,7 +27,7 @@
     .next-button {
         margin-right: 10px;
     }
-</style>
+</style> *@
 
 <div class="card mt-5">
     <!-- Welcome Message -->
@@ -41,35 +41,10 @@
     <div class="progress " role="progressbar" aria-label="Animated striped example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 30px">
         <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 25%"></div>
     </div>
-    @* <div class="row">
-        <div class="col-3 pe-0">
-            <div class="input-group">
-                <span class="input-group-text border border-primary bg-primary ">1</span>
-                <input type="button" class="btn btn-outline-primary form-control " value="Add Sponsor" />
-            </div>
-        </div>
-        <div class="col-3">
-            <div class="input-group">
-                <span class="form-label input-group-text ">2</span>
-                <input type="button" class="btn btn-outline-secondary form-control " value="Add Members" disabled />
-            </div>
-        </div>
-        <div class="col-3">
-            <div class="input-group">
-                <span class="form-label col-form-label input-group-text ">3</span>
-                <span class="form-control form-control-lg border">Members</span>
-            </div>
-        </div>
-        <div class="col-3">
-            <div class="input-group">
-                <span class="form-label input-group-text ">4</span>
-                <input type="button" class="btn btn-outline-secondary form-control " value="Add Members" disabled />
-            </div>
-        </div>
-    </div> *@
+    
     <ul class="nav nav-tabs nav-justified">
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-1-square"></i><span class="ms-1">Add Sponsor</span></a>
+            <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-1-square"></i><span class="ms-1 text-primary">Add Sponsor</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link disabled" aria-disabled="true">Add Members</a>
@@ -101,9 +76,9 @@
     <form id="sponsorForm" method="post" action="@Url.Action("InsertQuotations", "GMQuotation")">
         <input type="hidden" name="BrokerId" value="@Model.BrokerId" />
 
-        <div class="row mt-4">
+        <div class="row justify-content-center mt-4">
             <!-- Sponsor Edit -->
-            <div class="col-md-6">
+            <div class="col-md-8">
                 @(await Html.PartialAsync("_SponsorEdit", gmQuotationsModel))
             </div>
 
@@ -118,11 +93,18 @@
             </div> *@
         </div>
         <!-- Submit and Next Buttons -->
-        <div class="row mt-4">
-            <div class="col-md-12 text-right">
-                <button type="submit" class="btn btn-primary next-button">Save</button>
-                <a href="@Url.Action("Index", "Member")" class="btn btn-secondary"><span>Add Member</span><i class="bi bi-chevron-double-right"></i></a>
+        <div class="container text-end">
+            <div class="row m-sm-3 ">
+                <div class="col-sm-3 col-xl-6">&nbsp</div>
+                <button type="submit" class="col-sm-3 col-xl-2 btn btn-lg btn-outline-danger ">Save</button>
+                <div class="col-sm-6 col-xl-4 d-grid">
+                    <a href="@Url.Action("Index", "Member")" class="btn btn-lg btn-outline-primary " >
+                        <span>Next Add Member</span>
+                        <i class="bi bi-arror-right"></i>
+                    </a>
+                </div>
+                
             </div>
-        </div>
+        </div>       
     </form>
 </div>

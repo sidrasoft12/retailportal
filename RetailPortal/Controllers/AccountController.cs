@@ -8,6 +8,7 @@ namespace RetailPortal.Controllers
         [HttpGet]
         public IActionResult Login()
         {
+            ViewBag.DefDate = DateTime.Now.ToString("MM/dd/yyyy");
             return View();
         }
 

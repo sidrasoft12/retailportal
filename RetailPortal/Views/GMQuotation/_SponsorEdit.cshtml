@@ -1,12 +1,18 @@
 ﻿@model RetailPortal.Models.GMQuotations
 
-<div class="card">
-    @* <div class="card-header">Sponsor Details</div> *@
-    <div class="card-body">
-        <div class="form-floating mb-4">
-            <input type="text" placeholder="Name" class="form-control form-control-lg" id="sponsorName" name="ParticipantName" required>
-            <label class="form-label" for="sponsorName">Sponsor Name</label>
-        </div>
+@* <div class="card">    
+    <div class="card-body"> *@
+<div class="row mb-4 g-sm-1 g-md-2 align-items-center">
+    <div class="form-floating col-sm-12 col-md-8">
+        <input type="text" placeholder="Name" class="form-control form-control-lg" id="sponsorName" name="ParticipantName" required>
+        <label class="form-label" for="sponsorName">Sponsor Name</label>
+    </div>
+    <div class="col-sm-12 col-md-4">
+        <span id="NameHelpInline" class="form-text align-items-start fst-italic text-info">
+            Type sponsor full name. add more description here.
+        </span>
+    </div>
+</div>
         @* <div class="form-group">
             <label for="sponsorEmail">Email</label>
             <input type="email" class="form-control" id="email" value="@ViewBag.SponsorEmail" readonly>
@@ -17,26 +23,61 @@
             <input type="tel" class="form-control" id="phone" value="@ViewBag.SponsorPhone" readonly>
             <input type="hidden" name="ParticipantTelephone" value="@ViewBag.SponsorPhone" />
         </div> *@
-        <div class="form-floating mb-4">            
-            <input type="text" placeholder="Address" class="form-control form-control-lg" id="sponsorAddress" name="ParticipantAddress" required>
-            <label class="form-label" for="sponsorAddress">Type Address</label>
-        </div>
-        <div class="form-floating mb-4">            
-            <input type="text" placeholder="Type City" class="form-control form-control-lg" id="sponsorCity" name="ParticipantCity" required>
-            <label class="form-label" for="sponsorCity">Type City</label>
-        </div>
-        <div class="form-floating mb-4">            
-            <input type="text" placeholder="Sponsor Type" class="form-control form-control-lg" id="sponsorType" name="SponsorType" required>
-            <label class="form-label" for="sponsorType">Choose Sponsor Type</label>
-        </div>
-        <div class="form-floating mb-4">            
-            <input type="text" placeholder="Type Region" class="form-control form-control-lg" id="region" name="Region" required>
-            <label class="form-label" for="region">Choose Region</label>
-        </div>
-        <div class="form-floating mb-4">            
-            <input type="text" placeholder="Type Sub Region" class="form-control form-control-lg" id="subRegion" name="SubRegion" required>
-            <label class="form-label" for="subRegion">Choose Sub Region</label>
-        </div>
+<div class="row mb-4 g-sm-1 g-md-2 align-items-center">
+    <div class="form-floating col-sm-12 col-md-8">
+        <input type="text" placeholder="Address" class="form-control form-control-lg" id="sponsorAddress" name="ParticipantAddress" required>
+        <label class="form-label" for="sponsorAddress">Type Address</label>
+    </div>
+    <div class="col-sm-12 col-md-4">
+        <span id="NameHelpInline" class="form-text align-items-start fst-italic text-info">
+            Type sponsor full name. add more description here.
+        </span>
     </div>
 </div>
+<div class="row mb-4 g-sm-1 g-md-2 align-items-center">
+    <div class="form-floating col-sm-12 col-md-8">
+        <input type="text" placeholder="Type City" class="form-control form-control-lg" id="sponsorCity" name="ParticipantCity" required>
+        <label class="form-label" for="sponsorCity">Type City</label>
+    </div>
+    <div class="col-sm-12 col-md-4">
+        <span id="NameHelpInline" class="form-text align-items-start fst-italic text-info">
+            Type sponsor full name. add more description here.
+        </span>
+    </div>
+</div>
+<div class="row mb-4 g-sm-1 g-md-2 align-items-center">
+    <div class="form-floating col-sm-12 col-md-8">
+        <input type="text" placeholder="Sponsor Type" class="form-control form-control-lg" id="sponsorType" name="SponsorType" required>
+        <label class="form-label" for="sponsorType">Choose Sponsor Type</label>
+    </div>
+    <div class="col-sm-12 col-md-4">
+        <span id="NameHelpInline" class="form-text align-items-start fst-italic text-info">
+            Type sponsor full name. add more description here.
+        </span>
+    </div>
+</div>
+<div class="row mb-4 g-sm-1 g-md-2 align-items-center">
+    <div class="form-floating col-sm-12 col-md-8">
+        <input type="text" placeholder="Type Region" class="form-control form-control-lg" id="region" name="Region" required>
+        <label class="form-label" for="region">Choose Region</label>
+    </div>
+    <div class="col-sm-12 col-md-4">
+        <span id="NameHelpInline" class="form-text align-items-start fst-italic text-info">
+            Type sponsor full name. add more description here.
+        </span>
+    </div>
+</div>
+<div class="row mb-4 g-sm-1 g-md-2 align-items-center">
+    <div class="form-floating col-sm-12 col-md-8">
+        <input type="text" placeholder="Type Sub Region" class="form-control form-control-lg" id="subRegion" name="SubRegion" required>
+        <label class="form-label" for="subRegion">Choose Sub Region</label>
+    </div>
+    <div class="col-sm-12 col-md-4">
+        <span id="NameHelpInline" class="form-text align-items-start fst-italic text-info">
+            Type sponsor full name. add more description here.
+        </span>
+    </div>
+</div>
+@*     </div>
+</div> *@
 

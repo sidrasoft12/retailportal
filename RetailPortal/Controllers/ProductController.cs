@@ -59,7 +59,10 @@ namespace RetailPortal.Controllers
                 BrokerId = agentId
             };
 
-            return View(membersModel);
+            //var prodModel = new Mstr_PlanCategoryBenefits { AdditionalPremiumAmt = 0 };
+            List<Mstr_PlanCategoryBenefits> productList = _service.GetMstr_PlanCategoryBenefitsList("","","").Take(5).ToList();
+            return View(productList);
+            //return View();
         }
 
         private Agent? GetAgentDetails(int agentId)

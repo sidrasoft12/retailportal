@@ -1,112 +1,151 @@
 ﻿@model RetailPortal.Models.Members
 
-<style>
-    select {
-        width: 100%; /* Make dropdowns full width */
-        padding: 8px; /* Add padding for a better appearance */
-        border: 1px solid #ced4da; /* Border styling */
-        border-radius: 4px; /* Rounded corners */
-        background-color: #fff; /* White background */
-        font-size: 16px; /* Increase font size for readability */
-        color: #495057; /* Dark gray text color */
-        box-shadow: none; /* Remove any default browser shadow */
-        -webkit-appearance: none; /* Remove default appearance */
-        -moz-appearance: none; /* Remove default appearance */
-        appearance: none; /* Remove default appearance */
-        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="gray" d="M7 10l5 5 5-5z"/></svg>'); /* Arrow icon */
-        background-repeat: no-repeat; /* Do not repeat the arrow */
-        background-position: right 10px center; /* Position the arrow */
-        background-size: 16px; /* Adjust size of the arrow */
-        cursor: pointer; /* Pointer cursor */
-    }
-
-        select:focus {
-            border-color: #80bdff; /* Highlight border on focus */
-            outline: 0; /* Remove default outline */
-            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Add focus shadow */
-        }
-</style>
-
-<div class="card">
-    <h4 class="card-header">Add New Member</h4>
-    <div class="card-body">
-        <form id="memberForm" method="post" action="@Url.Action("InsertMembers", "Member")">
-        @* <form asp-action="AddMember" method="post" action="@Url.Action("InsertMembers", "Member")"> *@
-            <div class="form-group">
-                <label for="memberchoose">Choose Member</label><br>
-                <select id="memberchoose" name="memberchoose" required>
-                    <option value="" disabled selected>Select an option</option>
-                    <option value="myself">Myself</option>
-                    <option value="myfamilymembers">My family members</option>
-                    <option value="mycolleague">My colleague</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="relation">Relationship</label>
-                <select id="relation" name="Relation" required>
-                    <option value="" disabled selected>Select a relationship</option>
-                    <option value="principal">Principal</option>
-                    <option value="spouse">Spouse</option>
-                    <option value="child">Child</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="firstName">Member Name</label>
-                <input type="text" class="form-control" id="firstName" name="FirstName" required>
-            </div>
-            <div class="form-group">
-                <label for="dob">Date of Birth</label>
-                <input type="date" class="form-control" id="dob" name="DOB" required>
-            </div>
-            <div class="form-group">
-                <label for="mobileNumber">Phone Number</label>
-                <input type="text" class="form-control" id="mobileNumber" name="MobileNumber" required>
-            </div>
-            <div class="form-group">
-                <label for="gender">Gender</label>
-                <select id="gender" name="Gender" required>
-                    <option value="" disabled selected>Select your gender</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="maritalStatus">Marital Status</label>
-                <select id="maritalStatus" name="MaritalStatus" required>
-                    <option value="" disabled selected>Select your marital status</option>
-                    <option value="single">Single</option>
-                    <option value="married">Married</option>
-                    <option value="divorced">Divorced</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="salary">Salary</label>
-                <select id="salary" name="SalaryBand" required>
-                    <option value="" disabled selected>Select your salary range</option>
-                    <option value="nosalary">No Salary</option>
-                    <option value="below4000">Below 4000 AED</option>
-                    <option value="4001to12000">4001-12000 AED</option>
-                    <option value="above12000">Above 12000 AED</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="height">Height (cm)</label>
-                <input type="text" class="form-control" id="height" name="Height" required>
-            </div>
-            <div class="form-group">
-                <label for="weight">Weight (kg)</label>
-                <input type="text" class="form-control" id="weight" name="Weight" required>
-            </div>
-            <div class="row mt-4">
-                <div class="col-md-12 text-right">
-                    <button type="submit" class="btn btn-primary next-button">Add Member</button>
-                    
-                </div>
-            </div>
-        </form>
+<form id="memberForm" method="post" action="@Url.Action("InsertMembers", "Member")">
+    @* <form asp-action="AddMember" method="post" action="@Url.Action("InsertMembers", "Member")"> *@
+    <div class="row mb-4 g-sm-1 g-md-2 align-items-center">
+        <div class="form-floating col-sm-12 col-md-8">
+            <select id="memberchoose" name="memberchoose" placeholder="Member Type" class="form-select" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="myself">Myself</option>
+                <option value="myfamilymembers">My family members</option>
+                <option value="mycolleague">My colleague</option>
+            </select>
+            <label class="form-label" for="memberchoose">Choose Member</label>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <span id="MemChooseHelpInline" class="form-text align-items-start fst-italic text-info">
+                Choose member type.
+            </span>
+        </div>
+    </div> 
+    
+    <div class="row mb-4 g-sm-1 g-md-2 align-items-center">
+        <div class="form-floating col-sm-12 col-md-8">            
+            <select id="relation" name="Relation" class="form-select" required>
+                <option value="" disabled selected>Select a relationship</option>
+                <option value="principal">Principal</option>
+                <option value="spouse">Spouse</option>
+                <option value="child">Child</option>
+            </select>
+            <label class="form-label" for="relation">Relationship</label>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <span id="MemChooseHelpInline" class="form-text align-items-start fst-italic text-info">
+                Choose Relation
+            </span>
+        </div>
     </div>
-</div>
+    <div class="row mb-4 g-sm-1 g-md-2 align-items-center">
+        <div class="form-floating col-sm-12 col-md-8">            
+            <input type="text" placeholder="Member Name" class="form-control form-control-lg" id="firstName" name="FirstName" required>
+            <label class="form-label" for="firstName">Member Name</label>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <span id="NameHelpInline" class="form-text align-items-start fst-italic text-info">
+                Type member name. add more description here.
+            </span>
+        </div>
+    </div>
+    <div class="row mb-4 g-sm-1 g-md-2 align-items-center">
+        <div class="form-floating col-sm-12 col-md-8">            
+            <input type="date" class="form-control form-control-lg" id="dob" name="DOB" required>
+            <label class="form-label" for="dob">Date of Birth</label>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <span id="NameHelpInline" class="form-text align-items-start fst-italic text-info">
+                Type member dob. add more description here.
+            </span>
+        </div>
+    </div>
+    <div class="row mb-4 g-sm-1 g-md-2 align-items-center">
+        <div class="form-floating col-sm-12 col-md-8">            
+            <input type="text" placeholder="Phone Number" class="form-control form-control-lg" id="mobileNumber" name="MobileNumber" required>
+            <label class="form-label" for="mobileNumber">Phone Number</label>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <span id="NameHelpInline" class="form-text align-items-start fst-italic text-info">
+                Type member mobile number. add more description here.
+            </span>
+        </div>
+    </div>
+    <div class="row mb-4 g-sm-1 g-md-2 align-items-center">
+        <div class="form-floating col-sm-12 col-md-8">            
+            <select id="gender" class="form-select" name="Gender" required>
+                <option value="" disabled selected>Select your gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+            <label class="form-label" for="gender">Gender</label>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <span id="NameHelpInline" class="form-text align-items-start fst-italic text-info">
+                Type sponsor full name. add more description here.
+            </span>
+        </div>
+    </div>
+
+    <div class="row mb-4 g-sm-1 g-md-2 align-items-center">
+        <div class="form-floating col-sm-12 col-md-8">            
+            <select id="maritalStatus" class="form-select" name="MaritalStatus" required>
+                <option value="" disabled selected>Select your marital status</option>
+                <option value="single">Single</option>
+                <option value="married">Married</option>
+                <option value="divorced">Divorced</option>
+            </select>
+            <label class="form-label" for="maritalStatus">Marital Status</label>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <span id="NameHelpInline" class="form-text align-items-start fst-italic text-info">
+                Type sponsor full name. add more description here.
+            </span>
+        </div>
+    </div>
+
+    <div class="row mb-4 g-sm-1 g-md-2 align-items-center">
+        <div class="form-floating col-sm-12 col-md-8">            
+            <select id="salary" class="form-select" name="SalaryBand" required>
+                <option value="" disabled selected>Select your salary range</option>
+                <option value="nosalary">No Salary</option>
+                <option value="below4000">Below 4000 AED</option>
+                <option value="4001to12000">4001-12000 AED</option>
+                <option value="above12000">Above 12000 AED</option>
+            </select>
+            <label class="form-label" for="salary">Salary</label>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <span id="NameHelpInline" class="form-text align-items-start fst-italic text-info">
+                Type sponsor full name. add more description here.
+            </span>
+        </div>
+    </div>
+
+    <div class="row mb-4 g-sm-1 g-md-2 align-items-center">
+        <div class="form-floating col-sm-12 col-md-8">            
+            <input type="text" placeholder="Height" class="form-control form-control-lg" id="height" name="Height" required>
+            <label class="form-label" for="height">Height (cm)</label>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <span id="NameHelpInline" class="form-text align-items-start fst-italic text-info">
+                Type sponsor full name. add more description here.
+            </span>
+        </div>
+    </div>
+    <div class="row mb-4 g-sm-1 g-md-2 align-items-center">
+        <div class="form-floating col-sm-12 col-md-8">            
+            <input type="text" placeholder="Weight" class="form-control form-control-lg" id="weight" name="Weight" required>
+            <label class="form-label" for="weight">Weight (kg)</label>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <span id="NameHelpInline" class="form-text align-items-start fst-italic text-info">
+                Type sponsor full name. add more description here.
+            </span>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-12 text-right">
+            <button type="submit" class="btn btn-primary next-button">Add Member</button>
+
+        </div>
+    </div>
+</form>
