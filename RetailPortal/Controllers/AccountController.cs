@@ -5,15 +5,19 @@ namespace RetailPortal.Controllers
 {
     public class AccountController : Controller
     {
-        [HttpGet]
-        public IActionResult Login()
+        [HttpGet("{agent_id}")]
+        public IActionResult Login(int agent_id)
         {
+
+            HttpContext.Session.SetInt32("AgentId", agent_id);
+
             ViewBag.DefDate = DateTime.Now.ToString("MM/dd/yyyy");
+
             return View();
         }
 
-        [HttpPost]
-        public IActionResult Login(string email, string phone)
+        [HttpPost("Login")]
+        public IActionResult Login(string email, string phone, DateTime policyStartDate)
         {
             // Simulate login logic
             if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(phone))
@@ -24,7 +28,12 @@ namespace RetailPortal.Controllers
                 HttpContext.Session.SetString("UserName", userName);
                 TempData["SponsorEmail"] = email;
                 TempData["SponsorPhone"] = phone;
-                return RedirectToAction("Index", "GMQuotation");
+                TempData["PlanStartDate"] = policyStartDate;
+                int? agentId = HttpContext.Session.GetInt32("AgentId");
+                if (agentId.HasValue)
+                {
+                    return RedirectToAction("Index", "GMQuotation", new { agent_id = agentId.Value });
+                }
             }
 
             // If login fails, reload the login page
