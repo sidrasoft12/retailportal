@@ -190,7 +190,44 @@ public class Mstr_PlanCategoryBenefits
     private string? _AdditionalPremiumComment;
     private decimal _Inflation;
     private decimal _Target_LR;
+    private int _BrokerId;
+    private string _BrokerName;
+    private string _BrokerTelephone;
+    private string _BrokerEmail;
+    private string _BrokerAddress;
+    private string _BranchName;
 
+    public int BrokerId
+    {
+        get { return _BrokerId; }
+        set { _BrokerId = value; }
+    }
+    public string BrokerName
+    {
+        get { return _BrokerName; }
+        set { _BrokerName = value; }
+    }
+    public string BrokerTelephone
+    {
+        get { return _BrokerTelephone; }
+        set { _BrokerTelephone = value; }
+    }
+    public string BrokerEmail
+    {
+        get { return _BrokerEmail; }
+        set { _BrokerEmail = value; }
+    }
+    public string BrokerAddress
+    {
+        get { return _BrokerAddress; }
+        set { _BrokerAddress = value; }
+    }
+
+    public string BranchName
+    {
+        get { return _BranchName; }
+        set { _BranchName = value; }
+    }
     public int RowNumber
     {
         get { return _RowNumber; }
@@ -1338,7 +1375,7 @@ public class Mstr_PlanCategoryBenefits
                     cmd.Parameters.AddWithValue("@PlanCategoryId", _PlanCategoryId);
                     cmd.Parameters.AddWithValue("@PlanCategoryName", "_PlanCategoryName");
                     cmd.Parameters.AddWithValue("@Amount", _Amount);
-                   
+
                     cmd.Parameters.AddWithValue("@GmquotationId", _GMQuotationId);
                     cmd.Parameters.AddWithValue("@Qty", _Qty);
                     cmd.Parameters.AddWithValue("@Contribution", _Contribution);

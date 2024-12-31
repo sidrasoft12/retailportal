@@ -112,11 +112,42 @@ public class Members
     private decimal _IC_Perc;
     private decimal _TotGross;
     private int _BrokerId;
+    private string _BrokerName;
+    private string _BrokerTelephone;
+    private string _BrokerEmail;
+    private string _BrokerAddress;
+    private string _BranchName;
 
     public int BrokerId
     {
         get { return _BrokerId; }
         set { _BrokerId = value; }
+    }
+    public string BrokerName
+    {
+        get { return _BrokerName; }
+        set { _BrokerName = value; }
+    }
+    public string BrokerTelephone
+    {
+        get { return _BrokerTelephone; }
+        set { _BrokerTelephone = value; }
+    }
+    public string BrokerEmail
+    {
+        get { return _BrokerEmail; }
+        set { _BrokerEmail = value; }
+    }
+    public string BrokerAddress
+    {
+        get { return _BrokerAddress; }
+        set { _BrokerAddress = value; }
+    }
+
+    public string BranchName
+    {
+        get { return _BranchName; }
+        set { _BranchName = value; }
     }
     public int RowNumber
     {
@@ -130,7 +161,7 @@ public class Members
         set { _GMQuotationMemberId = value; }
     }
 
-    public long GmquotationId
+    public long GMQuotationId
     {
         get { return _GMQuotationId; }
         set { _GMQuotationId = value; }
@@ -665,7 +696,7 @@ public class Members
 
 
     public IConfiguration? _Config { get; set; }
-    public Members(){ }
+    public Members() { }
     public Members(IConfiguration? configuration)
     {
         _Config = configuration ?? throw new ArgumentNullException(nameof(configuration), "Configuration cannot be null.");
@@ -702,7 +733,7 @@ public class Members
                             Members oEntity = new Members(_Config);
                             oEntity.RowNumber = reader["RowNumber"] == DBNull.Value ? 0 : Convert.ToInt32(reader["RowNumber"]);
                             oEntity.GmquotationMemberId = reader["GMQuotationMemberId"] == DBNull.Value ? 0 : (long)reader["GMQuotationMemberId"];
-                            oEntity.GmquotationId = reader["GMQuotationId"] == DBNull.Value ? 0 : (long)reader["GMQuotationId"];
+                            oEntity.GMQuotationId = reader["GMQuotationId"] == DBNull.Value ? 0 : (long)reader["GMQuotationId"];
                             oEntity.StaffNo = reader["StaffNo"] == DBNull.Value ? string.Empty : (string)reader["StaffNo"];
                             oEntity.PhotoName = reader["PhotoName"] == DBNull.Value ? string.Empty : (string)reader["PhotoName"];
                             oEntity.FirstName = reader["FirstName"] == DBNull.Value ? string.Empty : (string)reader["FirstName"];
@@ -803,7 +834,7 @@ public class Members
             throw new Exception("Error retrieving GMQuotations list.", ex);
         }
 
-        
+
         return lstEntity;
     }
 
@@ -842,90 +873,90 @@ public class Members
                     cmd.Parameters.AddWithValue("@StaffNo", 12);
                     cmd.Parameters.AddWithValue("@PhotoName", 0);
                     cmd.Parameters.AddWithValue("@FirstName", _FirstName);
-                    cmd.Parameters.AddWithValue("@SecondName", _SecondName);
-                    cmd.Parameters.AddWithValue("@LastName", _LastName);
+                    cmd.Parameters.AddWithValue("@SecondName", "");
+                    cmd.Parameters.AddWithValue("@LastName", "");
                     cmd.Parameters.AddWithValue("@DOB", _DOB);
                     cmd.Parameters.AddWithValue("@Gender", _Gender);
                     cmd.Parameters.AddWithValue("@Relation", _Relation);
-                    cmd.Parameters.AddWithValue("@Country", _Country);
+                    cmd.Parameters.AddWithValue("@Country", "");
                     cmd.Parameters.AddWithValue("@MaritalStatus", _MaritalStatus);
-                    cmd.Parameters.AddWithValue("@Category", _Category);
-                    cmd.Parameters.AddWithValue("@SubGroupDivision", _SubGroupDivision);
-                    cmd.Parameters.AddWithValue("@EffectiveDate", _EffectiveDate);
-                    cmd.Parameters.AddWithValue("@Emirate", _Emirate);
-                    cmd.Parameters.AddWithValue("@EIDNumber", _EIDNumber);
+                    cmd.Parameters.AddWithValue("@Category", "");
+                    cmd.Parameters.AddWithValue("@SubGroupDivision", "");
+                    cmd.Parameters.AddWithValue("@EffectiveDate", "");
+                    cmd.Parameters.AddWithValue("@Emirate", "");
+                    cmd.Parameters.AddWithValue("@EIDNumber", "");
                     cmd.Parameters.AddWithValue("@SalaryBand", _SalaryBand);
-                    cmd.Parameters.AddWithValue("@Salary", _Salary);
+                    cmd.Parameters.AddWithValue("@Salary", "");
                     cmd.Parameters.AddWithValue("@MobileNumber", _MobileNumber);
-                    cmd.Parameters.AddWithValue("@EmailId", _EmailId);
-                    cmd.Parameters.AddWithValue("@City", _City);
-                    cmd.Parameters.AddWithValue("@ResidentialLocation", _ResidentialLocation);
-                    cmd.Parameters.AddWithValue("@WorkLocation", _WorkLocation);
-                    cmd.Parameters.AddWithValue("@PassportNum", _PassportNum);
-                    cmd.Parameters.AddWithValue("@UIDNo", _UIDNo);
-                    cmd.Parameters.AddWithValue("@UIDCount", _ResidentFileNumber);
-                    cmd.Parameters.AddWithValue("@PhotoLocation", _PhotoLocation);
+                    cmd.Parameters.AddWithValue("@EmailId", "");
+                    cmd.Parameters.AddWithValue("@City", "");
+                    cmd.Parameters.AddWithValue("@ResidentialLocation", "");
+                    cmd.Parameters.AddWithValue("@WorkLocation", "");
+                    cmd.Parameters.AddWithValue("@PassportNum", "");
+                    cmd.Parameters.AddWithValue("@UIDNo", "");
+                    cmd.Parameters.AddWithValue("@UIDCount", "");
+                    cmd.Parameters.AddWithValue("@PhotoLocation", "");
                     cmd.Parameters.AddWithValue("@DOB1", (_DOB1 < new DateTime(1753, 1, 1) || _DOB1 > new DateTime(9999, 12, 31)) ? (object)DBNull.Value : _DOB1);
 
-                    cmd.Parameters.AddWithValue("@DHPOMemberId", _DHPOMemberId);
-                    cmd.Parameters.AddWithValue("@BirthCertificateID", _BirthCertificateID);
-                    cmd.Parameters.AddWithValue("@IsCommissionBasedSalary", _IsCommissionBasedSalary);
-                    cmd.Parameters.AddWithValue("@MemberType", _MemberType);
-                    cmd.Parameters.AddWithValue("@EntityType", _EntityType);
-                    cmd.Parameters.AddWithValue("@EntityId", _EntityId);
-                    cmd.Parameters.AddWithValue("@EstablishmentEmail", _EstablishmentEmail);
-                    cmd.Parameters.AddWithValue("@IsValidated", _IsValidated);
-                    cmd.Parameters.AddWithValue("@RelationTo", _RelationTo);
-                    cmd.Parameters.AddWithValue("@EntityContactNumber", _EntityContactNumber);
-                    cmd.Parameters.AddWithValue("@PolicySequence", PolicySequence);
-                    cmd.Parameters.AddWithValue("@DHPOErrorMessage", _DHPOErrorMessage);
-                    cmd.Parameters.AddWithValue("@CardNo", _CardNo);
-                    cmd.Parameters.AddWithValue("@FirstNameAR", _FirstNameAR);
-                    cmd.Parameters.AddWithValue("@SecondNameAR", _SecondNameAR);
-                    cmd.Parameters.AddWithValue("@LastNameAR", _LastNameAR);
-                    cmd.Parameters.AddWithValue("@WorkRegion", _WorkRegion);
-                    cmd.Parameters.AddWithValue("@WorkMobile", _WorkMobile);
-                    cmd.Parameters.AddWithValue("@WorkEmail", _WorkEmail);
-                    cmd.Parameters.AddWithValue("@ResidentCountry", _ResidentCountry);
-                    cmd.Parameters.AddWithValue("@ResidentRegion", _ResidentRegion);
-                    cmd.Parameters.AddWithValue("@ResidentMobile", _ResidentMobile);
-                    cmd.Parameters.AddWithValue("@ResidentEmail", _ResidentEmail);
-                    cmd.Parameters.AddWithValue("@SalaryBandCategory", _SalaryBandCategory);
-                    cmd.Parameters.AddWithValue("@PrevCoverageStatus", _PrevCoverageStatus);
+                    cmd.Parameters.AddWithValue("@DHPOMemberId", "");
+                    cmd.Parameters.AddWithValue("@BirthCertificateID", "");
+                    cmd.Parameters.AddWithValue("@IsCommissionBasedSalary", "");
+                    cmd.Parameters.AddWithValue("@MemberType", "");
+                    cmd.Parameters.AddWithValue("@EntityType", "");
+                    cmd.Parameters.AddWithValue("@EntityId", "");
+                    cmd.Parameters.AddWithValue("@EstablishmentEmail", "");
+                    cmd.Parameters.AddWithValue("@IsValidated", "");
+                    cmd.Parameters.AddWithValue("@RelationTo", "");
+                    cmd.Parameters.AddWithValue("@EntityContactNumber", "");
+                    cmd.Parameters.AddWithValue("@PolicySequence", "");
+                    cmd.Parameters.AddWithValue("@DHPOErrorMessage", "");
+                    cmd.Parameters.AddWithValue("@CardNo", "");
+                    cmd.Parameters.AddWithValue("@FirstNameAR", "");
+                    cmd.Parameters.AddWithValue("@SecondNameAR", "");
+                    cmd.Parameters.AddWithValue("@LastNameAR", "");
+                    cmd.Parameters.AddWithValue("@WorkRegion", "");
+                    cmd.Parameters.AddWithValue("@WorkMobile", "");
+                    cmd.Parameters.AddWithValue("@WorkEmail", "");
+                    cmd.Parameters.AddWithValue("@ResidentCountry", "");
+                    cmd.Parameters.AddWithValue("@ResidentRegion", "");
+                    cmd.Parameters.AddWithValue("@ResidentMobile", "");
+                    cmd.Parameters.AddWithValue("@ResidentEmail", "");
+                    cmd.Parameters.AddWithValue("@SalaryBandCategory", "");
+                    cmd.Parameters.AddWithValue("@PrevCoverageStatus", "");
                     cmd.Parameters.AddWithValue("@PrevCoverageExp", (_PrevCoverageExp < new DateTime(1753, 1, 1) || _PrevCoverageExp > new DateTime(9999, 12, 31)) ? (object)DBNull.Value : _PrevCoverageExp);
-                    cmd.Parameters.AddWithValue("@Occupation", _Occupation);
-                    cmd.Parameters.AddWithValue("@CompanyName", _CompanyName);
-                    cmd.Parameters.AddWithValue("@WorkCountry", _WorkCountry);
-                    cmd.Parameters.AddWithValue("@IPPremium", _IPPremium);
-                    cmd.Parameters.AddWithValue("@OPPremium", _OPPremium);
+                    cmd.Parameters.AddWithValue("@Occupation", "");
+                    cmd.Parameters.AddWithValue("@CompanyName", "");
+                    cmd.Parameters.AddWithValue("@WorkCountry", "");
+                    cmd.Parameters.AddWithValue("@IPPremium", 0);
+                    cmd.Parameters.AddWithValue("@OPPremium", 0);
 
-                    cmd.Parameters.AddWithValue("@MaternityPremium", MaternityPremium);
-                    cmd.Parameters.AddWithValue("@DentalPremium", _DentalPremium);
-                    cmd.Parameters.AddWithValue("@OpticalPremium", _OpticalPremium);
+                    cmd.Parameters.AddWithValue("@MaternityPremium", 0);
+                    cmd.Parameters.AddWithValue("@DentalPremium", 0);
+                    cmd.Parameters.AddWithValue("@OpticalPremium", 0);
                     cmd.Parameters.AddWithValue("@Height", _Height);
                     cmd.Parameters.AddWithValue("@Weight", _Weight);
-                    cmd.Parameters.AddWithValue("@BMI", _BMI);
-                    cmd.Parameters.AddWithValue("@AdditionalPremium", _AdditionalPremium);
-                    cmd.Parameters.AddWithValue("@BasePremium", _BasePremium);
-                    cmd.Parameters.AddWithValue("@AML_Loading", _AML_Loading);
-                    cmd.Parameters.AddWithValue("@Territorial_Loading", _Territorial_Loading);
-                    cmd.Parameters.AddWithValue("@CoIns_Loading", _CoIns_Loading);
-                    cmd.Parameters.AddWithValue("@DeduC_Loading", _DeduC_Loading);
-                    cmd.Parameters.AddWithValue("@AccomType_Loading", _AccomType_Loading);
-                    cmd.Parameters.AddWithValue("@PEC_Loading", _PEC_Loading);
-                    cmd.Parameters.AddWithValue("@Mat_limit_Loading", _Mat_limit_Loading);
-                    cmd.Parameters.AddWithValue("@MatCoIns_Loading", _MatCoIns_Loading);
-                    cmd.Parameters.AddWithValue("@OptCoIns_Loading", _OptCoIns_Loading);
-                    cmd.Parameters.AddWithValue("@DenCoIns_Loading", _DenCoIns_Loading);
-                    cmd.Parameters.AddWithValue("@Nationality_Loading", _Nationality_Loading);
-                    cmd.Parameters.AddWithValue("@Network_spl_Arr", _Network_spl_Arr);
-                    cmd.Parameters.AddWithValue("@Mat_Waiting_Period_Waived", _Mat_Waiting_Period_Waived);
-                    cmd.Parameters.AddWithValue("@Inflation", _Inflation);
-                    cmd.Parameters.AddWithValue("@Target_LR", _Target_LR);
-                    cmd.Parameters.AddWithValue("@Agent_Perc", _Agent_Perc);
-                    cmd.Parameters.AddWithValue("@TPA_Perc", _TPA_Perc);
-                    cmd.Parameters.AddWithValue("@IC_Perc", _IC_Perc);
-                    cmd.Parameters.AddWithValue("@TotGross", _TotGross);
+                    cmd.Parameters.AddWithValue("@BMI", 0);
+                    cmd.Parameters.AddWithValue("@AdditionalPremium", 0);
+                    cmd.Parameters.AddWithValue("@BasePremium", 0);
+                    cmd.Parameters.AddWithValue("@AML_Loading", 0);
+                    cmd.Parameters.AddWithValue("@Territorial_Loading", 0);
+                    cmd.Parameters.AddWithValue("@CoIns_Loading", 0);
+                    cmd.Parameters.AddWithValue("@DeduC_Loading", 0);
+                    cmd.Parameters.AddWithValue("@AccomType_Loading", 0);
+                    cmd.Parameters.AddWithValue("@PEC_Loading", 0);
+                    cmd.Parameters.AddWithValue("@Mat_limit_Loading", 0);
+                    cmd.Parameters.AddWithValue("@MatCoIns_Loading", 0);
+                    cmd.Parameters.AddWithValue("@OptCoIns_Loading", 0);
+                    cmd.Parameters.AddWithValue("@DenCoIns_Loading", 0);
+                    cmd.Parameters.AddWithValue("@Nationality_Loading", 0);
+                    cmd.Parameters.AddWithValue("@Network_spl_Arr", 0);
+                    cmd.Parameters.AddWithValue("@Mat_Waiting_Period_Waived", 0);
+                    cmd.Parameters.AddWithValue("@Inflation", 0);
+                    cmd.Parameters.AddWithValue("@Target_LR", 0);
+                    cmd.Parameters.AddWithValue("@Agent_Perc", 0);
+                    cmd.Parameters.AddWithValue("@TPA_Perc", 0);
+                    cmd.Parameters.AddWithValue("@IC_Perc", 0);
+                    cmd.Parameters.AddWithValue("@TotGross", 0);
 
                     cmd.Parameters.AddWithValue("@Mode", Mode);
                     cmd.Parameters.AddWithValue("@UserID", _UserId);
@@ -933,7 +964,7 @@ public class Members
                     if (Mode.ToLower() == "new")
                     {
                         cmd.ExecuteNonQuery();
-                        _GMQuotationId = Convert.ToInt64(cmd.Parameters["@CurrentID"].Value);
+                        _GMQuotationMemberId = Convert.ToInt64(cmd.Parameters["@CurrentID"].Value);
                     }
                     else if (Mode.ToLower() == "edit")
                     {

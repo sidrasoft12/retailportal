@@ -198,7 +198,7 @@ public class GMQuotations
     public string? Telephone { get; set; }
     public string? Email { get; set; }
     public string? Address { get; set; }
-    public string? City { get; set; }
+    //public string? BranchName { get; set; }
     public string? Website { get; set; }
     public string? Fax { get; set; }
 
@@ -2271,7 +2271,7 @@ public class GMQuotations
             _TravelPremium_Gr = value;
         }
     }
-    
+
 
 
     public IConfiguration? _Config { get; set; }
@@ -2521,7 +2521,7 @@ public class GMQuotations
                     }
 
                     // Add input parameters with null checks for non-nullable types
-                    
+
                     cmd.Parameters.AddWithValue("@Date", (_Date < new DateTime(1753, 1, 1) || _Date > new DateTime(9999, 12, 31)) ? (object)DBNull.Value : _Date);
                     //cmd.Parameters.AddWithValue("@GMQuotationId", _GMQuotationId != 0 ? (object)_GMQuotationId : DBNull.Value);
                     cmd.Parameters.AddWithValue("@QuotationNumber", _QuotationNumber);
@@ -2599,7 +2599,7 @@ public class GMQuotations
 
                     cmd.Parameters.AddWithValue("@Guideline", _Guideline);
                     cmd.Parameters.AddWithValue("@DxbQty", _DxbQty);
-                    cmd.Parameters.AddWithValue("@QuotationApproveDate",(_QuotationApproveDate < new DateTime(1753, 1, 1) || _QuotationApproveDate > new DateTime(9999, 12, 31)) ? (object)DBNull.Value: _QuotationApproveDate);
+                    cmd.Parameters.AddWithValue("@QuotationApproveDate", (_QuotationApproveDate < new DateTime(1753, 1, 1) || _QuotationApproveDate > new DateTime(9999, 12, 31)) ? (object)DBNull.Value : _QuotationApproveDate);
 
 
                     cmd.Parameters.AddWithValue("@BranchId", _BranchId);
@@ -2705,7 +2705,7 @@ public class GMQuotations
                     else if (Mode.ToLower() == "edit")
                     {
                         cmd.ExecuteNonQuery();
-                        
+
                     }
                 }
             }

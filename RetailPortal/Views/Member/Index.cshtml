@@ -6,25 +6,25 @@
 <div class="card mt-5">
     <!-- Welcome Message -->
     @* <div class="row">
-        <div class="col-md-12">
-            <p class="welcome-message">Welcome, @ViewBag.SponsorName</p>
-        </div>
+    <div class="col-md-12">
+    <p class="welcome-message">Welcome, @ViewBag.SponsorName</p>
+    </div>
     </div>
 
     <!-- Navigation Tabs -->
     <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link" href="/SponsorDetails">Sponsor & Policy Details</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" href="/MemberDetails">Member Details</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/ProductDetails">Product Details</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/Payment">Payment</a>
-        </li>
+    <li class="nav-item">
+    <a class="nav-link" href="/SponsorDetails">Sponsor & Policy Details</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link active" href="/MemberDetails">Member Details</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" href="/ProductDetails">Product Details</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" href="/Payment">Payment</a>
+    </li>
     </ul> *@
     <div class="progress " role="progressbar" aria-label="Animated striped example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="height: 30px">
         <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 50%"></div>
@@ -45,11 +45,16 @@
     </ul>
     <form id="memberForm" method="post" action="@Url.Action("InsertMembers", "Member")">
         <input type="hidden" name="BrokerId" value="@Model.BrokerId" />
+        <input type="hidden" name="BrokerName" value="@Model.BrokerName" />
+        <input type="hidden" name="BrokerTelephone" value="@Model.BrokerTelephone" />
+        <input type="hidden" name="BrokerAddress" value="@Model.BrokerAddress" />
+        <input type="hidden" name="BrokerEmail" value="@Model.BrokerEmail" />
+        <input type="hidden" name="BranchName" value="@Model.BranchName" />
 
         <!-- Member Details Section -->
         <div class="row justify-content-center mt-4">
             @* <div class="col-md-12">
-                @(Html.Partial("_MemberDetails", membersModel))
+            @(Html.Partial("_MemberDetails", membersModel))
             </div> *@
             <div class="col-md-8">
                 @(await Html.PartialAsync("_MemberAdd", membersModel))
@@ -57,24 +62,33 @@
         </div>
 
         <!-- Agent Details Section - Below Member Details -->
+        @* <div class="row mt-6"> *@
+
         @* <div class="row mt-4">
-            <div class="col-md-12">
-                @(Html.Partial("_AgentDetails", membersModel))
-            </div>
+        <div class="col-md-12">
+        @(Html.Partial("_AgentDetails", membersModel))
+        </div>
         </div> *@
 
         <!-- Submit and Next Buttons -->
-        <div class="container text-end">
-            <div class="row m-sm-3">
-                <div class="col-sm-3 col-xl-6">&nbsp</div>
-                <button type="submit" class="col-sm-3 col-xl-2 btn btn-lg btn-outline-danger">Save</button>
-                <div class="col-sm-6 col-xl-4 d-grid">
-                    <a href="@Url.Action("_ProductDetails", "Product")" class="btn btn-lg btn-outline-primary">
-                        Next
-                    </a>
+
+        <div class="row mt-4">
+            <div class="col-md-12 text-right">
+                @* <button type="submit" class="btn btn-primary next-button">Save</button> *@
+                <a href="@Url.Action("Index", "Product")" class="btn btn-secondary"><span>Add Product</span><i class="bi bi-chevron-double-right"></i></a>
+
+                <div class="container text-end">
+                    <div class="row m-sm-3">
+                        <div class="col-sm-3 col-xl-6">&nbsp</div>
+                        <button type="submit" class="col-sm-3 col-xl-2 btn btn-lg btn-outline-danger">Save</button>
+                        <div class="col-sm-6 col-xl-4 d-grid">
+                            <a href="@Url.Action("_ProductDetails", "Product")" class="btn btn-lg btn-outline-primary">
+                                Next
+                            </a>
+                        </div>
+
+                    </div>
                 </div>
-            </div>
-        </div> 
     </form>
 </div>
 

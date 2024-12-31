@@ -48,7 +48,16 @@ namespace RetailPortal
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Account}/{action=Login}/{id?}");
+                    pattern: "{controller=Account}/{action=Login}/{agent_id?}");
+                endpoints.MapControllerRoute(
+                   name: "gmQuotations",
+                   pattern: "{agent_id}/GMQuotations/{action=Index}");
+                endpoints.MapControllerRoute(
+                   name: "Members",
+                   pattern: "{agent_id}/Members/{action=Index}");
+                endpoints.MapControllerRoute(
+                   name: "product",
+                   pattern: "{agent_id}/Product/{action=Index}");
             });
         }
     }

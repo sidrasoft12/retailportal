@@ -32,16 +32,16 @@
 <div class="card mt-5">
     <!-- Welcome Message -->
     @* <div class="row">
-        <div class="col-md-12">
-            <p class="welcome-message">Welcome, @ViewBag.SponsorName</p>
-        </div>
+    <div class="col-md-12">
+    <p class="welcome-message">Welcome, @ViewBag.SponsorName</p>
+    </div>
     </div> *@
-    
-    
+
+
     <div class="progress " role="progressbar" aria-label="Animated striped example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 30px">
         <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 25%"></div>
     </div>
-    
+
     <ul class="nav nav-tabs nav-justified">
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-1-square"></i><span class="ms-1 text-primary">Add Sponsor</span></a>
@@ -58,23 +58,28 @@
     </ul>
     <!-- Navigation Tabs -->
     @* <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link active" href="/SponsorDetails">Sponsor & Policy Details</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/MemberDetails">Member Details</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/ProductDetails">Product Details</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/Payment">Payment</a>
-        </li>
+    <li class="nav-item">
+    <a class="nav-link active" href="/SponsorDetails">Sponsor & Policy Details</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" href="/MemberDetails">Member Details</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" href="/ProductDetails">Product Details</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" href="/Payment">Payment</a>
+    </li>
     </ul> *@
 
     <!-- Form -->
     <form id="sponsorForm" method="post" action="@Url.Action("InsertQuotations", "GMQuotation")">
         <input type="hidden" name="BrokerId" value="@Model.BrokerId" />
+        <input type="hidden" name="BrokerName" value="@Model.BrokerName" />
+        <input type="hidden" name="BrokerTelephone" value="@Model.BrokerTelephone" />
+        <input type="hidden" name="BrokerAddress" value="@Model.BrokerAddress" />
+        <input type="hidden" name="BrokerEmail" value="@Model.BrokerEmail" />
+        <input type="hidden" name="BranchName" value="@Model.BranchName" />
 
         <div class="row justify-content-center mt-4">
             <!-- Sponsor Edit -->
@@ -84,13 +89,13 @@
 
             <!-- Policy Edit -->
             @* <div class="col-md-6">
-                @(Html.Partial("_PolicyEdit", gmQuotationsModel))
+            @(Html.Partial("_PolicyEdit", gmQuotationsModel))
             </div> *@
 
             <!-- Agent -->
-            @* <div class="col-md-6">
+            <div class="col-md-6">
                 @(await Html.PartialAsync("_AgentDetails", gmQuotationsModel))
-            </div> *@
+            </div>
         </div>
         <!-- Submit and Next Buttons -->
         <div class="container text-end">
@@ -98,13 +103,13 @@
                 <div class="col-sm-3 col-xl-6">&nbsp</div>
                 <button type="submit" class="col-sm-3 col-xl-2 btn btn-lg btn-outline-danger ">Save</button>
                 <div class="col-sm-6 col-xl-4 d-grid">
-                    <a href="@Url.Action("Index", "Member")" class="btn btn-lg btn-outline-primary " >
+                    <a href="@Url.Action("Index", "Member")" class="btn btn-lg btn-outline-primary ">
                         <span>Next Add Member</span>
                         <i class="bi bi-arror-right"></i>
                     </a>
                 </div>
-                
+
             </div>
-        </div>       
+        </div>
     </form>
 </div>

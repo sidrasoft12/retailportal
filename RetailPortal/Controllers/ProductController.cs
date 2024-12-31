@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using RetailPortal.Models;
 
 namespace RetailPortal.Controllers
@@ -15,91 +16,121 @@ namespace RetailPortal.Controllers
             _configuration = configuration;
             _service = new Mstr_PlanCategoryBenefits(configuration);
         }
+        [HttpGet("{agent_id}/Product/Index")]
         public IActionResult Index()
         {
-            int agentId = 76;
-            var agentDetails = GetAgentDetails(agentId);
+            int? agentId = HttpContext.Session.GetInt32("AgentId");
+            // Fetch agent details from the database based on agentId
+            var agentDetails = GetAgentDetailsFromDatabase(agentId.Value);
 
-            if (agentDetails != null)
+            if (agentDetails == null)
             {
-                ViewBag.AgentName = agentDetails.Name;
-                ViewBag.AgentTelephone = agentDetails.Telephone;
-                ViewBag.AgentEmail = agentDetails.Email;
-                ViewBag.AgentAddress = agentDetails.Address;
-                ViewBag.AgentCity = agentDetails.City;
-                ViewBag.AgentWebsite = agentDetails.Website;
-                ViewBag.AgentFax = agentDetails.Fax;
+                return NotFound("Agent not found.");
             }
-            else
-            {
-              
-                ViewBag.AgentName = "Unknown";
-                ViewBag.AgentTelephone = "N/A";
-                ViewBag.AgentEmail = "N/A";
-                ViewBag.AgentAddress = "N/A";
-                ViewBag.AgentCity = "N/A";
-                ViewBag.AgentWebsite = "N/A";
-                ViewBag.AgentFax = "N/A";
-            }
+
+            // Populate ViewBag with agent details
+            ViewBag.AgentName = agentDetails.Name;
+            ViewBag.AgentTelephone = agentDetails.Telephone;
+            ViewBag.AgentEmail = agentDetails.Email;
+            ViewBag.AgentAddress = agentDetails.Address;
+            ViewBag.BranchName = agentDetails.BranchName;
+            //ViewBag.AgentWebsite = agentDetails.Website;
+            //ViewBag.AgentFax = agentDetails.Fax;
 
             ViewBag.AgentDetails = $"<strong>Name</strong> - {ViewBag.AgentName}<br>" +
-                                   $"<strong>Telephone</strong> - {ViewBag.AgentTelephone}<br>" +
-                                   $"<strong>Address</strong> - {ViewBag.AgentAddress}<br>" +
-                                   $"<strong>Email</strong> - {ViewBag.AgentEmail}<br>" +
-                                   $"<strong>City</strong> - {ViewBag.AgentCity}<br>" +
-                                   $"<strong>Website</strong> - {ViewBag.AgentWebsite}<br>" +
-                                   $"<strong>Fax</strong> - {ViewBag.AgentFax}";
+                $"<strong>Telephone</strong> - {ViewBag.AgentTelephone}<br>" +
+                $"<strong>Address</strong> - {ViewBag.AgentAddress}<br>" +
+                $"<strong>Email</strong> - {ViewBag.AgentEmail}<br>" +
+                $"<strong>BranchName</strong> - {ViewBag.BranchName}<br>"
+            ;
 
-            
+            // Set sponsor details from TempData or initialize as needed
             ViewBag.SponsorEmail = TempData["SponsorEmail"] ?? string.Empty;
             ViewBag.SponsorPhone = TempData["SponsorPhone"] ?? string.Empty;
 
-            var membersModel = new Members
+            // Initialize the quotation model
+            var productModel = new Mstr_PlanCategoryBenefits
             {
-                BrokerId = agentId
+                BrokerId = agentId.Value,
+                BrokerName = agentDetails.Name,
+                BrokerTelephone = agentDetails.Telephone,
+                BrokerAddress = agentDetails.Address,
+                BrokerEmail = agentDetails.Email,
+                BranchName = agentDetails.BranchName
             };
 
+<<<<<<< HEAD
+            return View(productModel);
+=======
             //var prodModel = new Mstr_PlanCategoryBenefits { AdditionalPremiumAmt = 0 };
             List<Mstr_PlanCategoryBenefits> productList = _service.GetMstr_PlanCategoryBenefitsList("","","").Take(5).ToList();
             return View(productList);
             //return View();
+>>>>>>> 5f1a1e63148844d772c41b170d15ef75338ddc12
         }
 
-        private Agent? GetAgentDetails(int agentId)
+        // Fetch agent details from the database
+        private Agent GetAgentDetailsFromDatabase(int agentId)
         {
-            var agents = new List<Agent>
+            if (_configuration == null)
             {
-                new Agent { Id = 76, Name = "AIC FAV DISTRIBUTOR",
-                    Telephone = "+971502444355",
-                    Email = "amoheeput@rgare.com",
-                    Address = "Dubai",
-                    City = "Dubai",
-                    Website = "test.com",
-                    Fax = "test123" }
-            };
-            return agents.FirstOrDefault(a => a.Id == agentId);
+                throw new InvalidOperationException("Configuration is not set. Ensure _Config is initialized.");
+            }
+
+            var connectionString = _configuration.GetConnectionString("ConnString");
+
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                var query = "SELECT * FROM mstr_agents WHERE Id = @AgentId";
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@AgentId", agentId);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new Agent
+                            {
+                                Id = reader.GetInt64(reader.GetOrdinal("Agent_Id")),
+                                Name = reader.GetString(reader.GetOrdinal("Agent_Name")),
+                                Telephone = reader.GetString(reader.GetOrdinal("Phone")),
+                                Email = reader.GetString(reader.GetOrdinal("Email")),
+                                Address = reader.GetString(reader.GetOrdinal("Address")),
+                                BranchName = reader.GetString(reader.GetOrdinal("Branch_Name")),
+                                //Website = reader.GetString(reader.GetOrdinal("Website")),
+                                //Fax = reader.GetString(reader.GetOrdinal("Fax"))
+                            };
+                        }
+                    }
+                }
+            }
+
+            return null; // Agent not found
         }
         public class Agent
         {
-            public int Id { get; set; }
+            public long Id { get; set; }
             public string? Name { get; set; }
             public string? Telephone { get; set; }
             public string? Email { get; set; }
             public string? Address { get; set; }
-            public string? City { get; set; }
+            public string? BranchName { get; set; }
             public string? Website { get; set; }
             public string? Fax { get; set; }
 
         }
-        [HttpGet]
+        [HttpGet("{agent_id}/Product/_ProductDetails")]
 
         public IActionResult _ProductDetails(string whereCondition, string pagingCondition, string orderByExpression)
-        
-        
+
+
         {
             try
             {
-                List<Mstr_PlanCategoryBenefits> productList = _service.GetMstr_PlanCategoryBenefitsList(whereCondition, pagingCondition, orderByExpression).Take(5).ToList(); 
+                List<Mstr_PlanCategoryBenefits> productList = _service.GetMstr_PlanCategoryBenefitsList(whereCondition, pagingCondition, orderByExpression).Take(5).ToList();
                 return View(productList);
             }
             catch (Exception ex)
@@ -116,7 +147,7 @@ namespace RetailPortal.Controllers
             {
                 _GMQuotationId = long.Parse(TempData["GMQuotationID"].ToString());
             }
-            model.GMQuotationId= _GMQuotationId;
+            model.GMQuotationId = _GMQuotationId;
             long result = model.SaveEntity("new");
             return RedirectToAction("_ProductDetails");
         }
