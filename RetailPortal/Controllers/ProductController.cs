@@ -59,14 +59,14 @@ namespace RetailPortal.Controllers
                 BranchName = agentDetails.BranchName
             };
 
-<<<<<<< HEAD
+
             return View(productModel);
-=======
+
             //var prodModel = new Mstr_PlanCategoryBenefits { AdditionalPremiumAmt = 0 };
             List<Mstr_PlanCategoryBenefits> productList = _service.GetMstr_PlanCategoryBenefitsList("","","").Take(5).ToList();
             return View(productList);
             //return View();
->>>>>>> 5f1a1e63148844d772c41b170d15ef75338ddc12
+
         }
 
         // Fetch agent details from the database
