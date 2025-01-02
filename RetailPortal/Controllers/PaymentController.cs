@@ -5,6 +5,8 @@ namespace RetailPortal.Controllers
     public class PaymentController : Controller
     {
         // Load the payment form
+
+        [HttpGet("{agent_id}/Payment/Index")]
         public IActionResult Index()
         {
             ViewBag.ActiveTab = "Payment";

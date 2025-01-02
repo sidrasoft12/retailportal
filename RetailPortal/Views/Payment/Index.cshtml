@@ -1,36 +1,28 @@
 ﻿@{
     ViewData["Title"] = "Payment Details";
 }
-<style>
-    .welcome-message {
-        float: right;
-        margin-top: 10px;
-        color: #555;
-    }
-</style>
-<br />
-<div class="col-md-6 text-right">
-    <p class="welcome-message">Welcome, @ViewBag.PaymentName</p>
-</div>
-<ul class="nav nav-tabs">
-    
-    <li class="nav-item">
-        <a class="nav-link" href="/SponsorDetails">Sponsor Details</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="/PolicyDetails">Policy Details</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="/MemberDetails">Member Details</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="/ProductDetails">Product Details</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link active" href="/Payment">Payment</a>
-    </li>
-</ul>
-<br />
+
+<div class="card mt-5">
+    <!-- Progress Bar -->
+    <div class="progress" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 30px">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 100%"></div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <ul class="nav nav-tabs nav-justified">
+        <li class="nav-item">
+            <a class="nav-link disabled" aria-disabled="true">Add Sponsor</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" aria-disabled="true">Add Member</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" aria-disabled="true">Choose Benefit</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-1-square"></i><span class="ms-1 text-primary">Payment</span></a>
+        </li>
+    </ul>
 
 <form id="paymentForm" onsubmit="return submitForm(event)">
     <!-- Add your form fields here -->

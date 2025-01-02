@@ -151,7 +151,7 @@ namespace RetailPortal.Controllers
             model.GMQuotationId = _GMQuotationId;
             long result = model.SaveEntity("new");
             int? agentId = HttpContext.Session.GetInt32("AgentId");
-            return RedirectToAction("_ProductDetails", "Product", new { agent_id = agentId.Value });
+            return RedirectToAction("Index", "Product", new { agent_id = agentId.Value });
             // return RedirectToAction("_MemberDetails");
         }
 

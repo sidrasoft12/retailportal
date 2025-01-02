@@ -20,7 +20,7 @@ namespace RetailPortal.Controllers
 
 
 
-        [HttpGet("{agent_id}/GMQuotations/Index")]
+        [HttpGet("{agent_id}/GMQuotation/Index")]
         public IActionResult Index()
         {
             int? agentId = HttpContext.Session.GetInt32("AgentId");
