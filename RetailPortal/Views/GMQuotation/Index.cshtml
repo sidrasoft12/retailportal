@@ -1,6 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Sponsor and Policy Details";
     var gmQuotationsModel = (GMQuotations)Model;
+    int? agent_id = ViewBag.AgentId as int?;
+
 }
 @* <style>
     .welcome-message {
@@ -99,6 +101,15 @@
         </div>
         <!-- Submit and Next Buttons -->
         <div class="container text-end">
+            <div class="row m-sm-3">
+                <!-- Back Button -->
+                <div class="col-sm-6 col-xl-4 d-grid ms-auto mb-2">
+                    <a href="@Url.Action("Login", "Account", new { agent_id })" class="btn btn-lg btn-outline-secondary">
+                    @* <a href="@Url.Action("Login", "Account",agentId)" class="btn btn-lg btn-outline-secondary"> *@
+                        <span>Back</span>
+                        <i class="bi bi-arrow-left"></i>
+                    </a>
+                </div>
             <div class="row m-sm-3">
                 <div class="col-sm-6 col-xl-4 d-grid ms-auto">
                     <button type="submit" class="btn btn-lg btn-outline-primary">

@@ -5,10 +5,11 @@ namespace RetailPortal.Controllers
 {
     public class AccountController : Controller
     {
-        [HttpGet("{agent_id}")]
+        [HttpGet("Login/{agent_id}")]
         public IActionResult Login(int agent_id)
         {
 
+            ViewBag.AgentId = agent_id;
             HttpContext.Session.SetInt32("AgentId", agent_id);
 
             ViewBag.DefDate = DateTime.Now.ToString("MM/dd/yyyy");
@@ -16,7 +17,7 @@ namespace RetailPortal.Controllers
             return View();
         }
 
-        [HttpPost("Login")]
+        [HttpPost("Login/{agent_id}")]
         public IActionResult Login(string email, string phone, DateTime policyStartDate)
         {
             // Simulate login logic
@@ -30,10 +31,12 @@ namespace RetailPortal.Controllers
                 TempData["SponsorPhone"] = phone;
                 TempData["PlanStartDate"] = policyStartDate;
                 int? agentId = HttpContext.Session.GetInt32("AgentId");
+                ViewBag.AgentId = agentId.Value;
                 if (agentId.HasValue)
                 {
-                    return RedirectToAction("Index", "GMQuotation", new { agent_id = agentId.Value });
+                    return RedirectToAction("Index", "GMQuotation");
                 }
+                
             }
 
             // If login fails, reload the login page

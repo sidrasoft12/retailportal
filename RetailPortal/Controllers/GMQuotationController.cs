@@ -20,10 +20,11 @@ namespace RetailPortal.Controllers
 
 
 
-        [HttpGet("{agent_id}/GMQuotation/Index")]
+        [HttpGet("/GMQuotation/Index")]
         public IActionResult Index()
         {
             int? agentId = HttpContext.Session.GetInt32("AgentId");
+            ViewBag.AgentId = agentId;
             // Fetch agent details from the database based on agentId
             var agentDetails = GetAgentDetailsFromDatabase(agentId.Value);
 
@@ -120,20 +121,20 @@ namespace RetailPortal.Controllers
         }
 
 
-        [HttpPost]
-        public IActionResult InsertQuotations(
-GMQuotations model)
+        [HttpPost("InsertQuotations")]
+        public IActionResult InsertQuotations(GMQuotations model)
         {
 
             model.SetConfiguration(_configuration);
             long result = model.SaveEntity("new");
 
             TempData["GMQuotationID"] = result.ToString();
+            ViewBag.QuotationId = TempData["GMQuotationID"];
 
             // Redirect to the QuotationsList after successful save
             //return RedirectToAction("_SponsorAndPolicyDetails");
             int? agentId = HttpContext.Session.GetInt32("AgentId");
-            return RedirectToAction("Index", "Member", new { agent_id = agentId.Value });
+            return RedirectToAction("Index", "Member");
         }
 
         public class Agent

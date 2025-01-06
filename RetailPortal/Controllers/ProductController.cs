@@ -14,7 +14,7 @@ public class ProductController : Controller
         _service = new Mstr_PlanCategoryBenefits(configuration);
     }
 
-    [HttpGet("{agent_id}/Product/Index")]
+    [HttpGet("/Product/Index")]
     public IActionResult Index(string whereCondition, string pagingCondition, string orderByExpression)
     {
         try
@@ -29,7 +29,7 @@ public class ProductController : Controller
         }
     }
 
-    [HttpGet("{agent_id}/Product/_ProductDetails")]
+    [HttpGet("/Product/_ProductDetails")]
     public IActionResult _ProductDetails(string whereCondition, string pagingCondition, string orderByExpression)
     {
         try
@@ -43,7 +43,7 @@ public class ProductController : Controller
             return RedirectToAction("Index", "Product");
         }
     }
-
+    [HttpPost("InsertProducts")]
     public IActionResult InsertProducts(Mstr_PlanCategoryBenefits model)
     {
         model.SetConfiguration(_configuration);
@@ -54,6 +54,6 @@ public class ProductController : Controller
         model.GMQuotationId = _GMQuotationId;
         long result = model.SaveEntity("new");
         int? agentId = HttpContext.Session.GetInt32("AgentId");
-        return RedirectToAction("Index", "Payment", new { agent_id = agentId.Value });
+        return RedirectToAction("Index", "Payment");
     }
 }

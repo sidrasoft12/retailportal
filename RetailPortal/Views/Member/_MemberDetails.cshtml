@@ -89,26 +89,25 @@
                     <th>Actions</th>
                 </tr>
             </thead>
-            <tbody
-                @for (int i = 0; i < Model.Count; i++)
-                {
-                    <tr data-id="@Model[i].GmquotationMemberId">
-                        <td>@Model[i].MemberType</td>
-                        <td>@Model[i].Relation</td>
-                        <td>@Model[i].FirstName</td>
-                        <td>@(DateTime.TryParse(Model[i].DOB, out var dob) ? dob.ToString("MM/dd/yyyy") : Model[i].DOB)</td>
-                        <td>@Model[i].MobileNumber</td>
-                        <td>@Model[i].Gender</td>
-                        <td>@Model[i].MaritalStatus</td>
-                        <td>@Model[i].Salary</td>
-                        <td>@Model[i].Height.ToString("F2")</td>
-                        <td>@Model[i].Weight.ToString("F2")</td>
-                        <td>
-                            <a href="@Url.Action("_MemberEdit", "Member", new { id = Model[i].GmquotationMemberId })" class="btn btn-primary">Edit</a>
-                            <button type="button" class="btn btn-danger btn-remove" data-id="@Model[i].GmquotationMemberId">Remove</button>
-                        </td>
-                    </tr>
-                }
+            <tbody @for (int i = 0; i < Model.Count; i++)
+            {
+                        <tr data-id="@Model[i].GmquotationMemberId">
+                            <td>@Model[i].MemberType</td>
+                            <td>@Model[i].Relation</td>
+                            <td>@Model[i].FirstName</td>
+                            <td>@(DateTime.TryParse(Model[i].DOB, out var dob) ? dob.ToString("MM/dd/yyyy") : Model[i].DOB)</td>
+                            <td>@Model[i].MobileNumber</td>
+                            <td>@Model[i].Gender</td>
+                            <td>@Model[i].MaritalStatus</td>
+                            <td>@Model[i].Salary</td>
+                            <td>@Model[i].Height.ToString("F2")</td>
+                            <td>@Model[i].Weight.ToString("F2")</td>
+                            <td>
+                                <a href="@Url.Action("_MemberEdit", "Member", new { id = Model[i].GmquotationMemberId })" class="btn btn-primary">Edit</a>
+                                <button type="button" class="btn btn-danger btn-remove" data-id="@Model[i].GmquotationMemberId">Remove</button>
+                            </td>
+                        </tr>
+            }
             </tbody>
         </table>
     </div>
