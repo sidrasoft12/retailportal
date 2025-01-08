@@ -1,0 +1,182 @@
+﻿@model RetailPortal.Models.Preview
+
+<style>
+    select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        background-color: #fff;
+        font-size: 16px;
+        color: #495057;
+        box-shadow: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24"><path fill="gray" d="m7 10l5 5 5-5z"/></svg>');
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 16px;
+        cursor: pointer;
+    }
+
+        select:focus {
+            border-color: #80bdff;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+    .card-body {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .header {
+        display: none;
+    }
+
+    table {
+        width: 100%;
+        table-layout: auto;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        white-space: nowrap;
+        padding: 8px 10px;
+        text-align: center;
+        vertical-align: middle;
+        border: 1px solid #ddd;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    th {
+        background-color: #f8f9fa;
+        font-weight: bold;
+    }
+
+    td {
+        font-size: 14px;
+    }
+
+    .btn {
+        padding: 4px 10px;
+        font-size: 14px;
+    }
+
+    .btn-primary {
+        margin-right: 5px;
+    }
+</style>
+
+<div>
+    <h3 style="text-align:center;">Preview</h3>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <!-- Quotation Table -->
+        <table class="table table-striped" id="quotationTable">
+            <thead>
+                <tr>
+                    <th>Sponsor Name</th>
+                    <th>Sponsor Email</th>
+                    <th>Sponsor Phone</th>
+                    <th>Sponsor Address</th>
+                    <th>Sponsor City</th>
+                    <th>Sponsor City</th>
+                    <th>Sponsor Type</th>
+                    <th>Region</th>
+                    <th>Sub Region</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.QuotationDetails)
+                {
+                    <tr>
+                        <td>@item.ParticipantName</td>
+                        <td>@item.ParticipantEmail</td>
+                        <td>@item.ParticipantTelephone</td>
+                        <td>@item.ParticipantAddress</td>
+                        <td>@item.ParticipantCity</td>
+                        <td>@item.SponsorType</td>
+                        <td>@item.Region</td>
+                        <td>@item.SubRegion</td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card-body">
+        <!-- Member Table -->
+        <table class="table table-striped" id="memberTable">
+            <thead>
+                <tr>
+                    <th>Member Type</th>
+                    <th>Relation</th>
+                    <th>FirstName</th>
+                    <th>Date Of Birth</th>
+                    <th>Mobile Number</th>
+                    <th>Gender</th>
+                    <th>Marital Status</th>
+                    <th>Salary Band</th>
+                    <th>Height</th>
+                    <th>Weight</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.MemberDetails)
+                {
+                    <tr>
+                        <td>@item.MemberType</td>
+                        <td>@item.Relation</td>
+                        <td>@item.FirstName</td>
+                        <td>@item.DOB</td>
+                        <td>@item.MobileNumber</td>
+                        <td>@item.Gender</td>
+                        <td>@item.MaritalStatus</td>
+                        <td>@item.SalaryBand</td>
+                        <td>@item.Height</td>
+                        <td>@item.Weight</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card-body">
+        <!-- Product Table -->
+        <table class="table table-striped" id="productTable">
+            <thead>
+                <tr>
+                    <th>Annual Medical Limit</th>
+                    <th>Plan Category Name</th>
+                    <th>Benefit Name</th>
+                    <th>Plan Type</th>
+                    <th>Room Type</th>
+                    <th>Display Copay Text</th>
+                    <th>Premium Amount</th>
+                    <th>Premium Percentage</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ProductDetails)
+                {
+                    <tr>
+                        <td>@item.AggAnnualLimit</td>
+                        <td>@item.PlanCategoryName</td>
+                        <td>@item.BenefitName</td>
+                        <td>@item.PlanType</td>
+                        <td>@item.RoomType</td>
+                        <td>@item.DisplayCopayText</td>
+                        <td>@item.PremiumAmt</td>
+                        <td>@item.PremiumPerc</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

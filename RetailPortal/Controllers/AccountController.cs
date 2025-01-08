@@ -9,6 +9,7 @@ namespace RetailPortal.Controllers
         public IActionResult Login(int agent_id)
         {
 
+            
             ViewBag.AgentId = agent_id;
             HttpContext.Session.SetInt32("AgentId", agent_id);
 
