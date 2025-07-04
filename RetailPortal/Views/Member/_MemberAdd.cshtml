@@ -4,7 +4,7 @@
     @* <form asp-action="AddMember" method="post" action="@Url.Action("InsertMembers", "Member")"> *@
     <div class="row mb-4 g-sm-1 g-md-2 align-items-center">
         <div class="form-floating col-sm-12 col-md-8">
-            <select id="memberchoose" name="memberchoose" placeholder="Member Type" class="form-select" required>
+            <select id="memberchoose" name="MemberType" placeholder="Member Type" class="form-select" required>
                 <option value="" disabled selected>Select an option</option>
                 <option value="myself">Myself</option>
                 <option value="myfamilymembers">My family members</option>
@@ -143,8 +143,20 @@
         </div>
     </div>
     <div class="container text-end">
-        <div class="row m-sm-3">
-            <div class="col-sm-6 col-xl-4 d-grid ms-auto">
+        <div class="row m-3">
+            <div class="col-sm-4 d-grid">
+                <a href="@Url.Action("_MemberDetails", "Member")" class="btn btn-lg btn-outline-secondary">
+                    <span>Add More</span>
+                    <i class="bi bi-plus-circle"></i>
+                </a>
+            </div>
+            <div class="col-sm-4 d-grid">
+                <a href="@Url.Action("Index", "GMQuotation")" class="btn btn-lg btn-outline-secondary">
+                    <span>Back</span>
+                    <i class="bi bi-arrow-left"></i>
+                </a>
+            </div>
+            <div class="col-sm-4 d-grid">
                 <button type="submit" class="btn btn-lg btn-outline-primary">
                     <span>Next Add Product</span>
                     <i class="bi bi-arrow-right"></i>
@@ -152,10 +164,9 @@
             </div>
         </div>
     </div>
-    @* <div class="row mt-4">
-        <div class="col-md-12 text-right">
-            <button type="submit" class="btn btn-primary next-button">Add Member</button>
 
-        </div>
-    </div> *@
+
+
+
+ 
 </form>

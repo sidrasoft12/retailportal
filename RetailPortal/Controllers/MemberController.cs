@@ -19,7 +19,7 @@ namespace RetailPortal.Controllers
             _service = new Members(configuration); // Pass configuration to GMQuotations
         }
 
-        [HttpGet("{agent_id}/Member/Index")]
+        [HttpGet("/Member/Index")]
         public IActionResult Index()
         {
             int? agentId = HttpContext.Session.GetInt32("AgentId");
@@ -107,7 +107,7 @@ namespace RetailPortal.Controllers
             return null; // Agent not found
         }
 
-        [HttpGet]
+        [HttpGet("_MemberAdd")]
 
         public IActionResult _MemberAdd()
         {
@@ -115,6 +115,7 @@ namespace RetailPortal.Controllers
             return View(new Members());
         }
 
+        [HttpGet("_MemberEdit")]
         public IActionResult _MemberEdit(int id)
         {
 
@@ -130,14 +131,21 @@ namespace RetailPortal.Controllers
         }
 
 
-        [HttpGet]
+        
 
+        [HttpGet("/Member/_MemberDetails")]
         public IActionResult _MemberDetails(string whereCondition, string pagingCondition, string orderByExpression)
         {
+            int? agentId = HttpContext.Session.GetInt32("AgentId");
+            ViewBag.AgentId = agentId;
+            ViewBag.QuotationId = TempData["GMQuotationID"];
+            int? quotationId = ViewBag.QuotationId != null ? Convert.ToInt32(ViewBag.QuotationId) : (int?)null;
+            whereCondition = $"GMQuotationId = {quotationId}"; // Adjust this condition based on your database field
             List<Members> membersList = _service.GetMembersList(whereCondition, pagingCondition, orderByExpression);
             return View(membersList);
         }
 
+        [HttpPost("InsertMembers")]
         public IActionResult InsertMembers(Members model)
         {
 
@@ -151,7 +159,8 @@ namespace RetailPortal.Controllers
             model.GMQuotationId = _GMQuotationId;
             long result = model.SaveEntity("new");
             int? agentId = HttpContext.Session.GetInt32("AgentId");
-            return RedirectToAction("Index", "Product", new { agent_id = agentId.Value });
+            ViewBag.AgentId = agentId;
+            return RedirectToAction("Index", "Product");
             // return RedirectToAction("_MemberDetails");
         }
 

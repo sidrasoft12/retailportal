@@ -83,14 +83,15 @@ public class Mstr_PlanCategoryBenefits
     private Int32 _PremiumTypeId;
     private int _WaitingPeriod;
     private string? _WaitingPeriodUnit;
-    private decimal _CoPayPerc;
+    private string? _CoPayPerc;
+    private decimal _CoPayPerc1;
     private decimal _CoPayAmount;
     private bool _IsCovered;
     private string? _Comments;
     private string? _PremiumType;
     private bool _HasWaitingPeriod;
     private bool _HasCoPay;
-    private decimal _DeductiblePerc;
+    private string _DeductiblePerc;
     private decimal _DeductibleAmount;
     private string? _ProviderNetwork;
     private string? _LimitType;
@@ -134,7 +135,7 @@ public class Mstr_PlanCategoryBenefits
     private int _UserId;
     private decimal _TPAPercent;
     private decimal _AgentPercent;
-    private decimal _TEPercent;
+    private int _TEPercent;
     private decimal _TotalLoadingPercent;
     private string? _ApprovedCat;
     private string? _Remarks;
@@ -197,6 +198,15 @@ public class Mstr_PlanCategoryBenefits
     private string _BrokerAddress;
     private string _BranchName;
 
+
+    private string? _TOB;
+    private string? _Table_of_Benefit;
+
+    public string Table_of_Benefit
+    {
+        get { return _Table_of_Benefit; }
+        set { _Table_of_Benefit = value; }
+    }
     public int BrokerId
     {
         get { return _BrokerId; }
@@ -543,10 +553,15 @@ public class Mstr_PlanCategoryBenefits
         set { _WaitingPeriodUnit = value; }
     }
 
-    public decimal CoPayPerc
+    public string CoPayPerc
     {
         get { return _CoPayPerc; }
         set { _CoPayPerc = value; }
+    }
+    public decimal CoPayPerc1
+    {
+        get { return _CoPayPerc1; }
+        set { _CoPayPerc1 = value; }
     }
     public decimal CoPayAmount
     {
@@ -578,7 +593,7 @@ public class Mstr_PlanCategoryBenefits
         get { return _HasCoPay; }
         set { _HasCoPay = value; }
     }
-    public decimal DeductiblePerc
+    public string DeductiblePerc
     {
         get { return _DeductiblePerc; }
         set { _DeductiblePerc = value; }
@@ -804,7 +819,7 @@ public class Mstr_PlanCategoryBenefits
         set { _AgentPercent = value; }
     }
 
-    public decimal TEPercent
+    public int TEPercent
     {
         get { return _TEPercent; }
         set { _TEPercent = value; }
@@ -1055,55 +1070,55 @@ public class Mstr_PlanCategoryBenefits
         set { _PECLimit = value; }
     }
 
-    public decimal BasePremiumGr
+    public decimal BasePremium_Gr
     {
         get { return _BasePremium_Gr; }
         set { _BasePremium_Gr = value; }
     }
-
-    public decimal OptionalPremiumGr
+   
+    public decimal OptionalPremium_Gr
     {
         get { return _OptionalPremium_Gr; }
         set { _OptionalPremium_Gr = value; }
     }
 
-    public decimal BasePremiumNr
+    public decimal BasePremium_Nr
     {
         get { return _BasePremium_Nr; }
         set { _BasePremium_Nr = value; }
     }
 
-    public decimal IPPremiumNr
+    public decimal IPPremium_Nr
     {
         get { return _IPPremium_Nr; }
         set { _IPPremium_Nr = value; }
     }
 
-    public decimal OPPremiumNr
+    public decimal OPPremium_Nr
     {
         get { return _OPPremium_Nr; }
         set { _OPPremium_Nr = value; }
     }
 
-    public decimal MaternityNr
+    public decimal Maternity_Nr
     {
         get { return _Maternity_Nr; }
         set { _Maternity_Nr = value; }
     }
 
-    public decimal OpticalNr
+    public decimal Optical_Nr
     {
         get { return _Optical_Nr; }
         set { _Optical_Nr = value; }
     }
 
-    public decimal DentalNr
+    public decimal Dental_Nr
     {
         get { return _Dental_Nr; }
         set { _Dental_Nr = value; }
     }
 
-    public decimal OptionalPremiumNr
+    public decimal OptionalPremium_Nr
     {
         get { return _OptionalPremium_Nr; }
         set { _OptionalPremium_Nr = value; }
@@ -1133,10 +1148,15 @@ public class Mstr_PlanCategoryBenefits
         set { _Inflation = value; }
     }
 
-    public decimal TargetLR
+    public decimal Target_LR
     {
         get { return _Target_LR; }
         set { _Target_LR = value; }
+    }
+    public string? TOB
+    {
+        get { return _TOB; }
+        set { _TOB = value; }
     }
 
 
@@ -1161,7 +1181,7 @@ public class Mstr_PlanCategoryBenefits
             {
                 connection.Open();
 
-                using (SqlCommand cmd = new SqlCommand("usp_Get_Mstr_PlanCategories", connection))
+                using (SqlCommand cmd = new SqlCommand("usp_Get_GMQuotationCategoryAmounts", connection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -1185,67 +1205,98 @@ public class Mstr_PlanCategoryBenefits
                         {
                             Mstr_PlanCategoryBenefits oEntity = new Mstr_PlanCategoryBenefits(_Config);
                             oEntity.RowNumber = reader["RowNumber"] == DBNull.Value ? 0 : Convert.ToInt32(reader["RowNumber"]);
+                            oEntity.GMQuotationCategoryAmountId = reader["GMQuotationCategoryAmountId"] == DBNull.Value ? 0 : (long)reader["GMQuotationCategoryAmountId"];
                             oEntity.PlanCategoryId = reader["PlanCategoryId"] == DBNull.Value ? 0 : Convert.ToInt32(reader["PlanCategoryId"]);
                             oEntity.PlanCategoryName = reader["PlanCategoryName"] == DBNull.Value ? string.Empty : (string)reader["PlanCategoryName"];
-                            oEntity.DefaultTPAId = reader["DefaultTPAId"] == DBNull.Value ? 0 : Convert.ToInt32(reader["DefaultTPAId"]);
-                            oEntity.DefaultTPAName = reader["DefaultTPAName"] == DBNull.Value ? string.Empty : (string)reader["DefaultTPAName"];
-                            oEntity.GroupId_INSIS = reader["GroupId_INSIS"] == DBNull.Value ? 0 : Convert.ToInt32(reader["GroupId_INSIS"]);
-                            oEntity.CategoryName_INSIS = reader["CategoryName_INSIS"] == DBNull.Value ? string.Empty : (string)reader["CategoryName_INSIS"];
-                            oEntity.ProductName_TPA = reader["ProductName_TPA"] == DBNull.Value ? string.Empty : (string)reader["ProductName_TPA"];
-                            oEntity.ProductDesc_TPA = reader["ProductDesc_TPA"] == DBNull.Value ? string.Empty : (string)reader["ProductDesc_TPA"];
-                            oEntity.Product_Id = reader["Product_Id"] == DBNull.Value ? string.Empty : (string)reader["Product_Id"];
-                            oEntity.Product_Class = reader["Product_Class"] == DBNull.Value ? string.Empty : (string)reader["Product_Class"];
-                            oEntity.Master_Contract_Id = reader["Master_Contract_Id"] == DBNull.Value ? string.Empty : (string)reader["Master_Contract_Id"];
-                            oEntity.Plan_Id = reader["Plan_Id"] == DBNull.Value ? string.Empty : (string)reader["Plan_Id"];
+                            oEntity.Amount = reader["Amount"] == DBNull.Value ? 0 : (decimal)reader["Amount"];
+                            oEntity.GMQuotationId = reader["GMQuotationId"] == DBNull.Value ? 0 : (long)reader["GMQuotationId"];
+                            oEntity.Qty = reader["Qty"] == DBNull.Value ? 0 : Convert.ToInt32(reader["Qty"]);
+                            oEntity.Contribution = reader["Contribution"] == DBNull.Value ? 0 : (decimal)reader["Contribution"];
+                            oEntity.TPAId = reader["TPAId"] == DBNull.Value ? 0 : Convert.ToInt32(reader["TPAId"]);
+                            oEntity.TPAName = reader["TPAName"] == DBNull.Value ? string.Empty : (string)reader["TPAName"];
+                            oEntity.TPAPercent = reader["TPAPercent"] == DBNull.Value ? 0 : (decimal)reader["TPAPercent"];
+                            oEntity.AgentPercent = reader["AgentPercent"] == DBNull.Value ? 0 : (decimal)reader["AgentPercent"];
+                            oEntity.TEPercent = reader["TEPercent"] == DBNull.Value ? 0 : Convert.ToInt16(reader["TEPercent"]);
+                            oEntity.TotalLoadingPercent = reader["TotalLoadingPercent"] == DBNull.Value ? 0 : (decimal)reader["TotalLoadingPercent"];
+                            oEntity.ApprovedCat=reader["ApprovedCat"] == DBNull.Value ? string.Empty : (string)reader["ApprovedCat"];
+                            oEntity.Remarks = reader["Remarks"] == DBNull.Value ? string.Empty : (string)reader["Remarks"];
+                            oEntity.IPNet = reader["IPNet"] == DBNull.Value ? string.Empty : (string)reader["IPNet"];
+                            oEntity.OPNet = reader["OPNet"] == DBNull.Value ? string.Empty : (string)reader["OPNet"];
+                            oEntity.ProductOrigin = reader["ProductOrigin"] == DBNull.Value ? 0 : Convert.ToInt32(reader["ProductOrigin"]);
+                            oEntity.ProductCode = reader["ProductCode"] == DBNull.Value ? string.Empty : (string)reader["ProductCode"];
+                            oEntity.ProductId = reader["ProductId"] == DBNull.Value ? string.Empty : (string)reader["ProductId"];
+                            oEntity.DxbQty = reader["DxbQty"] == DBNull.Value ? 0 : Convert.ToInt32(reader["DxbQty"]);
+                            oEntity.INSISGroupID = reader["INSISGroupID"] == DBNull.Value ? 0 : Convert.ToInt32(reader["INSISGroupID"]);
+                            oEntity.DHPOProductType = reader["DHPOProductType"] == DBNull.Value ? 0 : Convert.ToInt32(reader["DHPOProductType"]);
                             oEntity.Plan_Name = reader["Plan_Name"] == DBNull.Value ? string.Empty : (string)reader["Plan_Name"];
-                            oEntity.AgeMin = reader["AgeMin"] == DBNull.Value ? string.Empty : (string)reader["AgeMin"];
-                            oEntity.AgeMax = reader["AgeMax"] == DBNull.Value ? string.Empty : (string)reader["AgeMax"];
-                            oEntity.Dependency = reader["Dependency"] == DBNull.Value ? string.Empty : (string)reader["Dependency"];
-                            oEntity.Gender = reader["Gender"] == DBNull.Value ? string.Empty : (string)reader["Gender"];
-                            oEntity.MaritalStatus = reader["MaritalStatus"] == DBNull.Value ? string.Empty : (string)reader["MaritalStatus"];
-                            oEntity.Authority = reader["Authority"] == DBNull.Value ? string.Empty : (string)reader["Authority"];
                             oEntity.Network = reader["Network"] == DBNull.Value ? string.Empty : (string)reader["Network"];
+                            oEntity.ProductClass = reader["ProductClass"] == DBNull.Value ? string.Empty : (string)reader["ProductClass"];
                             oEntity.AggAnnualLimit = reader["AggAnnualLimit"] == DBNull.Value ? 0 : (decimal)reader["AggAnnualLimit"];
                             oEntity.OpDeductiblePerc = reader["OpDeductiblePerc"] == DBNull.Value ? 0 : (decimal)reader["AggAnnualLimit"];
                             oEntity.OpDeductibleAmt = reader["OpDeductibleAmt"] == DBNull.Value ? 0 : (decimal)reader["OpDeductibleAmt"];
                             oEntity.InPatientMaternity = reader["InPatientMaternity"] == DBNull.Value ? 0 : (decimal)reader["InPatientMaternity"];
                             oEntity.DentalCover = reader["DentalCover"] == DBNull.Value ? 0 : (decimal)reader["DentalCover"];
                             oEntity.OpticalCover = reader["OpticalCover"] == DBNull.Value ? 0 : (decimal)reader["OpticalCover"];
-                            oEntity.Region = reader["Region"] == DBNull.Value ? string.Empty : (string)reader["Region"];
-                            oEntity.DistributionType = reader["DistributionType"] == DBNull.Value ? string.Empty : (string)reader["DistributionType"];
-                            oEntity.PlanType = reader["PlanType"] == DBNull.Value ? string.Empty : (string)reader["PlanType"];
-                            oEntity.DefaultInsCId = reader["DefaultInsCId"] == DBNull.Value ? 0 : Convert.ToInt32(reader["DefaultInsCId"]);
-                            oEntity.DefaultInsCName = reader["DefaultInsCName"] == DBNull.Value ? string.Empty : (string)reader["DefaultInsCName"];
-                            oEntity.Currency = reader["Currency"] == DBNull.Value ? string.Empty : (string)reader["Currency"];
-                            oEntity.PlanTerritoryId = reader["PlanTerritoryId"] == DBNull.Value ? string.Empty : (string)reader["PlanTerritoryId"];
-                            oEntity.LimitUnit = reader["LimitUnit"] == DBNull.Value ? string.Empty : (string)reader["LimitUnit"];
-                            oEntity.SharedBenefit = reader["SharedBenefit"] == DBNull.Value ? false : (bool)reader["SharedBenefit"];
-                            oEntity.PECInclusions = reader["PECInclusions"] == DBNull.Value ? string.Empty : (string)reader["PECInclusions"];
-                            oEntity.PECExclusions = reader["PECExclusions"] == DBNull.Value ? string.Empty : (string)reader["PECExclusions"];
-                            oEntity.CoInsurances = reader["CoInsurances"] == DBNull.Value ? 0 : (decimal)reader["CoInsurances"];
-                            oEntity.WaitingPeriodDays = reader["WaitingPeriodDays"] == DBNull.Value ? 0 : Convert.ToInt16(reader["WaitingPeriodDays"]);
-                            oEntity.PreAuth = reader["PreAuth"] == DBNull.Value ? false : (bool)reader["PreAuth"];
-                            oEntity.PolicySubType = reader["PolicySubType"] == DBNull.Value ? string.Empty : (string)reader["PolicySubType"];
-                            oEntity.PolicyType = reader["PolicyType"] == DBNull.Value ? string.Empty : (string)reader["PolicyType"];
-                            oEntity.LifeNetRate = reader["LifeNetRate"] == DBNull.Value ? 0 : (decimal)reader["LifeNetRate"];
+                            oEntity.ICPercent = reader["ICPercent"] == DBNull.Value ? 0 : (decimal)reader["ICPercent"];
+                            oEntity.GrossPremium = reader["GrossPremium"] == DBNull.Value ? 0 : (decimal)reader["GrossPremium"];
+                            oEntity.AICAmount = reader["AICAmount"] == DBNull.Value ? 0 : (decimal)reader["AICAmount"];
+                            oEntity.AgentAmount = reader["AgentAmount"] == DBNull.Value ? 0 : (decimal)reader["AgentAmount"];
+                            oEntity.TPAAmount = reader["TPAAmount"] == DBNull.Value ? 0 : (decimal)reader["TPAAmount"];
+                            oEntity.SMOAmount = reader["SMOAmount"] == DBNull.Value ? 0 : (decimal)reader["SMOAmount"];
+                            oEntity.TravelAssistAmount = reader["TravelAssistAmount"] == DBNull.Value ? 0 : (decimal)reader["TravelAssistAmount"];
+                            oEntity.LifeAmount = reader["LifeAmount"] == DBNull.Value ? 0 : (decimal)reader["LifeAmount"];
+                            oEntity.RISplitPercent = reader["RISplitPercent"] == DBNull.Value ? 0 : Convert.ToInt32(reader["RISplitPercent"]);
+                            oEntity.ICSplitPercent = reader["ICSplitPercent"] == DBNull.Value ? 0 : Convert.ToInt32(reader["ICSplitPercent"]);
+                            oEntity.RISplitAmount = reader["RISplitAmount"] == DBNull.Value ? 0 : (decimal)reader["RISplitAmount"];
+                            oEntity.ICSplitAmount = reader["ICSplitAmount"] == DBNull.Value ? 0 : (decimal)reader["ICSplitAmount"];
+                            oEntity.BasmahPCPAmount = reader["BasmahPCPAmount"] == DBNull.Value ? 0 : (decimal)reader["BasmahPCPAmount"];
+                            oEntity.BasmahCancerAmount = reader["BasmahCancerAmount"] == DBNull.Value ? 0 : (decimal)reader["BasmahCancerAmount"];
+                            oEntity.PSPFees = reader["PSPFees"] == DBNull.Value ? 0 : (decimal)reader["PSPFees"];
+                            oEntity.VATBasmah = reader["VATBasmah"] == DBNull.Value ? 0 : (decimal)reader["VATBasmah"];
+                            oEntity.VATPremium = reader["VATPremium"] == DBNull.Value ? 0 : (decimal)reader["VATPremium"];
+                            oEntity.NetPremium = reader["NetPremium"] == DBNull.Value ? 0 : (decimal)reader["NetPremium"];
+                            oEntity.FinalGrossPremium = reader["FinalGrossPremium"] == DBNull.Value ? 0 : (decimal)reader["FinalGrossPremium"];
+                            oEntity.DiagCoPay = reader["DiagCoPay"] == DBNull.Value ? 0 : Convert.ToInt32(reader["DiagCoPay"]);
+                            oEntity.PharmaCoPay = reader["PharmaCoPay"] == DBNull.Value ? 0 : Convert.ToInt32(reader["PharmaCoPay"]);
+                            oEntity.CatNameAuto = reader["CatNameAuto"] == DBNull.Value ? string.Empty : (string)reader["CatNameAuto"];
+                            oEntity.TerritorialCov = reader["TerritorialCov"] == DBNull.Value ? string.Empty : (string)reader["TerritorialCov"];
+                            oEntity.CoPayPerc = reader["CoPayPerc"] == DBNull.Value ? string.Empty : (string)reader["CoPayPerc"];
+                            oEntity.CoPayAmount = reader["CoPayAmount"] == DBNull.Value ? 0 : (decimal)reader["CoPayAmount"];
+                            oEntity.DisplayDEDText = reader["DisplayDEDText"] == DBNull.Value ? string.Empty : (string)reader["DisplayDEDText"];
+                            oEntity.DisplayCopayText = reader["DisplayCopayText"] == DBNull.Value ? string.Empty : (string)reader["DisplayCopayText"];
+                            oEntity.OptionalCover = reader["OptionalCover"] == DBNull.Value ? 0 : (decimal)reader["OptionalCover"];
+                            oEntity.CoverType = reader["CoverType"] == DBNull.Value ? string.Empty : (string)reader["CoverType"];
+                            oEntity.PECLimit = reader["PECLimit"] == DBNull.Value ? 0 : (decimal)reader["PECLimit"];
                             oEntity.RoomType = reader["RoomType"] == DBNull.Value ? string.Empty : (string)reader["RoomType"];
-                            oEntity.PECCondition = reader["PECCondition"] == DBNull.Value ? 0 : (decimal)reader["PECCondition"];
-                            oEntity.Maternity_CoIns = reader["Maternity_CoIns"] == DBNull.Value ? 0 : (decimal)reader["Maternity_CoIns"];
-                            oEntity.Optical_CoIns = reader["Optical_CoIns"] == DBNull.Value ? 0 : (decimal)reader["Optical_CoIns"];
-                            oEntity.Dental_CoIns = reader["Dental_CoIns"] == DBNull.Value ? 0 : (decimal)reader["Dental_CoIns"];
-                            oEntity.Network_spl_Arr = reader["Network_spl_Arr"] == DBNull.Value ? 0 : (decimal)reader["Network_spl_Arr"];
-                            oEntity.Mat_Waiting_Period_Waived = reader["Mat_Waiting_Period_Waived"] == DBNull.Value ? 0 : (decimal)reader["Mat_Waiting_Period_Waived"];
-                            oEntity.Agent_Perc = reader["Agent_Perc"] == DBNull.Value ? 0 : (decimal)reader["Agent_Perc"];
-                            oEntity.TPA_Perc = reader["TPA_Perc"] == DBNull.Value ? 0 : (decimal)reader["TPA_Perc"];
-                            oEntity.IC_Perc = reader["IC_Perc"] == DBNull.Value ? 0 : (decimal)reader["IC_Perc"];
-                            oEntity.IsReusable = reader["IsReusable"] == DBNull.Value ? false : (bool)reader["IsReusable"];
-                            oEntity.PolicyRef = reader["PolicyRef"] == DBNull.Value ? string.Empty : (string)reader["PolicyRef"];
+                            oEntity.BasePremium_Gr = reader["BasePremium_Gr"] == DBNull.Value ? 0 : (decimal)reader["BasePremium_Gr"];
+                            oEntity.OptionalPremium_Gr = reader["OptionalPremium_Gr"] == DBNull.Value ? 0 : (decimal)reader["OptionalPremium_Gr"];
+                            oEntity.BasePremium_Nr = reader["BasePremium_Nr"] == DBNull.Value ? 0 : (decimal)reader["BasePremium_Nr"];
+                            oEntity.IPPremium_Nr = reader["IPPremium_Nr"] == DBNull.Value ? 0 : (decimal)reader["IPPremium_Nr"];
+                            oEntity.OPPremium_Nr = reader["OPPremium_Nr"] == DBNull.Value ? 0 : (decimal)reader["OPPremium_Nr"];
+                            oEntity.Maternity_Nr = reader["Maternity_Nr"] == DBNull.Value ? 0 : (decimal)reader["Maternity_Nr"];
+                            oEntity.Optical_Nr = reader["Optical_Nr"] == DBNull.Value ? 0 : (decimal)reader["Optical_Nr"];
+                            oEntity.Dental_Nr = reader["Dental_Nr"] == DBNull.Value ? 0 : (decimal)reader["Dental_Nr"];
+                            oEntity.OptionalPremium_Nr = reader["OptionalPremium_Nr"] == DBNull.Value ? 0 : (decimal)reader["OptionalPremium_Nr"];
+                            oEntity.Reimbursement = reader["Reimbursement"] == DBNull.Value ? string.Empty : (string)reader["Reimbursement"];
+                            oEntity.AdditionalPremiumAmt = reader["AdditionalPremiumAmt"] == DBNull.Value ? 0 : (decimal)reader["AdditionalPremiumAmt"];
+                            oEntity.AdditionalPremiumComment = reader["AdditionalPremiumComment"] == DBNull.Value ? string.Empty : (string)reader["AdditionalPremiumComment"];
+                            oEntity.Inflation = reader["Inflation"] == DBNull.Value ? 0 : (decimal)reader["Inflation"];
+                            oEntity.Target_LR = reader["Target_LR"] == DBNull.Value ? 0 : (decimal)reader["Target_LR"];
+
+                            //oEntity.QuoteNote = reader["QuoteNote"] == DBNull.Value ? string.Empty : (string)reader["QuoteNote"];
+                            //oEntity.Table_of_Benefit = reader["Table_of_Benefit"] == DBNull.Value ? string.Empty : (string)reader["Table_of_Benefit"];
+                            //oEntity._tob_location = reader["tob_location"] == DBNull.Value ? string.Empty : (string)reader["tob_location"];
+                            //oEntity.TOB = reader["TOB"] == DBNull.Value ? string.Empty : (string)reader["TOB"];
+                            //oEntity.PlanId =reader["PlanId"] == DBNull.Value ? 0 : (long)reader["PlanId"];
+                            
+
+
                             lstEntity.Add(oEntity);
                             recordCounter++;
                         }
                     }
                 }
-                using (SqlCommand cmd1 = new SqlCommand("usp_Get_Mstr_PlanCategoryBenefits", connection))
+                using (SqlCommand cmd1 = new SqlCommand("usp_Get_GMQuotationPlanCategoryBenefits", connection))
                 {
                     cmd1.CommandType = CommandType.StoredProcedure;
 
@@ -1270,17 +1321,19 @@ public class Mstr_PlanCategoryBenefits
                             Mstr_PlanCategoryBenefits oEntity = new Mstr_PlanCategoryBenefits(_Config);
                             oEntity.RowNumber = reader1["RowNumber"] == DBNull.Value ? 0 : Convert.ToInt32(reader1["RowNumber"]);
                             oEntity.Id = reader1["Id"] == DBNull.Value ? 0 : Convert.ToInt32(reader1["Id"]);
+                            oEntity.PlanCategoryId = reader1["PlanCategoryId"] == DBNull.Value ? 0 : Convert.ToInt32(reader1["PlanCategoryId"]);
+                            oEntity.GMQuotationId = reader1["GMQuotationId"] == DBNull.Value ? 0 : (long)reader1["GMQuotationId"];
                             oEntity.PremiumTypeId = reader1["PremiumTypeId"] == DBNull.Value ? 0 : Convert.ToInt32(reader1["PremiumTypeId"]);
                             oEntity.WaitingPeriod = reader1["WaitingPeriod"] == DBNull.Value ? 0 : Convert.ToInt16(reader1["WaitingPeriod"]);
                             oEntity.WaitingPeriodUnit = reader1["WaitingPeriodUnit"] == DBNull.Value ? string.Empty : (string)reader1["WaitingPeriodUnit"];
-                            oEntity.CoPayPerc = reader1["CoPayPerc"] == DBNull.Value ? 0 : (decimal)reader1["CoPayPerc"];
+                            oEntity.CoPayPerc1 = reader1["CoPayPerc"] == DBNull.Value ? 0 : (decimal)reader1["CoPayPerc"];
                             oEntity.CoPayAmount = reader1["CoPayAmount"] == DBNull.Value ? 0 : (decimal)reader1["CoPayAmount"];
                             oEntity.IsCovered = reader1["IsCovered"] == DBNull.Value ? false : (bool)reader1["IsCovered"];
                             oEntity.Comments = reader1["Comments"] == DBNull.Value ? string.Empty : (string)reader1["Comments"];
-                            oEntity.PremiumType = reader1["PremiumType"] == DBNull.Value ? string.Empty : (string)reader1["PremiumType"];
-                            oEntity.HasWaitingPeriod = reader1["HasWaitingPeriod"] == DBNull.Value ? false : (bool)reader1["HasWaitingPeriod"];
-                            oEntity.HasCoPay = reader1["HasCoPay"] == DBNull.Value ? false : (bool)reader1["HasCoPay"];
-                            oEntity.DeductiblePerc = reader1["DeductiblePerc"] == DBNull.Value ? 0 : (decimal)reader1["DeductiblePerc"];
+                            //oEntity.PremiumType = reader1["PremiumType"] == DBNull.Value ? string.Empty : (string)reader1["PremiumType"];
+                            //oEntity.HasWaitingPeriod = reader1["HasWaitingPeriod"] == DBNull.Value ? false : (bool)reader1["HasWaitingPeriod"];
+                            //oEntity.HasCoPay = reader1["HasCoPay"] == DBNull.Value ? false : (bool)reader1["HasCoPay"];
+                            oEntity.DeductiblePerc = reader1["DeductiblePerc"] == DBNull.Value ? string.Empty : (string)reader1["DeductiblePerc"];
                             oEntity.DeductibleAmount = reader1["DeductibleAmount"] == DBNull.Value ? 0 : (decimal)reader1["DeductibleAmount"];
                             oEntity.ProviderNetwork = reader1["ProviderNetwork"] == DBNull.Value ? string.Empty : (string)reader1["ProviderNetwork"];
                             oEntity.SharedBenefit = reader1["SharedBenefit"] == DBNull.Value ? false : (bool)reader1["SharedBenefit"];
@@ -1428,7 +1481,7 @@ public class Mstr_PlanCategoryBenefits
                     cmd.Parameters.AddWithValue("@PharmaCoPay", _PharmaCoPay);
                     cmd.Parameters.AddWithValue("@CatNameAuto", "_CatNameAuto");
                     cmd.Parameters.AddWithValue("@TerritorialCov", "_TerritorialCov");
-                    cmd.Parameters.AddWithValue("@CoPayPerc", _CoPayPerc);
+                    cmd.Parameters.AddWithValue("@CoPayPerc", _CoPayPerc1);
                     cmd.Parameters.AddWithValue("@CoPayAmount", _CoPayAmount);
                     cmd.Parameters.AddWithValue("@DisplayCopayText", "_DisplayCopayText");
                     cmd.Parameters.AddWithValue("@DisplayDEDText", "_DisplayDEDText");
@@ -1491,11 +1544,11 @@ public class Mstr_PlanCategoryBenefits
                     cmd1.Parameters.AddWithValue("@PremiumTypeId", _PremiumTypeId);
                     cmd1.Parameters.AddWithValue("@WaitingPeriod", _WaitingPeriod);
                     cmd1.Parameters.AddWithValue("@WaitingPeriodUnit", "_WaitingPeriodUnit");
-                    cmd1.Parameters.AddWithValue("@CoPayPerc", _CoPayPerc);
+                    cmd1.Parameters.AddWithValue("@CoPayPerc", _CoPayPerc1);
                     cmd1.Parameters.AddWithValue("@CoPayAmount", _CoPayAmount);
                     cmd1.Parameters.AddWithValue("@IsCovered", _IsCovered);
                     cmd1.Parameters.AddWithValue("@Comments", "_Comments");
-                    cmd1.Parameters.AddWithValue("@DeductiblePerc", _DeductiblePerc);
+                    cmd1.Parameters.AddWithValue("@DeductiblePerc", "_DeductiblePerc");
                     cmd1.Parameters.AddWithValue("@DeductibleAmount", _DeductibleAmount);
                     cmd1.Parameters.AddWithValue("@ProviderNetwork", "_ProviderNetwork");
                     cmd1.Parameters.AddWithValue("@SharedBenefit", _SharedBenefit);
