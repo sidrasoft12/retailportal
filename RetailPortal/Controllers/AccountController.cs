@@ -8,7 +8,7 @@ namespace RetailPortal.Controllers
         [HttpGet("{agent_id}")]
         public IActionResult Login(int agent_id)
         {
-
+            agent_id = 1;
             HttpContext.Session.SetInt32("AgentId", agent_id);
 
             ViewBag.DefDate = DateTime.Now.ToString("MM/dd/yyyy");
