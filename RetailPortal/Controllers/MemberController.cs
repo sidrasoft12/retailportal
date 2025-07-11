@@ -23,6 +23,11 @@ namespace RetailPortal.Controllers
         public IActionResult Index()
         {
             int? agentId = HttpContext.Session.GetInt32("AgentId");
+            if (!agentId.HasValue)
+            {
+                // AgentId not set in session, redirect or show error
+                return RedirectToAction("Login", "Account"); // Make sure Login action exists
+            }
             // Fetch agent details from the database based on agentId
             var agentDetails = GetAgentDetailsFromDatabase(agentId.Value);
 
@@ -157,6 +162,7 @@ namespace RetailPortal.Controllers
                 _GMQuotationId = long.Parse(TempData["GMQuotationID"].ToString());
             }
             model.GMQuotationId = _GMQuotationId;
+
             long result = model.SaveEntity("new");
             int? agentId = HttpContext.Session.GetInt32("AgentId");
             ViewBag.AgentId = agentId;

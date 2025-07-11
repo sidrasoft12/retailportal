@@ -118,6 +118,19 @@ public class Members
     private string _BrokerAddress;
     private string _BranchName;
 
+    private string? _Nationality;
+    private string? _TPACardNumber;
+
+    public string TPACardNumber
+    {
+        get { return _TPACardNumber; }
+        set { _TPACardNumber = value; }
+    }
+    public string Nationality
+    {
+        get { return _Nationality; }
+        set { _Nationality = value; }
+    }
     public int BrokerId
     {
         get { return _BrokerId; }
@@ -821,6 +834,10 @@ public class Members
                             oEntity.TPA_Perc = reader["TPA_Perc"] == DBNull.Value ? 0 : (decimal)reader["TPA_Perc"];
                             oEntity.IC_Perc = reader["IC_Perc"] == DBNull.Value ? 0 : (decimal)reader["IC_Perc"];
                             oEntity.TotGross = reader["TotGross"] == DBNull.Value ? 0 : (decimal)reader["TotGross"];
+
+                            oEntity.Nationality = reader["Nationality"] == DBNull.Value ? string.Empty : (string)reader["Nationality"];
+                            oEntity.TPACardNumber = reader["TPACardNumber"] == DBNull.Value ? string.Empty : (string)reader["TPACardNumber"];
+
                             lstEntity.Add(oEntity);
                         }
                     }
@@ -960,6 +977,11 @@ public class Members
 
                     cmd.Parameters.AddWithValue("@Mode", Mode);
                     cmd.Parameters.AddWithValue("@UserID", _UserId);
+
+                cmd.Parameters.AddWithValue("@Nationality", _Nationality);
+                    cmd.Parameters.AddWithValue("@TPACardNumber", _TPACardNumber);
+
+
                     // Execute the command and retrieve the output parameter
                     if (Mode.ToLower() == "new")
                     {
@@ -978,6 +1000,9 @@ public class Members
         {
 
             throw new Exception("Error adding/editing members to Members list.", ex);
+         //   Console.WriteLine(ex.Message); 
+            //Console.WriteLine(ex.InnerException?.Message); 
+           // throw;
         }
         return _GMQuotationMemberId;
     }
