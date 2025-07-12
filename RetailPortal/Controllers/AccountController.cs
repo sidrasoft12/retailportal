@@ -11,7 +11,7 @@ namespace RetailPortal.Controllers
             agent_id = 1;
             HttpContext.Session.SetInt32("AgentId", agent_id);
 
-            ViewBag.DefDate = DateTime.Now.ToString("MM/dd/yyyy");
+            ViewBag.DefDate = DateTime.Today; 
 
             return View();
         }
