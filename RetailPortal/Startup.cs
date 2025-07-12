@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,6 +24,11 @@ namespace RetailPortal
             services.AddSession();
             services.AddTransient<GMQuotations>();// Add session services
             services.AddTransient<Members>();// Add session services
+
+            services.AddRazorPages(o=>
+            {
+                o.Conventions.AddPageRoute("/login", "");
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -47,22 +53,26 @@ namespace RetailPortal
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "Login/{agent_id}",
+                    defaults: new { controller = "Account", action = "Login" });
+                endpoints.MapControllerRoute(
                     name: "login",
                     pattern: "Login/{agent_id}",
                     defaults: new { controller = "Account", action = "Login" });
-                    endpoints.MapControllerRoute(
-                   name: "gmQuotations",
-                   pattern: "/GMQuotation/{action=Index}");
                 endpoints.MapControllerRoute(
-                   name: "Members",
-                   pattern: "/Member/{action=Index}");
+                    name: "gmQuotations",
+                    pattern: "/GMQuotation/{action=Index}");
                 endpoints.MapControllerRoute(
-                   name: "product",
-                   pattern: "/Product/{action=Index}");
+                    name: "Members",
+                    pattern: "/Member/{action=Index}");
+                endpoints.MapControllerRoute(
+                    name: "product",
+                    pattern: "/Product/{action=Index}");
                 endpoints.MapControllerRoute(
                     name: "memberdetails",
                     pattern: "/Member/{action=_MemberDetails}");
-                   
+
 
             });
         }
