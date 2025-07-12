@@ -67,15 +67,26 @@
                         </div>
 
                         <!-- Password input -->
-                        <div data-mdb-input-init class="form-floating mb-3">
+                       @*  <div data-mdb-input-init class="form-floating mb-3">
                             <input type="tel" id="phone" class="form-control form-control-lg"
-                                   placeholder="9715XXXXXXXX" name="Phone" required />
+                                   pattern="971-5[0-9]-\d{7}"
+                                   placeholder="971-5X-XXXXXXX" name="Phone" required />
+                            <label class="form-label" for="phone">Phone Number</label>
+                        </div> *@
+                        <div class="form-floating mb-3">
+                            <input type="tel" id="phone" class="form-control form-control-lg"
+                                   name="Phone"
+                                   pattern="971-5[0-9]-\d{7}"
+                                   placeholder="971-5X-XXXXXXX"
+                                   required />
                             <label class="form-label" for="phone">Phone Number</label>
                         </div>
 
+
                         <div class="form-floating mb-3">
-                            <input type="date" class="form-control form-control-lg" id="policyStartDate" name="PlanStartDate"
-                                   value="@(ViewBag.DefDate != null ? ((DateTime)ViewBag.DefDate).ToString("yyyy-MM-dd") : "")" required>
+                            <input type="text" class="form-control form-control-lg" id="policyStartDate" name="PlanStartDate"
+                                   value="@(ViewBag.DefDate != null ? ((DateTime)ViewBag.DefDate).ToString("dd-MMM-yyyy") : "")"
+                                   placeholder="dd-MMM-yyyy" required />
                             <label class="form-label" for="policyStartDate">Policy Start Date</label>
                         </div>
 

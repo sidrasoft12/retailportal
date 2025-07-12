@@ -9,111 +9,115 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = RetailPortal
 build_property.RootNamespace = RetailPortal
-build_property.ProjectDir = D:\Workarea\git-repos\retailportal\RetailPortal\
+build_property.ProjectDir = C:\Users\work1\source\repos\RetailPortal\RetailPortal\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Workarea\git-repos\retailportal\RetailPortal
+build_property.MSBuildProjectDirectory = C:\Users\work1\source\repos\RetailPortal\RetailPortal
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Workarea/git-repos/retailportal/RetailPortal/Views/Account/Login.cshtml]
+[C:/Users/work1/source/repos/RetailPortal/RetailPortal/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Workarea/git-repos/retailportal/RetailPortal/Views/GMQuotation/Index.cshtml]
+[C:/Users/work1/source/repos/RetailPortal/RetailPortal/Views/GMQuotation/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR01RdW90YXRpb25cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Workarea/git-repos/retailportal/RetailPortal/Views/GMQuotation/_AgentDetails.cshtml]
+[C:/Users/work1/source/repos/RetailPortal/RetailPortal/Views/GMQuotation/_AgentDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR01RdW90YXRpb25cX0FnZW50RGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Workarea/git-repos/retailportal/RetailPortal/Views/GMQuotation/_PolicyEdit.cshtml]
+[C:/Users/work1/source/repos/RetailPortal/RetailPortal/Views/GMQuotation/_PolicyEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR01RdW90YXRpb25cX1BvbGljeUVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Workarea/git-repos/retailportal/RetailPortal/Views/GMQuotation/_SponsorAndPolicyDetails.cshtml]
+[C:/Users/work1/source/repos/RetailPortal/RetailPortal/Views/GMQuotation/_SponsorAndPolicyDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR01RdW90YXRpb25cX1Nwb25zb3JBbmRQb2xpY3lEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Workarea/git-repos/retailportal/RetailPortal/Views/GMQuotation/_SponsorEdit.cshtml]
+[C:/Users/work1/source/repos/RetailPortal/RetailPortal/Views/GMQuotation/_SponsorEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR01RdW90YXRpb25cX1Nwb25zb3JFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Workarea/git-repos/retailportal/RetailPortal/Views/Home/Index.cshtml]
+[C:/Users/work1/source/repos/RetailPortal/RetailPortal/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Workarea/git-repos/retailportal/RetailPortal/Views/Home/Privacy.cshtml]
+[C:/Users/work1/source/repos/RetailPortal/RetailPortal/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Workarea/git-repos/retailportal/RetailPortal/Views/Member/Index.cshtml]
+[C:/Users/work1/source/repos/RetailPortal/RetailPortal/Views/Member/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Workarea/git-repos/retailportal/RetailPortal/Views/Member/_AgentDetails.cshtml]
+[C:/Users/work1/source/repos/RetailPortal/RetailPortal/Views/Member/_AgentDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXF9BZ2VudERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Workarea/git-repos/retailportal/RetailPortal/Views/Member/_MemberAdd.cshtml]
+[C:/Users/work1/source/repos/RetailPortal/RetailPortal/Views/Member/_MemberAdd.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXF9NZW1iZXJBZGQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Workarea/git-repos/retailportal/RetailPortal/Views/Member/_MemberDetails.cshtml]
+[C:/Users/work1/source/repos/RetailPortal/RetailPortal/Views/Member/_MemberDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXF9NZW1iZXJEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Workarea/git-repos/retailportal/RetailPortal/Views/Member/_MemberEdit.cshtml]
+[C:/Users/work1/source/repos/RetailPortal/RetailPortal/Views/Member/_MemberEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXF9NZW1iZXJFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Workarea/git-repos/retailportal/RetailPortal/Views/Payment/Index.cshtml]
+[C:/Users/work1/source/repos/RetailPortal/RetailPortal/Views/Payment/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Workarea/git-repos/retailportal/RetailPortal/Views/Payment/Success.cshtml]
+[C:/Users/work1/source/repos/RetailPortal/RetailPortal/Views/Payment/Success.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudFxTdWNjZXNzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Workarea/git-repos/retailportal/RetailPortal/Views/Product/Index.cshtml]
+[C:/Users/work1/source/repos/RetailPortal/RetailPortal/Views/Preview/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJldmlld1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/work1/source/repos/RetailPortal/RetailPortal/Views/Product/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Workarea/git-repos/retailportal/RetailPortal/Views/Product/_ProductDetails.cshtml]
+[C:/Users/work1/source/repos/RetailPortal/RetailPortal/Views/Product/_ProductDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxfUHJvZHVjdERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Workarea/git-repos/retailportal/RetailPortal/Views/Shared/Error.cshtml]
+[C:/Users/work1/source/repos/RetailPortal/RetailPortal/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Workarea/git-repos/retailportal/RetailPortal/Views/Shared/ViewImports.cshtml]
+[C:/Users/work1/source/repos/RetailPortal/RetailPortal/Views/Shared/ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Workarea/git-repos/retailportal/RetailPortal/Views/Shared/ViewStart.cshtml]
+[C:/Users/work1/source/repos/RetailPortal/RetailPortal/Views/Shared/ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Workarea/git-repos/retailportal/RetailPortal/Views/Shared/_LoginLayout.cshtml]
+[C:/Users/work1/source/repos/RetailPortal/RetailPortal/Views/Shared/_LoginLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpbkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Workarea/git-repos/retailportal/RetailPortal/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/work1/source/repos/RetailPortal/RetailPortal/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Workarea/git-repos/retailportal/RetailPortal/Views/_ViewImports.cshtml]
+[C:/Users/work1/source/repos/RetailPortal/RetailPortal/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Workarea/git-repos/retailportal/RetailPortal/Views/_ViewStart.cshtml]
+[C:/Users/work1/source/repos/RetailPortal/RetailPortal/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Workarea/git-repos/retailportal/RetailPortal/Views/Shared/_Layout.cshtml]
+[C:/Users/work1/source/repos/RetailPortal/RetailPortal/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-jrt13qangt

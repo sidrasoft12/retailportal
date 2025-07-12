@@ -1,6 +1,6 @@
 ﻿@model RetailPortal.Models.Preview
 
-<style>
+@*< style>
     select {
         width: 100%;
         padding: 8px;
@@ -68,16 +68,58 @@
     .btn-primary {
         margin-right: 5px;
     }
+</style> *@
+
+<style>
+    .form-label {
+        font-weight: bold;
+    }
+
+    .form-section {
+        margin-bottom: 2rem;
+    }
+
+    .form-control[readonly] {
+        background-color: #f8f9fa;
+        border: none;
+        box-shadow: none;
+        padding-left: 0;
+    }
+
+    input.form-control,
+    select.form-control,
+    textarea.form-control {
+        border: none; 
+        border-radius: 0;
+        border-bottom: 1px solid #ccc; 
+        box-shadow: none;
+    }
+
+        input.form-control:focus,
+        select.form-control:focus,
+        textarea.form-control:focus {
+            outline: none;
+            box-shadow: none;
+            border-bottom: 1px solid #007bff; 
+        }
+
+    h4 {
+        border-bottom: 2px solid #dee2e6;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+        color: #495057;
+    }
 </style>
+
 
 <div>
     <h3 style="text-align:center;">Preview</h3>
 </div>
 
-<div class="card">
-    <div class="card-body">
+@* <div class="card">
+    <div class="card-body"> *@
         <!-- Quotation Table -->
-        <table class="table table-striped" id="quotationTable">
+       @*  <table class="table table-striped" id="quotationTable">
             <thead>
                 <tr>
                     <th>Sponsor Name</th>
@@ -95,6 +137,7 @@
                 @foreach (var item in Model.QuotationDetails)
                 {
                     <tr>
+
                         <td>@item.ParticipantName</td>
                         <td>@item.ParticipantEmail</td>
                         <td>@item.ParticipantTelephone</td>
@@ -108,11 +151,54 @@
                 }
             </tbody>
         </table>
-    </div>
+    </div> *@
+    <!-- Quotation Table -->
+    <div class="form-section">
+    <h4>Quotation Details</h4>
+    @foreach(var item in Model.QuotationDetails)
+    {
+        <div class="row mb-3 ">
+            <div class="col-md-4">
+                <label class="form-label">Sponser Name </label>
+                <input type="text" class="form-control" readonly value="@item.ParticipantName" />
+                </div>
+      <div class="col-md-4">
+                        <label class="form-label">Sponser Email </label>
+                    <input type="text" class="form-control" readonly value="@item.ParticipantEmail" />
+                    </div>
+                         <div class="col-md-4">
+                            <label class="form-label">Sponser Phone </label>
+                        <input type="text" class="form-control" readonly value="@item.ParticipantTelephone" />
+                    </div>
+                         <div class="col-md-4">
+                        <label class="form-label">Sponser Address </label>
+                <input type="text" class="form-control" readonly value="@item.ParticipantAddress" />
+                    </div>
+                         <div class="col-md-4">
+                        <label class="form-label">Sponser City </label>
+                        <input type="text" class="form-control" readonly value="@item.ParticipantCity" />
+                    </div>
+                         <div class="col-md-4">
+                        <label class="form-label">Sponser Type </label>
+                        <input type="text" class="form-control" readonly value="@item.SponsorType" />
+                    </div>
+                         <div class="col-md-4">
+                        <label class="form-label">Region</label>
+                        <input type="text" class="form-control" readonly value="@item.Region" />
+                    </div>
+                     <div class="col-md-4">
+                        <label class="form-label">SubRegion </label>
+                    <input type="text" class="form-control" readonly value="@item.SubRegion" />
+                </div>
+     </div>
 
-    <div class="card-body">
+    }
+</div>
+
+
+    @* <div class="card-body"> *@
         <!-- Member Table -->
-        <table class="table table-striped" id="memberTable">
+       @*  <table class="table table-striped" id="memberTable">
             <thead>
                 <tr>
                     <th>Member Type</th>
@@ -146,8 +232,62 @@
             </tbody>
         </table>
     </div>
+ *@
 
-    <div class="card-body">
+  <!-- Member Table -->
+   <div class="form-section">
+    <h4>Member Details</h4>
+    @foreach (var item in Model.MemberDetails)
+    {
+            <div class="row mb-3 ">
+                <div class="col-md-4">
+                        <label class="form-label">Member Type </label>
+                            <input type="text" class="form-control" readonly value="@item.MemberType" />
+                    </div>
+          <div class="col-md-4">
+                                <label class="form-label">Relation </label>
+                            <input type="text" class="form-control" readonly value="@item.Relation" />
+                        </div>
+                             <div class="col-md-4">
+                                    <label class="form-label">FirstName </label>
+                                <input type="text" class="form-control" readonly value="@item.FirstName" />
+                        </div>
+                             <div class="col-md-4">
+                                <label class="form-label"> Date Of Birth </label>
+                <input type="text" class="form-control" readonly value="@item.DOB" />
+                        </div>
+                             <div class="col-md-4">
+                                    <label class="form-label">Mobile Number</label>
+                                <input type="text" class="form-control" readonly value="@item.MobileNumber" />
+                        </div>
+                             <div class="col-md-4">
+                                <label class="form-label">Gender</label>
+                                        <input type="text" class="form-control" readonly value="@item.Gender" />
+                        </div>
+                             <div class="col-md-4">
+                                    <label class="form-label">Marital Status</label>
+                                <input type="text" class="form-control" readonly value="@item.MaritalStatus" />
+                        </div>
+                         <div class="col-md-4">
+                                <label class="form-label">Salary Band </label>
+                            <input type="text" class="form-control" readonly value="@item.SalaryBand" />
+                    </div>
+
+                             <div class="col-md-4">
+                                        <label class="form-label">Height </label>
+                                    <input type="text" class="form-control" readonly value="@item.Height" />
+                        </div>
+                         
+                         <div class="col-md-4">
+                                    <label class="form-label">Weight </label>
+                                <input type="text" class="form-control" readonly value="@item.Weight" />
+                    </div>
+                               </div>
+
+    }
+</div>
+
+  @*   <div class="card-body">
         <!-- Product Table -->
         <table class="table table-striped" id="productTable">
             <thead>
@@ -179,4 +319,48 @@
             </tbody>
         </table>
     </div>
+</div> *@
+
+ <!-- Product Table -->
+
+  <div class="form-section">
+    <h4>Product Details</h4>
+    @foreach (var item in Model.ProductDetails)
+    {
+            <div class="row mb-3 ">
+                <div class="col-md-4">
+                        <label class="form-label">Annual Medical Limit </label>
+                        <input type="text" class="form-control" readonly value="@item.AggAnnualLimit" />
+                    </div>
+          <div class="col-md-4">
+                                <label class="form-label">Plan Category Name </label>
+                            <input type="text" class="form-control" readonly value="@item.PlanCategoryName" />
+                        </div>
+                             <div class="col-md-4">
+                                    <label class="form-label">Benefit Name </label>
+                                <input type="text" class="form-control" readonly value="@item.BenefitName" />
+                        </div>
+                             <div class="col-md-4">
+                                <label class="form-label">Plan Type </label>
+                <input type="text" class="form-control" readonly value="@item.PlanType" />
+                        </div>
+                             <div class="col-md-4">
+                                <label class="form-label">Room Type </label>
+                                <input type="text" class="form-control" readonly value="@item.RoomType" />
+                        </div>
+                             <div class="col-md-4">
+                                <label class="form-label">Display Copay Text </label>
+                                <input type="text" class="form-control" readonly value="@item.DisplayCopayText" />
+                        </div>
+                             <div class="col-md-4">
+                                <label class="form-label">Premium Amount</label>
+                                <input type="text" class="form-control" readonly value="@item.PremiumAmt" />
+                        </div>
+                         <div class="col-md-4">
+                                <label class="form-label">Premium Percentage </label>
+                            <input type="text" class="form-control" readonly value="@item.PremiumPerc" />
+                    </div>
+         </div>
+
+    }
 </div>
