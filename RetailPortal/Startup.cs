@@ -25,10 +25,10 @@ namespace RetailPortal
             services.AddTransient<GMQuotations>();// Add session services
             services.AddTransient<Members>();// Add session services
 
-            services.AddRazorPages(o=>
-            {
-                o.Conventions.AddPageRoute("/login", "");
-            });
+            //services.AddRazorPages(o=>
+            //{
+            //    o.Conventions.AddPageRoute("/login", "");
+            //});
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -46,14 +46,19 @@ namespace RetailPortal
             app.UseStaticFiles();
 
             app.UseRouting();
-
-            app.UseAuthorization();
             app.UseSession(); // Enable session middleware
+            app.UseAuthorization();
+           
 
             app.UseEndpoints(endpoints =>
             {
+
                 endpoints.MapControllerRoute(
-                    name: "default",
+          name: "default",
+          pattern: "{controller=Panel}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "Panel",
                     pattern: "Login/{agent_id}",
                     defaults: new { controller = "Account", action = "Login" });
                 endpoints.MapControllerRoute(

@@ -1,0 +1,37 @@
+﻿@*
+   
+*@
+@{
+
+    ViewData["Title"]  = "Panel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row text-center">
+        <!-- Health Insurance Panel -->
+        <div class="col-md-4 mb-4">
+            <a href="@Url.Action("Login","Account", new { agent_id = 1 })" class="btn btn-lg btn-outline-primary w-100 p-4">
+                Health Insurance
+            </a>
+        </div>
+
+        <!-- Life Insurance Panel -->
+        <div class="col-md-4 mb-4">
+            <a href="@Url.Action("Login", "Account", new { agent_id = 1 })" class="btn btn-lg btn-outline-success w-100 p-4">
+                Life Insurance
+            </a>
+        </div>
+
+        <!-- Motor Insurance Panel -->
+        <div class="col-md-4 mb-4">
+            <a href="@Url.Action("Login", "Account", new { agent_id = 1 })" class="btn btn-lg btn-outline-danger w-100 p-4">
+                Motor Insurance
+            </a>
+        </div>
+    </div>
+</div>
+
+   
+
+
