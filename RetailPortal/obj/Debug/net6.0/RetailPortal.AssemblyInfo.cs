@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RetailPortal")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c77807771465a82d8472f01a09676eb8ce0e54f0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+44e2fd79e8c2d17bb57a51c15c795e1e860c62cc")]
 [assembly: System.Reflection.AssemblyProductAttribute("RetailPortal")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RetailPortal")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
