@@ -1,71 +1,74 @@
 ﻿@*
-   
+
 *@
 @{
-
-    ViewData["Title"]  = "Panel";
+    ViewData["Title"] = "Panel";
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
 
 <div class="container mt-5">
-    <div class="row text-center">
+    <div class="row g-4 justify-content-center">
         <!-- Health Insurance Panel -->
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 shadow-sm border-primary">
-                <div class="card-body">
-                    @* <i class="bi bi-heart-pulse-fill text-primary " style="font-size: 3rem;"></i> *@
-                    
-                    <h4 class="card-title mt-3">Health Insurance</h4>
-                    <p class="card-text">Health Insurance is a shield that protects you and your family from financial </p>
-                    <img src="https://cdn-icons-png.flaticon.com/128/3076/3076656.png" title="insurance icons" class="mb-3" style="width:64px; height:64px;"> <br />
-                    <a href="@Url.Action("Login","Account", new { agent_id = 1 })" class="btn btn-outline-primary w-45 btn-sm px-4 py-2">
-                        Health Insurance
-                    </a>
-                  
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+            <div class="card flex-fill shadow-sm border-primary h-100">
+                <div class="card-body d-flex flex-column text-center">
+                    <div class="flex-grow-1">
+                        <h4 class="card-title mt-3 mb-3">Health Insurance</h4>
+                        <p class="card-text mb-3">Health Insurance is a shield that protects you and your family from financial risks.</p>
+                        <div class="my-3">
+                            <img src="https://cdn-icons-png.flaticon.com/128/3076/3076656.png" title="Health Icon" style="width:64px; height:64px;">
+                        </div>
+                    </div>
+                    <div class="mt-auto">
+                        <a href="@Url.Action("Login", "Account", new { agent_id = 1 })"
+                           class="btn btn-outline-primary btn-sm px-4 py-2">
+                            Health Insurance
+                        </a>
+                    </div>
                 </div>
-
-               
             </div>
-          
         </div>
 
         <!-- Life Insurance Panel -->
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 shadow-sm border-primary">
-                <div class="card-body">
-                    @* <i class="bi bi-heart-pulse-fill text-primary " style="font-size: 3rem;"></i> *@
-                    <h4 class="card-title mt-3">Life Insurance</h4>
-                    <p class="card-text">Life insurance acts as a financial safety net for your family </p>
-           
-                    <img src="https://cdn-icons-png.flaticon.com/128/15552/15552595.png" alt="Life Insurance" class="mb-3" style="width:64px; height:64px;"> <br />
-                    <a href="@Url.Action("Login", "Account", new { agent_id = 1 })" class="btn btn-lg btn-outline-success w-45 btn-sm px-4 py-2">
-                        Life Insurance
-                    </a>
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+            <div class="card flex-fill shadow-sm border-success h-100">
+                <div class="card-body d-flex flex-column text-center">
+                    <div class="flex-grow-1">
+                        <h4 class="card-title mt-3 mb-3">Life Insurance</h4>
+                        <p class="card-text mb-3">Life insurance acts as a financial safety net for your family.</p>
+                        <div class="my-3">
+                            <img src="https://cdn-icons-png.flaticon.com/128/15552/15552595.png" alt="Life Icon" style="width:64px; height:64px;">
+                        </div>
+                    </div>
+                    <div class="mt-auto">
+                        <a href="@Url.Action("Login", "Account", new { agent_id = 1 })"
+                           class="btn btn-outline-success btn-sm px-4 py-2">
+                            Life Insurance
+                        </a>
+                    </div>
                 </div>
-                
             </div>
         </div>
 
         <!-- Motor Insurance Panel -->
-        <div class="col-md-4 mb-4">
-                    <div class="card h-100 shadow-sm border-primary">
-                        <div class="card-body">
-                    @* <i class="bi bi-heart-pulse-fill text-primary " style="font-size: 3rem;"></i> *@
-                            <h4 class="card-title mt-3">Motor Insurance</h4>
-                    <p class="card-text"> Motor insurance necessary for your protection and the safety of others </p>
-           
-
-                    <img src="https://cdn-icons-png.flaticon.com/128/15690/15690743.png" alt="Motor Insurance" class="mb-3" style="width:64px; height:64px;"> <br />
-                    <a href="@Url.Action("Login", "Account", new { agent_id = 1 })" class="btn btn-outline-danger w-45 btn-sm px-4 py-2">Motor Insurance</a>
-
-
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+            <div class="card flex-fill shadow-sm border-danger h-100">
+                <div class="card-body d-flex flex-column text-center">
+                    <div class="flex-grow-1">
+                        <h4 class="card-title mt-3 mb-3">Motor Insurance</h4>
+                        <p class="card-text mb-3">Motor insurance is necessary for your protection and the safety of others.</p>
+                        <div class="my-3">
+                            <img src="https://cdn-icons-png.flaticon.com/128/15690/15690743.png" alt="Motor Icon" style="width:64px; height:64px;">
+                        </div>
+                    </div>
+                    <div class="mt-auto">
+                        <a href="@Url.Action("Login", "Account", new { agent_id = 1 })"
+                           class="btn btn-outline-danger btn-sm px-4 py-2">
+                            Motor Insurance
+                        </a>
+                    </div>
                 </div>
- </div>
-</div>
-
+            </div>
+        </div>
     </div>
 </div>
-
-   
-
-
