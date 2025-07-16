@@ -11,24 +11,58 @@
     <div class="row text-center">
         <!-- Health Insurance Panel -->
         <div class="col-md-4 mb-4">
-            <a href="@Url.Action("Login","Account", new { agent_id = 1 })" class="btn btn-lg btn-outline-primary w-100 p-4">
-                Health Insurance
-            </a>
+            <div class="card h-100 shadow-sm border-primary">
+                <div class="card-body">
+                    @* <i class="bi bi-heart-pulse-fill text-primary " style="font-size: 3rem;"></i> *@
+                    
+                    <h4 class="card-title mt-3">Health Insurance</h4>
+                    <p class="card-text">Health Insurance is a shield that protects you and your family from financial </p>
+                    <img src="https://cdn-icons-png.flaticon.com/128/3076/3076656.png" title="insurance icons" class="mb-3" style="width:64px; height:64px;"> <br />
+                    <a href="@Url.Action("Login","Account", new { agent_id = 1 })" class="btn btn-outline-primary w-45 btn-sm px-4 py-2">
+                        Health Insurance
+                    </a>
+                  
+                </div>
+
+               
+            </div>
+          
         </div>
 
         <!-- Life Insurance Panel -->
         <div class="col-md-4 mb-4">
-            <a href="@Url.Action("Login", "Account", new { agent_id = 1 })" class="btn btn-lg btn-outline-success w-100 p-4">
-                Life Insurance
-            </a>
+            <div class="card h-100 shadow-sm border-primary">
+                <div class="card-body">
+                    @* <i class="bi bi-heart-pulse-fill text-primary " style="font-size: 3rem;"></i> *@
+                    <h4 class="card-title mt-3">Life Insurance</h4>
+                    <p class="card-text">Life insurance acts as a financial safety net for your family </p>
+           
+                    <img src="https://cdn-icons-png.flaticon.com/128/15552/15552595.png" alt="Life Insurance" class="mb-3" style="width:64px; height:64px;"> <br />
+                    <a href="@Url.Action("Login", "Account", new { agent_id = 1 })" class="btn btn-lg btn-outline-success w-45 btn-sm px-4 py-2">
+                        Life Insurance
+                    </a>
+                </div>
+                
+            </div>
         </div>
 
         <!-- Motor Insurance Panel -->
         <div class="col-md-4 mb-4">
-            <a href="@Url.Action("Login", "Account", new { agent_id = 1 })" class="btn btn-lg btn-outline-danger w-100 p-4">
-                Motor Insurance
-            </a>
-        </div>
+                    <div class="card h-100 shadow-sm border-primary">
+                        <div class="card-body">
+                    @* <i class="bi bi-heart-pulse-fill text-primary " style="font-size: 3rem;"></i> *@
+                            <h4 class="card-title mt-3">Motor Insurance</h4>
+                    <p class="card-text"> Motor insurance necessary for your protection and the safety of others </p>
+           
+
+                    <img src="https://cdn-icons-png.flaticon.com/128/15690/15690743.png" alt="Motor Insurance" class="mb-3" style="width:64px; height:64px;"> <br />
+                    <a href="@Url.Action("Login", "Account", new { agent_id = 1 })" class="btn btn-outline-danger w-45 btn-sm px-4 py-2">Motor Insurance</a>
+
+
+                </div>
+ </div>
+</div>
+
     </div>
 </div>
 
